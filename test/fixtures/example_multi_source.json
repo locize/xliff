@@ -1,0 +1,10 @@
+{
+  "namespace1": {
+    "key1": "Hello",
+    "key2": "An application to manipulate and process XLIFF documents",
+    "key.nested": "XLIFF Data Manager"
+  },
+  "namespace2": {
+    "k": "v"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": "Hello",
+        "target": "Hallo"
+      },
+      "key2": {
+        "source": "An application to manipulate and process XLIFF documents",
+        "target": "Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten"
+      },
+      "key.nested": {
+        "source": "XLIFF Data Manager",
+        "target": "XLIFF Daten Manager"
+      }
+    },
+    "namespace2": {
+      "k": {
+        "source": "v",
+        "target": "v2"
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "de-CH"
+}
