@@ -1,6 +1,6 @@
 {
   "name": "xliff",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "xliff2js and js2xliff converter xliff utils",
   "main": "index.js",
   "dependencies": {
