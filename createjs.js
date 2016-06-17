@@ -8,7 +8,7 @@ module.exports = (srcLng, trgLng, srcKeys, trgKeys, ns, cb) => {
   if (ns && typeof ns === 'string') {
     js.resources[ns] = {};
 
-    Object.keys(srcKeys).forEach((srcKey) => {
+    Object.keys(trgKeys).forEach((srcKey) => {
       js.resources[ns][srcKey] = {
         source: srcKeys[srcKey],
         target: trgKeys[srcKey]
@@ -25,10 +25,10 @@ module.exports = (srcLng, trgLng, srcKeys, trgKeys, ns, cb) => {
     ns = null;
   }
 
-  Object.keys(srcKeys).forEach((ns) => {
+  Object.keys(trgKeys).forEach((ns) => {
     js.resources[ns] = {};
 
-    Object.keys(srcKeys[ns]).forEach((srcKey) => {
+    Object.keys(trgKeys[ns]).forEach((srcKey) => {
       js.resources[ns][srcKey] = {
         source: srcKeys[ns][srcKey],
         target: trgKeys[ns][srcKey]
