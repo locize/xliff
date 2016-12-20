@@ -10,7 +10,7 @@ function xliffToJs(str, cb) {
     resources: {}
   };
 
-  parser.parseString(str, (err, data) => {
+  parser.parseString(str, function(err, data) {
     if (err) return cb(err);
 
     const srcLang = data.xliff.$.srcLang;
@@ -19,18 +19,18 @@ function xliffToJs(str, cb) {
     result.sourceLanguage = srcLang;
     result.targetLanguage = trgLang;
 
-    data.xliff.file.forEach((f) => {
+    data.xliff.file.forEach(function(f) {
       const namespace = f.$.id;
       result.resources[namespace] = {};
 
       const entries = f.unit;
-      entries.forEach((entry) => {
+      entries.forEach(function(entry) {
         const key = entry.$.id;
         result.resources[namespace][key] = {
           source: '',
           target: ''
         };
-        entry.segment.forEach((seg) => {
+        entry.segment.forEach(function(seg) {
           if (seg.source) {
             const srcValue = seg.source[0];
             result.resources[namespace][key].source = srcValue;

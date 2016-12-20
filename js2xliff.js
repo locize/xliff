@@ -25,7 +25,7 @@ function js2xliff(obj, opt, cb) {
     file: []
   };
 
-  Object.keys(obj.resources).forEach((nsName) => {
+  Object.keys(obj.resources).forEach(function(nsName) {
     const f = {
       $: {
         id: nsName
@@ -34,7 +34,7 @@ function js2xliff(obj, opt, cb) {
     };
     xmlJs.file.push(f);
 
-    Object.keys(obj.resources[nsName]).forEach((k) => {
+    Object.keys(obj.resources[nsName]).forEach(function(k) {
       const u = {
         $: {
           id: k

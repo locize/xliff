@@ -1,3 +1,3 @@
 const ofjs = require('./ofjs');
 
-module.exports = (js, cb) => ofjs(js, 'target', cb);
+module.exports = function(js, cb) {ofjs(js, 'target', cb);};
