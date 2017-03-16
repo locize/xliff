@@ -1,0 +1,24 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2" srcLang="en-US" trgLang="de-CH">
+  <file id="namespace1">
+    <body>
+      <trans-unit id="key1">
+        <segment>
+          <source>Hello</source>
+          <target>Hallo</target>
+        </segment>
+      </trans-unit>
+      <trans-unit id="key2">
+        <segment>
+          <source>An application to manipulate and process XLIFF documents</source>
+          <target>Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten</target>
+        </segment>
+      </trans-unit>
+      <trans-unit id="key.nested">
+        <segment>
+          <source>XLIFF Data Manager</source>
+          <target>XLIFF Daten Manager</target>
+        </segment>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
