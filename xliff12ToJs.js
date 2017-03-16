@@ -20,7 +20,7 @@ function xliff12ToJs(str, cb) {
     result.targetLanguage = trgLang;
 
     data.xliff.file.forEach((f) => {
-      const namespace = f.$.id;
+      const namespace = f.$.original;
       result.resources[namespace] = {};
 
       const entries = f.body[0]['trans-unit'];

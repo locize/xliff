@@ -28,7 +28,7 @@ function jsToXliff12(obj, opt, cb) {
   Object.keys(obj.resources).forEach((nsName) => {
     const f = {
       $: {
-        id: nsName
+        original: nsName
       },
       'body': {
         'trans-unit': []
