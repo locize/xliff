@@ -30,16 +30,14 @@ function xliff12ToJs(str, cb) {
           source: '',
           target: ''
         };
-        entry.segment.forEach((seg) => {
-          if (seg.source) {
-            const srcValue = seg.source[0];
-            result.resources[namespace][key].source = srcValue;
-          }
-          if (seg.target) {
-            const trgValue = seg.target[0];
-            result.resources[namespace][key].target = trgValue;
-          }
-        });
+
+        if (entry.source) {
+          result.resources[namespace][key].source = entry.source[0];
+        }
+
+        if (entry.target) {
+          result.resources[namespace][key].target = entry.target[0];
+        }
       });
     });
 

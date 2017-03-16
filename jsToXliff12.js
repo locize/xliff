@@ -41,10 +41,8 @@ function jsToXliff12(obj, opt, cb) {
         $: {
           id: k
         },
-        segment: {
-          source: obj.resources[nsName][k].source,
-          target: obj.resources[nsName][k].target
-        }
+        source: obj.resources[nsName][k].source,
+        target: obj.resources[nsName][k].target
       };
       f.body['trans-unit'].push(u);
     });

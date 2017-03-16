@@ -18,6 +18,14 @@ describe('single', () => {
     });
   });
 
+  test('xliff12ToJs', (fn) => (done) => {
+    fn(fixtures.example.xliff12, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res).to.eql(fixtures.example.js);
+      done();
+    });
+  });
+
   test('js2xliff', (fn) => (done) => {
     fn(fixtures.example.js, (err, res) => {
       expect(err).not.to.be.ok();
@@ -76,6 +84,14 @@ describe('multi', () => {
 
   test('xliff2js', (fn) => (done) => {
     fn(fixtures.example_multi.xliff, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res).to.eql(fixtures.example_multi.js);
+      done();
+    });
+  });
+
+  test('xliff12ToJs', (fn) => (done) => {
+    fn(fixtures.example_multi.xliff12, (err, res) => {
       expect(err).not.to.be.ok();
       expect(res).to.eql(fixtures.example_multi.js);
       done();
