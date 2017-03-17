@@ -4,12 +4,12 @@ function jsToXliff12(obj, opt, cb) {
 
   if (typeof opt === 'function') {
     cb = opt;
-    opt = { pretty: true, indent: ' ', newline: '\n' };
+    opt = { headless: true, pretty: true, indent: ' ', newline: '\n' };
   }
 
   const builder = new xml2js.Builder({
     rootName: 'xliff',
-    headless: true,
+    headless: opt.headless,
     pretty: opt.pretty,
     indent: opt.indent || ' ',
     newline: opt.newline || '\n'
@@ -17,6 +17,8 @@ function jsToXliff12(obj, opt, cb) {
 
   const xmlJs = {
     $: {
+      'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+      'xsi:schemaLocation': 'urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd',
       xmlns: 'urn:oasis:names:tc:xliff:document:1.2',
       version: '1.2',
       srcLang: obj.sourceLanguage,
@@ -28,7 +30,10 @@ function jsToXliff12(obj, opt, cb) {
   Object.keys(obj.resources).forEach((nsName) => {
     const f = {
       $: {
-        original: nsName
+        original: nsName,
+        datatype: 'plaintext',
+        'source-language': obj.sourceLanguage,
+        'target-language': obj.targetLanguage
       },
       'body': {
         'trans-unit': []
