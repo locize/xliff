@@ -2,16 +2,16 @@
   <file original="namespace1">
     <body>
       <trans-unit id="key1">
-        <source>Hello</source>
-        <target>Hallo</target>
+        <source xml:lang="en-US">Hello</source>
+        <target xml:lang="de-CH">Hallo</target>
       </trans-unit>
       <trans-unit id="key2">
-        <source>An application to manipulate and process XLIFF documents</source>
-        <target>Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten</target>
+        <source xml:lang="en-US">An application to manipulate and process XLIFF documents</source>
+        <target xml:lang="de-CH">Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten</target>
       </trans-unit>
       <trans-unit id="key.nested">
-        <source>XLIFF Data Manager</source>
-        <target>XLIFF Daten Manager</target>
+        <source xml:lang="en-US">XLIFF Data Manager</source>
+        <target xml:lang="de-CH">XLIFF Daten Manager</target>
       </trans-unit>
     </body>
   </file>
