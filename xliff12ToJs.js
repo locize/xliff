@@ -10,6 +10,10 @@ function xliff12ToJs(str, cb) {
     resources: {}
   };
 
+  const extractValue = (value) => {
+    return typeof value !== 'string' ? value['_'] : value;
+  };
+
   parser.parseString(str, (err, data) => {
     if (err) return cb(err);
 
@@ -32,11 +36,11 @@ function xliff12ToJs(str, cb) {
         };
 
         if (entry.source) {
-          result.resources[namespace][key].source = entry.source[0];
+          result.resources[namespace][key].source = extractValue(entry.source[0]);
         }
 
         if (entry.target) {
-          result.resources[namespace][key].target = entry.target[0];
+          result.resources[namespace][key].target = extractValue(entry.target[0]);
         }
       });
     });
