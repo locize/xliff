@@ -42,6 +42,9 @@ function xliff12ToJs(str, cb) {
         if (entry.target) {
           result.resources[namespace][key].target = extractValue(entry.target[0]);
         }
+        if (entry.note) {
+          result.resources[namespace][key].note = extractValue(entry.note[0]);
+        }
       });
     });
 

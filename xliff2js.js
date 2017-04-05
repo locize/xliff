@@ -39,6 +39,10 @@ function xliffToJs(str, cb) {
             const trgValue = seg.target[0];
             result.resources[namespace][key].target = trgValue;
           }
+          if (seg.note) {
+            const noteValue = seg.note[0];
+            result.resources[namespace][key].note = noteValue;
+          }
         });
       });
     });
