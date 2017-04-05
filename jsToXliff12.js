@@ -47,7 +47,7 @@ function jsToXliff12(obj, opt, cb) {
           id: k
         },
         source: obj.resources[nsName][k].source,
-        target: obj.resources[nsName][k].target,
+        target: obj.resources[nsName][k].target
       };
       if ('note' in obj.resources[nsName][k]) {
         u.note = obj.resources[nsName][k].note;
