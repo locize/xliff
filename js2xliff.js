@@ -41,7 +41,8 @@ function js2xliff(obj, opt, cb) {
         },
         segment: {
           source: obj.resources[nsName][k].source,
-          target: obj.resources[nsName][k].target
+          target: obj.resources[nsName][k].target,
+          note: obj.resources[nsName][k].note
         }
       };
       f.unit.push(u);

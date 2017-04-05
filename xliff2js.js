@@ -28,7 +28,8 @@ function xliffToJs(str, cb) {
         const key = entry.$.id;
         result.resources[namespace][key] = {
           source: '',
-          target: ''
+          target: '',
+          note: ''
         };
         entry.segment.forEach((seg) => {
           if (seg.source) {
@@ -38,6 +39,10 @@ function xliffToJs(str, cb) {
           if (seg.target) {
             const trgValue = seg.target[0];
             result.resources[namespace][key].target = trgValue;
+          }
+          if (seg.note) {
+            const noteValue = seg.note[0];
+            result.resources[namespace][key].note = noteValue;
           }
         });
       });

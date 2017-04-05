@@ -47,7 +47,8 @@ function jsToXliff12(obj, opt, cb) {
           id: k
         },
         source: obj.resources[nsName][k].source,
-        target: obj.resources[nsName][k].target
+        target: obj.resources[nsName][k].target,
+        note: obj.resources[nsName][k].note
       };
       f.body['trans-unit'].push(u);
     });
