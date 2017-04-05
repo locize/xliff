@@ -48,8 +48,10 @@ function jsToXliff12(obj, opt, cb) {
         },
         source: obj.resources[nsName][k].source,
         target: obj.resources[nsName][k].target,
-        note: obj.resources[nsName][k].note
       };
+      if ('note' in obj.resources[nsName][k]) {
+        u.note = obj.resources[nsName][k].note;
+      }
       f.body['trans-unit'].push(u);
     });
   });

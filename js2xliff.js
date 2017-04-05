@@ -35,15 +35,18 @@ function js2xliff(obj, opt, cb) {
     xmlJs.file.push(f);
 
     Object.keys(obj.resources[nsName]).forEach((k) => {
+      const segment = {
+        source: obj.resources[nsName][k].source,
+        target: obj.resources[nsName][k].target
+      };
+      if ('note' in obj.resources[nsName][k]) {
+        segment.note = obj.resources[nsName][k].note;
+      }
       const u = {
         $: {
           id: k
         },
-        segment: {
-          source: obj.resources[nsName][k].source,
-          target: obj.resources[nsName][k].target,
-          note: obj.resources[nsName][k].note
-        }
+        segment
       };
       f.unit.push(u);
     });

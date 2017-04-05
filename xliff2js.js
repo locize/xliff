@@ -28,8 +28,7 @@ function xliffToJs(str, cb) {
         const key = entry.$.id;
         result.resources[namespace][key] = {
           source: '',
-          target: '',
-          note: ''
+          target: ''
         };
         entry.segment.forEach((seg) => {
           if (seg.source) {

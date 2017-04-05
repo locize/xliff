@@ -32,8 +32,7 @@ function xliff12ToJs(str, cb) {
         const key = entry.$.id;
         result.resources[namespace][key] = {
           source: '',
-          target: '',
-          note: ''
+          target: ''
         };
 
         if (entry.source) {
