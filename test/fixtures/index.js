@@ -15,5 +15,10 @@ module.exports = {
     xliff12: fs.readFileSync(path.join(__dirname, 'example_multi12.xliff')).toString().replace(/\n$/, ''),
     js_source: require('./example_multi_source.json'),
     js_target: require('./example_multi_target.json')
+  },
+  example_note: {
+    js: require('./example_note.json'),
+    xliff: fs.readFileSync(path.join(__dirname, 'example_note.xliff')).toString().replace(/\n$/, ''),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_note12.xliff')).toString().replace(/\n$/, ''),
   }
 };
