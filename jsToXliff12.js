@@ -1,4 +1,5 @@
 const convert = require('xml-js');
+const {makeElement, makeText} = require('./util/makeNodes');
 
 function jsToXliff12(obj, opt, cb) {
 
@@ -11,79 +12,31 @@ function jsToXliff12(obj, opt, cb) {
     spaces: opt.indent || '  '
   };
 
-  const root = {
-    type: 'element',
-    name: 'xliff',
-    attributes: {
-      'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
-      'xsi:schemaLocation': 'urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd',
-      xmlns: 'urn:oasis:names:tc:xliff:document:1.2',
-      version: '1.2'
-    },
-    elements: []
+  const rootAttributes = {
+    'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+    'xsi:schemaLocation': 'urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd',
+    xmlns: 'urn:oasis:names:tc:xliff:document:1.2',
+    version: '1.2'
   };
+  const root = makeElement('xliff', rootAttributes, true);
 
   Object.keys(obj.resources).forEach((nsName) => {
-    const b = {
-      type: 'element',
-      name: 'body',
-      elements: []
+    const b = makeElement('body', null, true);
+    const fileAttributes = {
+      original: nsName,
+      datatype: 'plaintext',
+      'source-language': obj.sourceLanguage,
+      'target-language': obj.targetLanguage
     };
-
-    const f = {
-      type: 'element',
-      name: 'file',
-      attributes: {
-        original: nsName,
-        datatype: 'plaintext',
-        'source-language': obj.sourceLanguage,
-        'target-language': obj.targetLanguage
-      },
-      elements: [b]
-    };
+    const f = makeElement('file', fileAttributes, [b]);
     root.elements.push(f);
 
     Object.keys(obj.resources[nsName]).forEach((k) => {
-      const u = {
-        type: 'element',
-        name: 'trans-unit',
-        attributes: {
-          id: k
-        },
-        elements: [
-          {
-            type: 'element',
-            name: 'source',
-            elements: [
-              {
-                type: 'text',
-                text: obj.resources[nsName][k].source
-              }
-            ]
-          },
-          {
-            type: 'element',
-            name: 'target',
-            elements: [
-              {
-                type: 'text',
-                text: obj.resources[nsName][k].target
-              }
-            ]
-          }
-        ]
-      };
+      const u = makeElement('trans-unit', {id: k}, true);
+      u.elements.push(makeElement('source', null, [makeText(obj.resources[nsName][k].source)]));
+      u.elements.push(makeElement('target', null, [makeText(obj.resources[nsName][k].target)]));
       if ('note' in obj.resources[nsName][k]) {
-        u.elements.push({
-          type: 'element',
-          name: 'note',
-          elements: [
-            {
-              type: 'text',
-              text: obj.resources[nsName][k].note
-            }
-          ]
-        });
+        u.elements.push(makeElement('note', null, [makeText(obj.resources[nsName][k].note)]));
       }
       b.elements.push(u);
     });
