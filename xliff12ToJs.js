@@ -17,8 +17,8 @@ function xliff12ToJs(str, cb) {
   parser.parseString(str, (err, data) => {
     if (err) return cb(err);
 
-    const srcLang = data.xliff.$.srcLang;
-    const trgLang = data.xliff.$.trgLang;
+    const srcLang = data.xliff.file[0].$['source-language'];
+    const trgLang = data.xliff.file[0].$['target-language'];
 
     result.sourceLanguage = srcLang;
     result.targetLanguage = trgLang;

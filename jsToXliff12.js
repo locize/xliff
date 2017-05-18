@@ -20,9 +20,7 @@ function jsToXliff12(obj, opt, cb) {
       'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
       'xsi:schemaLocation': 'urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd',
       xmlns: 'urn:oasis:names:tc:xliff:document:1.2',
-      version: '1.2',
-      srcLang: obj.sourceLanguage,
-      trgLang: obj.targetLanguage
+      version: '1.2'
     },
     file: []
   };
