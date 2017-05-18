@@ -1,61 +1,46 @@
-const xml2js = require('xml2js');
+const convert = require('xml-js');
+const {makeElement, makeText} = require('./util/makeNodes');
 
 function js2xliff(obj, opt, cb) {
 
   if (typeof opt === 'function') {
     cb = opt;
-    opt = { pretty: true, indent: '  ', newline: '\n' };
+    opt = { indent: '  ' };
   }
 
-  const builder = new xml2js.Builder({
-    rootName: 'xliff',
-    headless: true,
-    renderOpts: {
-      pretty: opt.pretty === false ? false : true,
-      indent: opt.indent || '  ',
-      newline: opt.newline || '\n'
-    },
-    cdata: opt.cdata == true ? true : false,
-  });
-
-  const xmlJs = {
-    $: {
-      xmlns: 'urn:oasis:names:tc:xliff:document:2.0',
-      version: '2.0',
-      srcLang: obj.sourceLanguage,
-      trgLang: obj.targetLanguage
-    },
-    file: []
+  const options = {
+    spaces: opt.indent || '  '
   };
 
+  const rootAttributes = {
+    xmlns: 'urn:oasis:names:tc:xliff:document:2.0',
+    version: '2.0',
+    srcLang: obj.sourceLanguage,
+    trgLang: obj.targetLanguage
+  };
+  const root = makeElement('xliff', rootAttributes, true);
+
   Object.keys(obj.resources).forEach((nsName) => {
-    const f = {
-      $: {
-        id: nsName
-      },
-      unit: []
-    };
-    xmlJs.file.push(f);
+    const f = makeElement('file', {id: nsName}, true);
+    root.elements.push(f);
 
     Object.keys(obj.resources[nsName]).forEach((k) => {
-      const segment = {
-        source: obj.resources[nsName][k].source,
-        target: obj.resources[nsName][k].target
-      };
+      const segment = makeElement('segment', null, true);
+      segment.elements.push(makeElement('source', null, [makeText(obj.resources[nsName][k].source)]));
+      segment.elements.push(makeElement('target', null, [makeText(obj.resources[nsName][k].target)]));
       if ('note' in obj.resources[nsName][k]) {
-        segment.note = obj.resources[nsName][k].note;
+        segment.elements.push(makeElement('note', null, [makeText(obj.resources[nsName][k].note)]));
       }
-      const u = {
-        $: {
-          id: k
-        },
-        segment
-      };
-      f.unit.push(u);
+      const u = makeElement('unit', {id: k}, [segment]);
+      f.elements.push(u);
     });
   });
 
-  const xml = builder.buildObject(xmlJs);
+  const xmlJs = {
+    elements: [root]
+  };
+
+  const xml = convert.js2xml(xmlJs, options);
   if (cb) cb(null, xml);
   return xml;
 }
