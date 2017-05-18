@@ -7,6 +7,7 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
+    "xml-js": "^1.2.2",
     "xml2js": "0.4.19"
   },
   "devDependencies": {

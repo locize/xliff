@@ -1,63 +1,99 @@
-const xml2js = require('xml2js');
+const convert = require('xml-js');
 
 function jsToXliff12(obj, opt, cb) {
 
   if (typeof opt === 'function') {
     cb = opt;
-    opt = { headless: true, pretty: true, indent: '  ', newline: '\n' };
+    opt = { indent: '  ' };
   }
 
-  const builder = new xml2js.Builder({
-    rootName: 'xliff',
-    headless: opt.headless,
-    renderOpts: {
-      pretty: opt.pretty === false ? false : true,
-      indent: opt.indent || '  ',
-      newline: opt.newline || '\n'
-    },
-    cdata: opt.cdata == true ? true : false,
-  });
+  const options = {
+    spaces: opt.indent || '  '
+  };
 
-  const xmlJs = {
-    $: {
+  const root = {
+    type: 'element',
+    name: 'xliff',
+    attributes: {
       'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
       'xsi:schemaLocation': 'urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd',
       xmlns: 'urn:oasis:names:tc:xliff:document:1.2',
       version: '1.2'
     },
-    file: []
+    elements: []
   };
 
   Object.keys(obj.resources).forEach((nsName) => {
+    const b = {
+      type: 'element',
+      name: 'body',
+      elements: []
+    };
+
     const f = {
-      $: {
+      type: 'element',
+      name: 'file',
+      attributes: {
         original: nsName,
         datatype: 'plaintext',
         'source-language': obj.sourceLanguage,
         'target-language': obj.targetLanguage
       },
-      'body': {
-        'trans-unit': []
-      }
+      elements: [b]
     };
-    xmlJs.file.push(f);
+    root.elements.push(f);
 
     Object.keys(obj.resources[nsName]).forEach((k) => {
       const u = {
-        $: {
+        type: 'element',
+        name: 'trans-unit',
+        attributes: {
           id: k
         },
-        source: obj.resources[nsName][k].source,
-        target: obj.resources[nsName][k].target
+        elements: [
+          {
+            type: 'element',
+            name: 'source',
+            elements: [
+              {
+                type: 'text',
+                text: obj.resources[nsName][k].source
+              }
+            ]
+          },
+          {
+            type: 'element',
+            name: 'target',
+            elements: [
+              {
+                type: 'text',
+                text: obj.resources[nsName][k].target
+              }
+            ]
+          }
+        ]
       };
       if ('note' in obj.resources[nsName][k]) {
-        u.note = obj.resources[nsName][k].note;
+        u.elements.push({
+          type: 'element',
+          name: 'note',
+          elements: [
+            {
+              type: 'text',
+              text: obj.resources[nsName][k].note
+            }
+          ]
+        });
       }
-      f.body['trans-unit'].push(u);
+      b.elements.push(u);
     });
   });
 
-  const xml = builder.buildObject(xmlJs);
+  const xmlJs = {
+    elements: [root]
+  };
+
+  const xml = convert.js2xml(xmlJs, options);
   if (cb) cb(null, xml);
   return xml;
 }
