@@ -9,6 +9,10 @@ module.exports = {
     js_source: require('./example_source.json'),
     js_target: require('./example_target.json')
   },
+  example_source_attr: {
+    // The JS should be the same as example.js
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_source_attr12.xliff')).toString().replace(/\n$/, ''),
+  },
   example_multi: {
     js: require('./example_multi.json'),
     xliff: fs.readFileSync(path.join(__dirname, 'example_multi.xliff')).toString().replace(/\n$/, ''),

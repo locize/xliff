@@ -1,5 +1,5 @@
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2" srcLang="en-US" trgLang="de-CH">
-  <file original="namespace1">
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="namespace1" datatype="plaintext" source-language="en-US" target-language="de-CH">
     <body>
       <trans-unit id="key1">
         <source xml:lang="en-US">Hello</source>

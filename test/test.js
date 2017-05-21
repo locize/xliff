@@ -34,6 +34,14 @@ describe('single', () => {
     });
   });
 
+  test('jsToXliff12', (fn) => (done) => {
+    fn(fixtures.example.js, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res).to.eql(fixtures.example.xliff12);
+      done();
+    });
+  });
+
   test('targetOfjs', (fn) => (done) => {
     fn(fixtures.example.js, (err, res) => {
       expect(err).not.to.be.ok();
@@ -76,6 +84,18 @@ describe('single', () => {
          done();
        }
     );
+  });
+
+});
+
+describe('xliff 1.2 source/target attributes', () => {
+
+  test('xliff12ToJs', (fn) => (done) => {
+    fn(fixtures.example_source_attr.xliff12, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res).to.eql(fixtures.example.js);
+      done();
+    });
   });
 
 });
