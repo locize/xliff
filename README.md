@@ -121,8 +121,8 @@ createjs(
   // res is like js
 });
 
-const createkliff = require('xliff/createkliff');
-createkliff(
+const createxliff = require('xliff/createxliff');
+createxliff(
   js.sourceLanguage,
   js.targetLanguage,
   {
