@@ -195,5 +195,24 @@ createxliff(
     // res is like xliff
   });
 
+  const createxliff12 = require('xliff/createxliff12');
+  createxliff12(
+    js.sourceLanguage,
+    js.targetLanguage,
+    {
+      "key1": "Hello",
+      "key2": "An application to manipulate and process XLIFF documents",
+      "key.nested": "XLIFF Data Manager"
+    },
+    {
+      "key1": "Hallo",
+      "key2": "Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten",
+      "key.nested": "XLIFF Daten Manager"
+    },
+    'namespace1',
+    (err, res) => {
+    // res is like xliff
+  });
+
 
 ```

@@ -6,5 +6,6 @@ module.exports = {
   targetOfjs: require('./targetOfjs'),
   sourceOfjs: require('./sourceOfjs'),
   createjs: require('./createjs'),
-  createxliff: require('./createxliff')
+  createxliff: require('./createxliff'),
+  createxliff12: require('./createxliff12')
 };
