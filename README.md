@@ -77,8 +77,8 @@ xliff2js(xliff, (err, res) => {
   // res is like js
 });
 
-const js2kliff = require('xliff/js2kliff');
-js2kliff(js, (err, res) => {
+const js2xliff = require('xliff/js2xliff');
+js2xliff(js, (err, res) => {
   // res is like xliff
 });
 
