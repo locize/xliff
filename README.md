@@ -115,7 +115,7 @@ createjs(
     "key1": "Hallo",
     "key2": "Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten",
     "key.nested": "XLIFF Daten Manager"
-  }
+  },
   'namespace1',
   (err, res) => {
   // res is like js
@@ -134,7 +134,7 @@ createkliff(
     "key1": "Hallo",
     "key2": "Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten",
     "key.nested": "XLIFF Daten Manager"
-  }
+  },
   'namespace1',
   (err, res) => {
   // res is like xliff
