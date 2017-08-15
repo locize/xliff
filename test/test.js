@@ -59,44 +59,47 @@ describe('single', () => {
   });
 
   test('createjs', (fn) => (done) => {
-    fn(fixtures.example.js.sourceLanguage,
-       fixtures.example.js.targetLanguage,
-       fixtures.example.js_source,
-       fixtures.example.js_target,
-       'namespace1',
-       (err, res) => {
-         expect(err).not.to.be.ok();
-         expect(res).to.eql(fixtures.example.js);
-         done();
-       }
+    fn(
+      fixtures.example.js.sourceLanguage,
+      fixtures.example.js.targetLanguage,
+      fixtures.example.js_source,
+      fixtures.example.js_target,
+      'namespace1',
+      (err, res) => {
+        expect(err).not.to.be.ok();
+        expect(res).to.eql(fixtures.example.js);
+        done();
+      }
     );
   });
 
   test('createxliff', (fn) => (done) => {
-    fn(fixtures.example.js.sourceLanguage,
-       fixtures.example.js.targetLanguage,
-       fixtures.example.js_source,
-       fixtures.example.js_target,
-       'namespace1',
-       (err, res) => {
-         expect(err).not.to.be.ok();
-         expect(res).to.eql(fixtures.example.xliff);
-         done();
-       }
+    fn(
+      fixtures.example.js.sourceLanguage,
+      fixtures.example.js.targetLanguage,
+      fixtures.example.js_source,
+      fixtures.example.js_target,
+      'namespace1',
+      (err, res) => {
+        expect(err).not.to.be.ok();
+        expect(res).to.eql(fixtures.example.xliff);
+        done();
+      }
     );
   });
 
   test('createxliff12', (fn) => (done) => {
-    fn(fixtures.example.js.sourceLanguage,
-       fixtures.example.js.targetLanguage,
-       fixtures.example.js_source,
-       fixtures.example.js_target,
-       'namespace1',
-       (err, res) => {
-         expect(err).not.to.be.ok();
-         expect(res).to.eql(fixtures.example.xliff12);
-         done();
-       }
+    fn(
+      fixtures.example.js.sourceLanguage,
+      fixtures.example.js.targetLanguage,
+      fixtures.example.js_source,
+      fixtures.example.js_target,
+      'namespace1',
+      (err, res) => {
+        expect(err).not.to.be.ok();
+        expect(res).to.eql(fixtures.example.xliff12);
+        done();
+      }
     );
   });
 
@@ -159,28 +162,30 @@ describe('multi', () => {
   });
 
   test('createjs', (fn) => (done) => {
-    fn(fixtures.example_multi.js.sourceLanguage,
-       fixtures.example_multi.js.targetLanguage,
-       fixtures.example_multi.js_source,
-       fixtures.example_multi.js_target,
-       (err, res) => {
-         expect(err).not.to.be.ok();
-         expect(res).to.eql(fixtures.example_multi.js);
-         done();
-       }
+    fn(
+      fixtures.example_multi.js.sourceLanguage,
+      fixtures.example_multi.js.targetLanguage,
+      fixtures.example_multi.js_source,
+      fixtures.example_multi.js_target,
+      (err, res) => {
+        expect(err).not.to.be.ok();
+        expect(res).to.eql(fixtures.example_multi.js);
+        done();
+      }
     );
   });
 
   test('createxliff', (fn) => (done) => {
-    fn(fixtures.example_multi.js.sourceLanguage,
-       fixtures.example_multi.js.targetLanguage,
-       fixtures.example_multi.js_source,
-       fixtures.example_multi.js_target,
-       (err, res) => {
-         expect(err).not.to.be.ok();
-         expect(res).to.eql(fixtures.example_multi.xliff);
-         done();
-       }
+    fn(
+      fixtures.example_multi.js.sourceLanguage,
+      fixtures.example_multi.js.targetLanguage,
+      fixtures.example_multi.js_source,
+      fixtures.example_multi.js_target,
+      (err, res) => {
+        expect(err).not.to.be.ok();
+        expect(res).to.eql(fixtures.example_multi.xliff);
+        done();
+      }
     );
   });
 
