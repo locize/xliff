@@ -17,9 +17,11 @@ function xliff12ToJs(str, cb) {
   parser.parseString(str, (err, data) => {
     if (err) return cb(err);
 
+    const datatype = data.xliff.file[0].$['datatype'];
     const srcLang = data.xliff.file[0].$['source-language'];
     const trgLang = data.xliff.file[0].$['target-language'];
 
+    result.datatype = datatype;
     result.sourceLanguage = srcLang;
     result.targetLanguage = trgLang;
 
@@ -35,10 +37,12 @@ function xliff12ToJs(str, cb) {
           target: ''
         };
 
+        if (entry.$.datatype) {
+          result.resources[namespace][key].datatype = extractValue(entry.$.datatype);
+        }
         if (entry.source) {
           result.resources[namespace][key].source = extractValue(entry.source[0]);
         }
-
         if (entry.target) {
           result.resources[namespace][key].target = extractValue(entry.target[0]);
         }

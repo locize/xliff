@@ -29,7 +29,7 @@ function jsToXliff12(obj, opt, cb) {
     const f = {
       $: {
         original: nsName,
-        datatype: 'plaintext',
+        datatype: obj.datatype || 'plaintext',
         'source-language': obj.sourceLanguage,
         'target-language': obj.targetLanguage
       },
@@ -42,13 +42,17 @@ function jsToXliff12(obj, opt, cb) {
     Object.keys(obj.resources[nsName]).forEach((k) => {
       const u = {
         $: {
-          id: k
+          id: k,
+          datatype: ''
         },
         source: obj.resources[nsName][k].source,
         target: obj.resources[nsName][k].target
       };
       if ('note' in obj.resources[nsName][k]) {
         u.note = obj.resources[nsName][k].note;
+      }
+      if ('datatype' in obj.resources[nsName][k]) {
+        u.$.datatype = obj.resources[nsName][k].datatype;
       }
       f.body['trans-unit'].push(u);
     });
