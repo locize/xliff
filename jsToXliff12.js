@@ -4,15 +4,17 @@ function jsToXliff12(obj, opt, cb) {
 
   if (typeof opt === 'function') {
     cb = opt;
-    opt = { headless: true, pretty: true, indent: ' ', newline: '\n' };
+    opt = { headless: true, pretty: true, indent: '  ', newline: '\n' };
   }
 
   const builder = new xml2js.Builder({
     rootName: 'xliff',
     headless: opt.headless,
-    pretty: opt.pretty,
-    indent: opt.indent || ' ',
-    newline: opt.newline || '\n'
+    renderOpts: {
+      pretty: opt.pretty === false ? false : true,
+      indent: opt.indent || '  ',
+      newline: opt.newline || '\n'
+    },
   });
 
   const xmlJs = {
