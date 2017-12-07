@@ -15,6 +15,7 @@ function jsToXliff12(obj, opt, cb) {
       indent: opt.indent || '  ',
       newline: opt.newline || '\n'
     },
+    cdata: opt.cdata == true ? true : false,
   });
 
   const xmlJs = {
