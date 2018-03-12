@@ -1,54 +1,60 @@
-const xml2js = require('xml2js');
-const parser = new xml2js.Parser();
+const convert = require('xml-js');
 
 function xliffToJs(str, cb) {
   if (typeof str !== 'string') {
     return cb(new Error('The first parameter was not a string'));
   }
 
-  const result = {
-    resources: {}
+  const result = {};
+
+  const extractValue = (valueElement) => {
+    return valueElement.type !== 'text' ? extractValue(valueElement.elements[0]) : valueElement.text;
   };
 
-  parser.parseString(str, (err, data) => {
-    if (err) return cb(err);
+  let xmlObj;
+  try {
+    xmlObj = convert.xml2js(str, {});
+  } catch (err) {
+    return cb(err);
+  }
 
-    const srcLang = data.xliff.$.srcLang;
-    const trgLang = data.xliff.$.trgLang;
+  const xliffRoot = xmlObj.elements[0];
 
-    result.sourceLanguage = srcLang;
-    result.targetLanguage = trgLang;
+  const srcLang = xliffRoot.attributes['srcLang'];
+  const trgLang = xliffRoot.attributes['trgLang'];
 
-    data.xliff.file.forEach((f) => {
-      const namespace = f.$.id;
-      result.resources[namespace] = {};
+  result.sourceLanguage = srcLang;
+  result.targetLanguage = trgLang;
 
-      const entries = f.unit;
-      entries.forEach((entry) => {
-        const key = entry.$.id;
-        result.resources[namespace][key] = {
-          source: '',
-          target: ''
-        };
-        entry.segment.forEach((seg) => {
-          if (seg.source) {
-            const srcValue = seg.source[0];
-            result.resources[namespace][key].source = srcValue;
-          }
-          if (seg.target) {
-            const trgValue = seg.target[0];
-            result.resources[namespace][key].target = trgValue;
-          }
-          if (seg.note) {
-            const noteValue = seg.note[0];
-            result.resources[namespace][key].note = noteValue;
+  result.resources = xliffRoot.elements.reduce((resources, file) => {
+    const namespace = file.attributes.id;
+
+    // namespace
+    resources[namespace] = file.elements.reduce((file, unit) => {
+      const key = unit.attributes.id;
+
+      // source, target, note
+      file[key] = unit.elements.reduce((unit, segment) => {
+        segment.elements.forEach((element) => {
+          switch (element.name) {
+            case 'source':
+            case 'target':
+            case 'note':
+              unit[element.name] = extractValue(element.elements[0]);
+              break;
           }
         });
-      });
-    });
 
-    cb(null, result);
-  });
+        return unit;
+      }, { source: '', target: '' });
+
+      return file;
+    }, {});
+
+    return resources;
+  }, {});
+
+  cb(null, result);
 }
 
 module.exports = xliffToJs;
