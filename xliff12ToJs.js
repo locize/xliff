@@ -1,55 +1,61 @@
-const xml2js = require('xml2js');
-const parser = new xml2js.Parser();
+const convert = require('xml-js');
 
 function xliff12ToJs(str, cb) {
   if (typeof str !== 'string') {
     return cb(new Error('The first parameter was not a string'));
   }
 
-  const result = {
-    resources: {}
+  const result = {};
+
+  const extractValue = (valueElement) => {
+    return valueElement.type !== 'text' ? extractValue(valueElement.elements[0]) : valueElement.text;
   };
 
-  const extractValue = (value) => {
-    return typeof value !== 'string' ? value['_'] : value;
-  };
+  let xmlObj;
+  try {
+    xmlObj = convert.xml2js(str, {});
+  } catch (err) {
+    return cb(err);
+  }
 
-  parser.parseString(str, (err, data) => {
-    if (err) return cb(err);
+  const xliffRoot = xmlObj.elements[0];
 
-    const srcLang = data.xliff.file[0].$['source-language'];
-    const trgLang = data.xliff.file[0].$['target-language'];
+  const srcLang = xliffRoot.elements[0].attributes['source-language'];
+  const trgLang = xliffRoot.elements[0].attributes['target-language'];
 
-    result.sourceLanguage = srcLang;
-    result.targetLanguage = trgLang;
+  result.sourceLanguage = srcLang;
+  result.targetLanguage = trgLang;
 
-    data.xliff.file.forEach((f) => {
-      const namespace = f.$.original;
-      result.resources[namespace] = {};
+  result.resources = xliffRoot.elements.reduce((resources, file) => {
+    const namespace = file.attributes.original;
 
-      const entries = f.body[0]['trans-unit'];
-      entries.forEach((entry) => {
-        const key = entry.$.id;
-        result.resources[namespace][key] = {
-          source: '',
-          target: ''
-        };
+    const body = file.elements[0];
+    const transUnits = body.elements;
 
-        if (entry.source) {
-          result.resources[namespace][key].source = extractValue(entry.source[0]);
+    // namespace
+    resources[namespace] = transUnits.reduce((file, transUnit) => {
+      const key = transUnit.attributes.id;
+
+      // source, target, note
+      file[key] = transUnit.elements.reduce((unit, element) => {
+        switch (element.name) {
+          case 'source':
+          case 'target':
+          case 'note':
+            unit[element.name] = extractValue(element.elements[0]);
+            break;
         }
 
-        if (entry.target) {
-          result.resources[namespace][key].target = extractValue(entry.target[0]);
-        }
-        if (entry.note) {
-          result.resources[namespace][key].note = extractValue(entry.note[0]);
-        }
-      });
-    });
+        return unit;
+      }, { source: '' });
 
-    cb(null, result);
-  });
+      return file;
+    }, {});
+
+    return resources;
+  }, {});
+
+  cb(null, result);
 }
 
 module.exports = xliff12ToJs;
