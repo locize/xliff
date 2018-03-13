@@ -11,7 +11,7 @@ function xliff12ToJs(str, cb) {
     return valueElement.type !== 'text' ? extractValue(valueElement.elements[0]) : valueElement.text;
   };
 
-  let xmlObj;
+  var xmlObj;
   try {
     xmlObj = convert.xml2js(str, {});
   } catch (err) {

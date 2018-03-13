@@ -1,5 +1,6 @@
 const convert = require('xml-js');
-const {makeElement, makeText} = require('./util/makeNodes');
+const makeElement = require('./util/makeNodes').makeElement;
+const makeText = require('./util/makeNodes').makeText;
 
 function js2xliff(obj, opt, cb) {
 
