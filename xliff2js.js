@@ -40,7 +40,7 @@ function xliffToJs(str, cb) {
             case 'source':
             case 'target':
             case 'note':
-              unit[element.name] = extractValue(element.elements[0]);
+              unit[element.name] = element.elements ? extractValue(element.elements[0]) : undefined;
               break;
           }
         });
