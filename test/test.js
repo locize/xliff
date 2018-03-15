@@ -236,3 +236,55 @@ describe('with notes', () => {
   });
 
 });
+
+describe('with placeholders', () => {
+
+  //test('xliff2js', (fn) => (done) => {
+  //  fn(fixtures.example_placeholder.xliff, (err, res) => {
+  //    expect(err).not.to.be.ok();
+  //    expect(res).to.eql(fixtures.example_placeholder.js);
+  //    done();
+  //  });
+  //});
+
+  test('xliff12ToJs', (fn) => (done) => {
+    fn(fixtures.example_placeholder.xliff12, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res).to.eql(fixtures.example_placeholder.js);
+      done();
+    });
+  });
+
+  //test('js2xliff', (fn) => (done) => {
+  //  fn(fixtures.example_placeholder.js, (err, res) => {
+  //    expect(err).not.to.be.ok();
+  //    expect(res).to.eql(fixtures.example_placeholder.xliff);
+  //    done();
+  //  });
+  //});
+
+  test('jsToXliff12', (fn) => (done) => {
+    fn(fixtures.example_placeholder.js, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res).to.eql(fixtures.example_placeholder.xliff12);
+      done();
+    });
+  });
+
+  test('targetOfjs', (fn) => (done) => {
+    fn(fixtures.example_placeholder.js, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res['key.nested']).to.eql(fixtures.example_placeholder.js.resources.namespace1['key.nested'].target);
+      done();
+    });
+  });
+
+  test('sourceOfjs', (fn) => (done) => {
+    fn(fixtures.example_placeholder.js, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res['key.nested']).to.eql(fixtures.example_placeholder.js.resources.namespace1['key.nested'].source);
+      done();
+    });
+  });
+
+});

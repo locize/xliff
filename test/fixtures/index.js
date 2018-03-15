@@ -24,5 +24,12 @@ module.exports = {
     js: require('./example_note.json'),
     xliff: fs.readFileSync(path.join(__dirname, 'example_note.xliff')).toString().replace(/\n$/, ''),
     xliff12: fs.readFileSync(path.join(__dirname, 'example_note12.xliff')).toString().replace(/\n$/, ''),
+  },
+  example_placeholder: {
+    js: require('./example_placeholder.json'),
+    //xliff: fs.readFileSync(path.join(__dirname, 'example_placeholder.xliff')).toString().replace(/\n$/, ''),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_placeholder12.xliff')).toString().replace(/\n$/, ''),
+    js_source: require('./example_placeholder_source.json'),
+    js_target: require('./example_placeholder_target.json')
   }
 };
