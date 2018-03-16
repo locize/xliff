@@ -1,0 +1,28 @@
+{
+  "resources": {
+    "namespace1": {
+      "basic": {
+        "source": [
+          { "ph": { "id": "name", "ctype": "x-i18next-param", "content": "{{name}}" } },
+          " is ",
+          { "ph": { "id": "how", "ctype": "x-i18next-param", "content": "{{how}}" } }
+        ],
+        "target": ""
+      },
+      "data-models": {
+        "source": ["i am ", { "ph": { "id": "author.name", "ctype": "x-i18next-param", "content": "{{author.name}}" } }],
+        "target": ""
+      },
+      "keyEscaped": {
+        "source": ["no danger ", { "ph": { "id": "myVar", "ctype": "x-i18next-param", "content": "{{myVar}}" } }],
+        "target": ""
+      },
+      "keyUnescaped": {
+        "source": ["dangerous ", { "ph": { "id": "myVar", "ctype": "x-i18next-unescaped-param", "content": "{{- myVar}}" } }],
+        "target": ""
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "de-CH"
+}

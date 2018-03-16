@@ -1,4 +1,5 @@
 const convert = require('xml-js');
+const extractValue = require('./util/extractNodes').extractValue;
 
 function xliff12ToJs(str, cb) {
   if (typeof str !== 'string') {
@@ -6,10 +7,6 @@ function xliff12ToJs(str, cb) {
   }
 
   const result = {};
-
-  const extractValue = (valueElement) => {
-    return valueElement.type !== 'text' ? extractValue(valueElement.elements[0]) : valueElement.text;
-  };
 
   var xmlObj;
   try {
@@ -42,7 +39,7 @@ function xliff12ToJs(str, cb) {
           case 'source':
           case 'target':
           case 'note':
-            unit[element.name] = element.elements ? extractValue(element.elements[0]) : undefined;
+            unit[element.name] = extractValue(element.elements);
             break;
         }
 

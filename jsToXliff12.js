@@ -1,6 +1,7 @@
 const convert = require('xml-js');
 const makeElement = require('./util/makeNodes').makeElement;
 const makeText = require('./util/makeNodes').makeText;
+const makeValue = require('./util/makeNodes').makeValue;
 
 function jsToXliff12(obj, opt, cb) {
 
@@ -34,8 +35,8 @@ function jsToXliff12(obj, opt, cb) {
 
     Object.keys(obj.resources[nsName]).forEach((k) => {
       const u = makeElement('trans-unit', {id: k}, true);
-      u.elements.push(makeElement('source', null, [makeText(obj.resources[nsName][k].source)]));
-      u.elements.push(makeElement('target', null, [makeText(obj.resources[nsName][k].target)]));
+      u.elements.push(makeElement('source', null, makeValue(obj.resources[nsName][k].source)));
+      u.elements.push(makeElement('target', null, makeValue(obj.resources[nsName][k].target)));
       if ('note' in obj.resources[nsName][k]) {
         u.elements.push(makeElement('note', null, [makeText(obj.resources[nsName][k].note)]));
       }
