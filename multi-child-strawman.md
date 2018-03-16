@@ -138,11 +138,11 @@ The proposed structure is:
   "type": "<Element Type>",
   "id": "<Value>",
   "contents": "<Element Contents>",
-  "attributes": [
-    { "<Attribute 1>": "<Attribute 1 Value>" },
+  "attributes": {
+    "<Attribute 1>": "<Attribute 1 Value>",
     ...,
-    { "<Attribute N>": "<Attribute N Value>" }
-  ]
+    "<Attribute N>": "<Attribute N Value>"
+  }
 }
 ```
 The parts are:
@@ -157,7 +157,7 @@ Here's a real-world example of the proposed structure:
   "type": "ph",
   "id": "dataType",
   "contents": "{dataType}",
-  "attributes": [{ "ctype": "x-python-brace-param" }]
+  "attributes": { "ctype": "x-python-brace-param" }
 }
 ```
 This maps to the following XLIFF inline element structure:
