@@ -1,4 +1,8 @@
 function extractValue(valueElements) {
+  if (valueElements === undefined || valueElements === null || valueElements === '') {
+    return '';
+  }
+
   if (Array.isArray(valueElements) && valueElements.length > 1) {
     return valueElements.map(extractValue);
   }
