@@ -218,6 +218,7 @@ Because of the differences between the two versions' representations, I see a co
 This option is to support a subset of the elements within the data model. Only that subset of elements will be able to be created (JS to XLIFF). When going from XLIFF to JS, elements that aren't defined in the data model will be converted to the closest type, so their semantics are maintained but it won't be possible to do perfect round-tripping XLIFF -> JS -> XLIFF.
 
 Defined element types:
+
 | Element type | Representation (1.2) | Representation (2.0) |
 | ------------ | -------------------- | -------------------- |
 | Standalone | `<x/>` | `<ph/>` | 
@@ -245,6 +246,7 @@ XLIFF 2.0 -> JS
 This option is to support a larger set of elements in the data model. Only the subset that is supported by the version in question will be used when reading XLIFF to JS. For JS to XLIFF, elements that aren't strictly defined in the XLIFF version will be mapped to corresponding supported elements.
 
 Defined element types:
+
 | Element type | Representation (1.2) | Representation (2.0) |
 | ------------ | -------------------- | -------------------- |
 | Standalone | `<x/>` | `<ph/>` | 
