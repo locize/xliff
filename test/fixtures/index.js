@@ -31,5 +31,13 @@ module.exports = {
     xliff12: fs.readFileSync(path.join(__dirname, 'example_placeholder12.xliff')).toString().replace(/\n$/, ''),
     js_source: require('./example_placeholder_source.json'),
     js_target: require('./example_placeholder_target.json')
+  },
+  example_i18next_placeholder: {
+    js: require('./example_i18next_placeholder.json'),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_i18next_placeholder12.xliff')).toString().replace(/\n$/, ''),
+  },
+  example_i18next_unstructured_placeholder: {
+    js: require('./example_i18next_unstructured_placeholder.json'),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_i18next_unstructured_placeholder12.xliff')).toString().replace(/\n$/, ''),
   }
 };
