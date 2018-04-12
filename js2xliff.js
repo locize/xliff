@@ -1,6 +1,7 @@
 const convert = require('xml-js');
 const makeElement = require('./util/makeNodes').makeElement;
 const makeText = require('./util/makeNodes').makeText;
+const escape = require('./util/escape');
 
 function js2xliff(obj, opt, cb) {
 
@@ -32,7 +33,7 @@ function js2xliff(obj, opt, cb) {
       if ('note' in obj.resources[nsName][k]) {
         segment.elements.push(makeElement('note', null, [makeText(obj.resources[nsName][k].note)]));
       }
-      const u = makeElement('unit', {id: k}, [segment]);
+      const u = makeElement('unit', {id: escape(k)}, [segment]);
       f.elements.push(u);
     });
   });

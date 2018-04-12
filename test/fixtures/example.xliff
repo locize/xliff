@@ -18,5 +18,11 @@
         <target>XLIFF Daten Manager</target>
       </segment>
     </unit>
+    <unit id="to &apos; &quot;esc&lt;ap&gt; &amp; e">
+      <segment>
+        <source>special chars</source>
+        <target>spezielle Charakter</target>
+      </segment>
+    </unit>
   </file>
 </xliff>

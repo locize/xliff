@@ -1,5 +1,6 @@
 {
   "key1": "Hello",
   "key2": "An application to manipulate and process XLIFF documents",
-  "key.nested": "XLIFF Data Manager"
+  "key.nested": "XLIFF Data Manager",
+  "to ' \"esc<ap> & e": "special chars"
 }

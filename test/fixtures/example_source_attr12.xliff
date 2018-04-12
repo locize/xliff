@@ -13,6 +13,10 @@
         <source xml:lang="en-US">XLIFF Data Manager</source>
         <target xml:lang="de-CH">XLIFF Daten Manager</target>
       </trans-unit>
+      <trans-unit id="to &apos; &quot;esc&lt;ap&gt; &amp; e">
+        <source xml:lang="en-US">special chars</source>
+        <target xml:lang="de-CH">spezielle Charakter</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

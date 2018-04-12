@@ -12,6 +12,10 @@
       "key.nested": {
         "source": "XLIFF Data Manager",
         "target": "XLIFF Daten Manager"
+      },
+      "to ' \"esc<ap> & e": {
+        "source": "special chars",
+        "target": "spezielle Charakter"
       }
     }
   },
