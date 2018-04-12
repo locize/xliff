@@ -1,0 +1,5 @@
+{
+  "key1": ["Hello ", { "g": { "id": "name", "ctype": "x-python-brace-param", "contents": "{name}" } }],
+  "key2": ["An application to manipulate and process ", { "g": { "id": "doctype", "ctype": "x-python-brace-param", "contents": "{doctype}" } }, " documents"],
+  "key.nested": [{ "g": { "id": "dataType", "ctype": "x-python-brace-param", "contents": "{dataType}" } }, " Data Manager"]
+}

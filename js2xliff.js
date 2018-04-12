@@ -1,6 +1,6 @@
 const convert = require('xml-js');
-const makeElement = require('./util/makeNodes').makeElement;
-const makeText = require('./util/makeNodes').makeText;
+const makeElement = require('./xml-js/objectToXml').makeElement;
+const makeText = require('./xml-js/objectToXml').makeText;
 const escape = require('./util/escape');
 
 function js2xliff(obj, opt, cb) {

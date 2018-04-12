@@ -1,0 +1,20 @@
+{
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": ["Hello ", { "g": { "id": "name", "ctype": "x-python-brace-param", "contents": "{name}" } }],
+        "target": ["Hallo ", { "g": { "id": "name", "ctype": "x-python-brace-param", "contents": "{name}" } }]
+      },
+      "key2": {
+        "source": ["An application to manipulate and process ", { "g": { "id": "doctype", "ctype": "x-python-brace-param", "contents": "{doctype}" } }, " documents"],
+        "target": ["Eine Applikation um ", { "g": { "id": "doctype", "ctype": "x-python-brace-param", "contents": "{doctype}" } }, " Dokumente zu manipulieren und verarbeiten"]
+      },
+      "key.nested": {
+        "source": [{ "g": { "id": "dataType", "ctype": "x-python-brace-param", "contents": "{dataType}" } }, " Data Manager"],
+        "target": [{ "g": { "id": "dataType", "ctype": "x-python-brace-param", "contents": "{dataType}" } }, " Daten Manager"]
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "de-CH"
+}

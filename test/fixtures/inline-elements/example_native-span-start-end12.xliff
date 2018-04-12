@@ -1,0 +1,16 @@
+<xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="namespace1" datatype="plaintext" source-language="en-US" target-language="de-CH">
+    <body>
+      <trans-unit id="key1">
+        <source>This is 
+          <bpt id="b1-1" rid="b1">&lt;b&gt;</bpt>bold
+          <ept id="b1-2" rid="b1">&lt;/b&gt;</ept> text
+        </source>
+        <target>Dies ist 
+          <bpt id="b1-1" rid="b1">&lt;b&gt;</bpt>fett formatierter
+          <ept id="b1-2" rid="b1">&lt;/b&gt;</ept> Text
+        </target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

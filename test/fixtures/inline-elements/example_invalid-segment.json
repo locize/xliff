@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": ["Hello ", { "foo": "bar" }],
+        "target": ["Hallo ", { "foo": "bar" }]
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "de-CH"
+}
