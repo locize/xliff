@@ -1,5 +1,5 @@
 {
-  "key1": ["Hello ", { "ph": { "id": "name", "ctype": "x-python-brace-param", "contents": "{name}" } }],
-  "key2": ["An application to manipulate and process ", { "ph": { "id": "doctype", "ctype": "x-python-brace-param", "contents": "{doctype}" } }, " documents"],
-  "key.nested": [{ "ph": { "id": "dataType", "ctype": "x-python-brace-param", "contents": "{dataType}" } }, " Data Manager"]
+  "key1": ["Hello ", { "Span": { "id": "name", "ctype": "x-python-brace-param", "contents": "{name}" } }],
+  "key2": ["An application to manipulate and process ", { "Span": { "id": "doctype", "ctype": "x-python-brace-param", "contents": "{doctype}" } }, " documents"],
+  "key.nested": [{ "Span": { "id": "dataType", "ctype": "x-python-brace-param", "contents": "{dataType}" } }, " Data Manager"]
 }

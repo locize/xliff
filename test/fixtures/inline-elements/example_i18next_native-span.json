@@ -3,22 +3,22 @@
     "namespace1": {
       "basic": {
         "source": [
-          { "ph": { "id": "name", "ctype": "x-i18next-param", "contents": "{{name}}" } },
+          { "Span": { "id": "name", "ctype": "x-i18next-param", "contents": "{{name}}" } },
           " is ",
-          { "ph": { "id": "how", "ctype": "x-i18next-param", "contents": "{{how}}" } }
+          { "Span": { "id": "how", "ctype": "x-i18next-param", "contents": "{{how}}" } }
         ],
         "target": ""
       },
       "data-models": {
-        "source": ["i am ", { "ph": { "id": "author.name", "ctype": "x-i18next-param", "contents": "{{author.name}}" } }],
+        "source": ["i am ", { "Span": { "id": "author.name", "ctype": "x-i18next-param", "contents": "{{author.name}}" } }],
         "target": ""
       },
       "keyEscaped": {
-        "source": ["no danger ", { "ph": { "id": "myVar", "ctype": "x-i18next-param", "contents": "{{myVar}}" } }],
+        "source": ["no danger ", { "Span": { "id": "myVar", "ctype": "x-i18next-param", "contents": "{{myVar}}" } }],
         "target": ""
       },
       "keyUnescaped": {
-        "source": ["dangerous ", { "ph": { "id": "myVar", "ctype": "x-i18next-unescaped-param", "contents": "{{- myVar}}" } }],
+        "source": ["dangerous ", { "Span": { "id": "myVar", "ctype": "x-i18next-unescaped-param", "contents": "{{- myVar}}" } }],
         "target": ""
       }
     }

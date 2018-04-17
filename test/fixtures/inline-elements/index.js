@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
   example_standalone: {
     js: require('./example_standalone.json'),
-    //xliff: fs.readFileSync(path.join(__dirname, 'example_standalone.xliff')).toString().replace(/\n$/, ''),
+    xliff: fs.readFileSync(path.join(__dirname, 'example_standalone.xliff')).toString().replace(/\n$/, ''),
     xliff12: fs.readFileSync(path.join(__dirname, 'example_standalone12.xliff')).toString().replace(/\n$/, ''),
   },
   example_genericSpan: {

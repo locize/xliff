@@ -1,5 +1,6 @@
 const expect = require('expect.js');
-const elementTypes12 = require('../../inline-elements/ElementTypes').elementTypes12;
+const ElementTypes = require('../../inline-elements/ElementTypes').ElementTypes;
+const elementTypeToTag = require('../../inline-elements/ElementTypes').elementTypeToTag;
 const makeElement = require('../../xml-js/objectToXml').makeElement;
 const makeText = require('../../xml-js/objectToXml').makeText;
 const makeValue = require('../../xml-js/objectToXml').makeValue;
@@ -53,30 +54,30 @@ describe('makeValue() makes object structures representing whole values', () => 
 
   describe('inline elements', () => {
     it('creates all supported element types', () => {
-      const supportedElementTypes = Object.keys(elementTypes12);//['x', 'g', 'bx', 'ex', 'ph', 'bpt', 'ept'];
+      const supportedElementTypes = Object.keys(ElementTypes);//['x', 'g', 'bx', 'ex', 'ph', 'bpt', 'ept'];
       supportedElementTypes.forEach((expectedType) => {
-        expect(makeValue([{ [expectedType]: { id: '1' } }])[0]).to.have.property('name', expectedType);
+        expect(makeValue([{ [expectedType]: { id: '1' } }])[0]).to.have.property('name', elementTypeToTag(expectedType));
       });
     });
 
     it('copies the `id` as an attribute', () => {
       const expectedId = '1';
-      expect(makeValue([{ 'ph': { id: expectedId } }])[0].attributes).to.have.property('id', expectedId);
+      expect(makeValue([{ [ElementTypes.Span]: { id: expectedId } }])[0].attributes).to.have.property('id', expectedId);
     });
 
     it('creates a value for the `contents` property', () => {
       const expectedText = 'World';
       const expectedContents = makeText(expectedText);
 
-      expect(makeValue([{ 'ph': { id: '1', contents: expectedText }}])[0].elements).to.eql([expectedContents]);
+      expect(makeValue([{ [ElementTypes.Span]: { id: '1', contents: expectedText }}])[0].elements).to.eql([expectedContents]);
     });
 
     it('does not include an `elements` property if the `contents` property is `undefined`', () => {
-      expect(makeValue([{ 'x': { id: '1' } }])[0]).to.not.have.property('elements');
+      expect(makeValue([{ [ElementTypes.Standalone]: { id: '1' } }])[0]).to.not.have.property('elements');
     });
 
     it('passes through any other attributes', () => {
-      const valueSegment = makeValue([{ 'x': { id: '1', foo: 'bar', food: 'truck' }}])[0];
+      const valueSegment = makeValue([{ [ElementTypes.Standalone]: { id: '1', foo: 'bar', food: 'truck' }}])[0];
       const attributes = valueSegment.attributes;
 
       expect(attributes).to.have.property('foo', 'bar');
