@@ -1,4 +1,4 @@
-const elementTypeFactories12 = require('../inline-elements/ElementTypes').elementTypeFactories12;
+const ElementTypes12 = require('../inline-elements/ElementTypes').ElementTypes12;
 const tagToElementType = require('../inline-elements/ElementTypes').tagToElementType;
 
 function extractValue(valueElements) {
@@ -18,9 +18,9 @@ function extractValue(valueElements) {
   }
 
   // nested inline element tag
-  const elementType = tagToElementType(valueElement.name);
+  const elementType = tagToElementType(valueElement.name, ElementTypes12);
   if (valueElement.type === 'element' && elementType !== undefined) {
-    const inlineElementFactory = elementTypeFactories12[elementType];
+    const inlineElementFactory = ElementTypes12.factories[elementType];
     return inlineElementFactory(
       valueElement.name,
       valueElement.attributes.id,

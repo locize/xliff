@@ -11,7 +11,6 @@ function test(what, t) {
 describe('Inline elements', () => {
 
   describe('with standalone elements (1.2: `<x/>`; 2.x: `<ph/>`)', () => {
-
     //
     //test('xliff2js', (fn) => (done) => {
     //  fn(fixtures.example_standalone.xliff, (err, res) => {

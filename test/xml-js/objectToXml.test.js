@@ -1,5 +1,6 @@
 const expect = require('expect.js');
 const ElementTypes = require('../../inline-elements/ElementTypes').ElementTypes;
+const ElementTypes12 = require('../../inline-elements/ElementTypes').ElementTypes12;
 const elementTypeToTag = require('../../inline-elements/ElementTypes').elementTypeToTag;
 const makeElement = require('../../xml-js/objectToXml').makeElement;
 const makeText = require('../../xml-js/objectToXml').makeText;
@@ -56,7 +57,7 @@ describe('makeValue() makes object structures representing whole values', () => 
     it('creates all supported element types', () => {
       const supportedElementTypes = Object.keys(ElementTypes);//['x', 'g', 'bx', 'ex', 'ph', 'bpt', 'ept'];
       supportedElementTypes.forEach((expectedType) => {
-        expect(makeValue([{ [expectedType]: { id: '1' } }])[0]).to.have.property('name', elementTypeToTag(expectedType));
+        expect(makeValue([{ [expectedType]: { id: '1' } }])[0]).to.have.property('name', elementTypeToTag(expectedType, ElementTypes12));
       });
     });
 

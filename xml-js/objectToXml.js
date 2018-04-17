@@ -1,4 +1,4 @@
-const elementTypeFactories12 = require('../inline-elements/ElementTypes').elementTypeFactories12;
+const ElementTypes12 = require('../inline-elements/ElementTypes').ElementTypes12;
 const elementTypeToTag = require('../inline-elements/ElementTypes').elementTypeToTag;
 
 function makeElement(name, attributes, elements) {
@@ -39,7 +39,8 @@ function makeValue(content) {
     // Inline elements
     // Each inline element object should only have one property (key) -- the element type
     const elementType = Object.keys(segment)[0];
-    if (elementTypeFactories12.hasOwnProperty(elementType)) {
+    const elementTag = elementTypeToTag(elementType, ElementTypes12);
+    if (elementTag !== undefined) {
       const attrsSrc = Object.assign({}, segment[elementType]);
       delete attrsSrc.id;
       delete attrsSrc.contents;
@@ -50,7 +51,7 @@ function makeValue(content) {
       Object.keys(attrsSrc).forEach((attrKey) => {
         attrs[attrKey] = attrsSrc[attrKey];
       });
-      return makeElement(elementTypeToTag(elementType), attrs, contents);
+      return makeElement(elementTag, attrs, contents);
     }
     // If an invalid object is included as a segment in a source/target value array,
     // just turn it into an XML comment

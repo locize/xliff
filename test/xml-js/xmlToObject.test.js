@@ -1,5 +1,6 @@
 const expect = require('expect.js');
 const ElementTypes = require('../../inline-elements/ElementTypes').ElementTypes;
+const ElementTypes12 = require('../../inline-elements/ElementTypes').ElementTypes12;
 const elementTypeToTag = require('../../inline-elements/ElementTypes').elementTypeToTag;
 const extractValue = require('../../xml-js/xmlToObject').extractValue;
 
@@ -22,7 +23,7 @@ describe('extractValue() converts XML source/target values into xliff.js objects
   it('creates objects for all supported inline element types', () => {
     const supportedElementTypes = Object.keys(ElementTypes);//['x', 'g', 'bx', 'ex', 'ph', 'bpt', 'ept'];
     supportedElementTypes.forEach((expectedType) => {
-      expect(extractValue({ type: 'element', name: elementTypeToTag(expectedType), attributes: { id: '1' } })).to.have.property(expectedType);
+      expect(extractValue({ type: 'element', name: elementTypeToTag(expectedType, ElementTypes12), attributes: { id: '1' } })).to.have.property(expectedType);
     });
   });
 
