@@ -3,10 +3,10 @@
     <unit id="key1">
       <segment>
         <source>Hello 
-          <ph id="x1" ctype="x-ch-vt"/>
+          <!--Warning: unexpected segment { foo: "bar" } was ignored-->
         </source>
         <target>Hallo 
-          <ph id="x1" ctype="x-ch-vt"/>
+          <!--Warning: unexpected segment { foo: "bar" } was ignored-->
         </target>
       </segment>
     </unit>

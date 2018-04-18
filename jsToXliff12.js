@@ -1,4 +1,5 @@
 const convert = require('xml-js');
+const ElementTypes12 = require('./inline-elements/ElementTypes12');
 const makeElement = require('./xml-js/objectToXml').makeElement;
 const makeText = require('./xml-js/objectToXml').makeText;
 const makeValue = require('./xml-js/objectToXml').makeValue;
@@ -36,8 +37,8 @@ function jsToXliff12(obj, opt, cb) {
 
     Object.keys(obj.resources[nsName]).forEach((k) => {
       const u = makeElement('trans-unit', {id: escape(k)}, true);
-      u.elements.push(makeElement('source', null, makeValue(obj.resources[nsName][k].source)));
-      u.elements.push(makeElement('target', null, makeValue(obj.resources[nsName][k].target)));
+      u.elements.push(makeElement('source', null, makeValue(obj.resources[nsName][k].source, ElementTypes12)));
+      u.elements.push(makeElement('target', null, makeValue(obj.resources[nsName][k].target, ElementTypes12)));
       if ('note' in obj.resources[nsName][k]) {
         u.elements.push(makeElement('note', null, [makeText(obj.resources[nsName][k].note)]));
       }

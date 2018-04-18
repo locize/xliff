@@ -1,6 +1,8 @@
 const convert = require('xml-js');
+const ElementTypes2 = require('./inline-elements/ElementTypes2');
 const makeElement = require('./xml-js/objectToXml').makeElement;
 const makeText = require('./xml-js/objectToXml').makeText;
+const makeValue = require('./xml-js/objectToXml').makeValue;
 const escape = require('./util/escape');
 
 function js2xliff(obj, opt, cb) {
@@ -28,8 +30,8 @@ function js2xliff(obj, opt, cb) {
 
     Object.keys(obj.resources[nsName]).forEach((k) => {
       const segment = makeElement('segment', null, true);
-      segment.elements.push(makeElement('source', null, [makeText(obj.resources[nsName][k].source)]));
-      segment.elements.push(makeElement('target', null, [makeText(obj.resources[nsName][k].target)]));
+      segment.elements.push(makeElement('source', null, makeValue(obj.resources[nsName][k].source, ElementTypes2)));
+      segment.elements.push(makeElement('target', null, makeValue(obj.resources[nsName][k].target, ElementTypes2)));
       if ('note' in obj.resources[nsName][k]) {
         segment.elements.push(makeElement('note', null, [makeText(obj.resources[nsName][k].note)]));
       }

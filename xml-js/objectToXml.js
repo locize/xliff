@@ -1,4 +1,3 @@
-const ElementTypes12 = require('../inline-elements/ElementTypes12');
 const elementTypeToTag = require('../inline-elements/typeToTagMaps').elementTypeToTag;
 
 function makeElement(name, attributes, elements) {
@@ -27,7 +26,7 @@ function makeText(text) {
 exports.makeText = makeText;
 
 
-function makeValue(content) {
+function makeValue(content, elementTypeInfo) {
   if (!Array.isArray(content)) {
     return [makeText(content)];
   }
@@ -39,12 +38,12 @@ function makeValue(content) {
     // Inline elements
     // Each inline element object should only have one property (key) -- the element type
     const elementType = Object.keys(segment)[0];
-    const elementTag = elementTypeToTag(elementType, ElementTypes12);
+    const elementTag = elementTypeToTag(elementType, elementTypeInfo);
     if (elementTag !== undefined) {
       const attrsSrc = Object.assign({}, segment[elementType]);
       delete attrsSrc.id;
       delete attrsSrc.contents;
-      const contents = segment[elementType].hasOwnProperty('contents') ? makeValue(segment[elementType].contents) : undefined;
+      const contents = segment[elementType].hasOwnProperty('contents') ? makeValue(segment[elementType].contents, elementTypeInfo) : undefined;
       const attrs = {
         id: segment[elementType].id,
       };

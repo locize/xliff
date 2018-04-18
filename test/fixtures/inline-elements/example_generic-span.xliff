@@ -1,0 +1,34 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US" trgLang="de-CH">
+  <file id="namespace1">
+    <unit id="key1">
+      <segment>
+        <source>Hello 
+          <pc id="name" ctype="x-python-brace-param">{name}</pc>
+        </source>
+        <target>Hallo 
+          <pc id="name" ctype="x-python-brace-param">{name}</pc>
+        </target>
+      </segment>
+    </unit>
+    <unit id="key2">
+      <segment>
+        <source>An application to manipulate and process 
+          <pc id="doctype" ctype="x-python-brace-param">{doctype}</pc> documents
+        </source>
+        <target>Eine Applikation um 
+          <pc id="doctype" ctype="x-python-brace-param">{doctype}</pc> Dokumente zu manipulieren und verarbeiten
+        </target>
+      </segment>
+    </unit>
+    <unit id="key.nested">
+      <segment>
+        <source>
+          <pc id="dataType" ctype="x-python-brace-param">{dataType}</pc> Data Manager
+        </source>
+        <target>
+          <pc id="dataType" ctype="x-python-brace-param">{dataType}</pc> Daten Manager
+        </target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

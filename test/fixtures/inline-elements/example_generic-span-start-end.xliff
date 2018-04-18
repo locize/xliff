@@ -2,11 +2,13 @@
   <file id="namespace1">
     <unit id="key1">
       <segment>
-        <source>Hello 
-          <ph id="x1" ctype="x-ch-vt"/>
+        <source>This is 
+          <sc id="b1-1" rid="b1"/>bold
+          <ec id="b1-2" rid="b1"/> text
         </source>
-        <target>Hallo 
-          <ph id="x1" ctype="x-ch-vt"/>
+        <target>Dies ist 
+          <sc id="b1-1" rid="b1"/>fett formatierter
+          <ec id="b1-2" rid="b1"/> Text
         </target>
       </segment>
     </unit>

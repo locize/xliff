@@ -1,4 +1,5 @@
 const convert = require('xml-js');
+const ElementTypes2 = require('./inline-elements/ElementTypes2');
 const extractValue = require('./xml-js/xmlToObject').extractValue;
 
 function xliffToJs(str, cb) {
@@ -37,7 +38,7 @@ function xliffToJs(str, cb) {
             case 'source':
             case 'target':
             case 'note':
-              unit[element.name] = extractValue(element.elements);
+              unit[element.name] = extractValue(element.elements, ElementTypes2);
               break;
           }
         });
