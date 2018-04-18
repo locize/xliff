@@ -1,5 +1,5 @@
-const ElementTypes12 = require('../inline-elements/ElementTypes').ElementTypes12;
-const elementTypeToTag = require('../inline-elements/ElementTypes').elementTypeToTag;
+const ElementTypes12 = require('../inline-elements/ElementTypes12');
+const elementTypeToTag = require('../inline-elements/typeToTagMaps').elementTypeToTag;
 
 function makeElement(name, attributes, elements) {
   const el = {

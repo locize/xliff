@@ -1,13 +1,12 @@
-const ElementTypes12 = require('../inline-elements/ElementTypes').ElementTypes12;
-const tagToElementType = require('../inline-elements/ElementTypes').tagToElementType;
+const tagToElementType = require('../inline-elements/typeToTagMaps').tagToElementType;
 
-function extractValue(valueElements) {
+function extractValue(valueElements, elementTypeInfo) {
   if (valueElements === undefined || valueElements === null || valueElements === '') {
     return '';
   }
 
   if (Array.isArray(valueElements) && valueElements.length > 1) {
-    return valueElements.map(extractValue);
+    return valueElements.map((valueElement) => extractValue(valueElement, elementTypeInfo));
   }
 
   const valueElement = Array.isArray(valueElements) ? valueElements[0] || '' : valueElements;
@@ -18,14 +17,14 @@ function extractValue(valueElements) {
   }
 
   // nested inline element tag
-  const elementType = tagToElementType(valueElement.name, ElementTypes12);
+  const elementType = tagToElementType(valueElement.name, elementTypeInfo);
   if (valueElement.type === 'element' && elementType !== undefined) {
-    const inlineElementFactory = ElementTypes12.factories[elementType];
+    const inlineElementFactory = elementTypeInfo.factories[elementType];
     return inlineElementFactory(
       valueElement.name,
       valueElement.attributes.id,
       valueElement.attributes,
-      extractValue(valueElement.elements)
+      extractValue(valueElement.elements, elementTypeInfo)
     );
   }
 
