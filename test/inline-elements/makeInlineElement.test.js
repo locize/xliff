@@ -4,7 +4,7 @@ const makeInlineElement = require('../../inline-elements/makeInlineElement');
 describe('makeInlineElement()', () => {
 
   it('sets the element type', () => {
-    const expectedElementType = 'x';
+    const expectedElementType = 'Standalone';
 
     expect(makeInlineElement(expectedElementType)).to.have.property(expectedElementType);
   });
@@ -12,13 +12,13 @@ describe('makeInlineElement()', () => {
   it('sets the element id', () => {
     const expectedId = '5';
 
-    expect(makeInlineElement('x', expectedId)['x']).to.have.property('id', expectedId);
+    expect(makeInlineElement('Standalone', expectedId)['Standalone']).to.have.property('id', expectedId);
   });
 
   it('sets element contents', () => {
     const expectedContents = 'Wahoo!';
 
-    expect(makeInlineElement('ph', '7', null, expectedContents)['ph']).to.have.property('contents', expectedContents);
+    expect(makeInlineElement('Span', '7', null, expectedContents)['Span']).to.have.property('contents', expectedContents);
   });
 
   it('sets other arbitrary attributes', () => {
@@ -27,7 +27,7 @@ describe('makeInlineElement()', () => {
       food: 'truck',
     };
 
-    const elementValuesObj = makeInlineElement('x', '9', passedAttributes)['x'];
+    const elementValuesObj = makeInlineElement('Standalone', '9', passedAttributes)['Standalone'];
     expect(elementValuesObj).to.have.property('foo', passedAttributes['foo']);
     expect(elementValuesObj).to.have.property('food', passedAttributes['food']);
   });
@@ -35,7 +35,7 @@ describe('makeInlineElement()', () => {
   it('does not overwrite the id if an id attribute is specified', () => {
     const expectedId = '7';
 
-    expect(makeInlineElement('x', expectedId, { id: '-1' })['x']).to.have.property('id', expectedId);
+    expect(makeInlineElement('Standalone', expectedId, { id: '-1' })['Standalone']).to.have.property('id', expectedId);
   });
 
 });
