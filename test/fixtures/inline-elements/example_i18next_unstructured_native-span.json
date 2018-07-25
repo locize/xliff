@@ -1,0 +1,24 @@
+{
+  "resources": {
+    "namespace1": {
+      "basic": {
+        "source": "{{name}} is {{how}}",
+        "target": ""
+      },
+      "data-models": {
+        "source": "i am {{author.name}}",
+        "target": ""
+      },
+      "keyEscaped": {
+        "source": "no danger {{myVar}}",
+        "target": ""
+      },
+      "keyUnescaped": {
+        "source": "dangerous {{- myVar}}",
+        "target": ""
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "de-CH"
+}

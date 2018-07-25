@@ -16,7 +16,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "npm run lint && mocha test"
+    "test": "npm run lint && mocha test/**"
   },
   "keywords": [
     "xliff",

@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": ["This is ", { "GenericSpanStart": { "id": "b1-1", "rid": "b1" } }, "bold", { "GenericSpanEnd": { "id": "b1-2", "rid": "b1" } }, " text"],
+        "target": ["Dies ist ", { "GenericSpanStart": { "id": "b1-1", "rid": "b1" } }, "fett formatierter", { "GenericSpanEnd": { "id": "b1-2", "rid": "b1" } }, " Text"]
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "de-CH"
+}

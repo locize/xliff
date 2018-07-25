@@ -1,0 +1,5 @@
+{
+  "key1": ["Hallo ", { "GenericSpan": { "id": "name", "ctype": "x-python-brace-param", "contents": "{name}" } }],
+  "key2": ["Eine Applikation um ", { "GenericSpan": { "id": "doctype", "ctype": "x-python-brace-param", "contents": "{doctype}" } }, " Dokumente zu manipulieren und verarbeiten"],
+  "key.nested": [{ "GenericSpan": { "id": "dataType", "ctype": "x-python-brace-param", "contents": "{dataType}" } }, " Daten Manager"]
+}

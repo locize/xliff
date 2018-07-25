@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": ["This is ", { "SpanStart": { "id": "b1-1", "rid": "b1", "contents": "<b>" } }, "bold", { "SpanEnd": { "id": "b1-2", "rid": "b1", "contents": "</b>" } }, " text"],
+        "target": ["Dies ist ", { "SpanStart": { "id": "b1-1", "rid": "b1", "contents": "<b>" } }, "fett formatierter", { "SpanEnd": { "id": "b1-2", "rid": "b1", "contents": "</b>" } }, " Text"]
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "de-CH"
+}

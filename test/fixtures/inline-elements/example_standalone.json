@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": ["Hello ", { "Standalone": { "id": "x1", "ctype": "x-ch-vt" } }],
+        "target": ["Hallo ", { "Standalone": { "id": "x1", "ctype": "x-ch-vt" } }]
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "de-CH"
+}

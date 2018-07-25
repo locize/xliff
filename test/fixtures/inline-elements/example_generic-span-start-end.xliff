@@ -1,0 +1,16 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US" trgLang="de-CH">
+  <file id="namespace1">
+    <unit id="key1">
+      <segment>
+        <source>This is 
+          <sc id="b1-1" rid="b1"/>bold
+          <ec id="b1-2" rid="b1"/> text
+        </source>
+        <target>Dies ist 
+          <sc id="b1-1" rid="b1"/>fett formatierter
+          <ec id="b1-2" rid="b1"/> Text
+        </target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

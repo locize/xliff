@@ -1,0 +1,20 @@
+{
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": ["Hello ", { "GenericSpan": { "id": "name", "ctype": "x-python-brace-param", "contents": "{name}" } }],
+        "target": ["Hallo ", { "GenericSpan": { "id": "name", "ctype": "x-python-brace-param", "contents": "{name}" } }]
+      },
+      "key2": {
+        "source": ["An application to manipulate and process ", { "GenericSpan": { "id": "doctype", "ctype": "x-python-brace-param", "contents": "{doctype}" } }, " documents"],
+        "target": ["Eine Applikation um ", { "GenericSpan": { "id": "doctype", "ctype": "x-python-brace-param", "contents": "{doctype}" } }, " Dokumente zu manipulieren und verarbeiten"]
+      },
+      "key.nested": {
+        "source": [{ "GenericSpan": { "id": "dataType", "ctype": "x-python-brace-param", "contents": "{dataType}" } }, " Data Manager"],
+        "target": [{ "GenericSpan": { "id": "dataType", "ctype": "x-python-brace-param", "contents": "{dataType}" } }, " Daten Manager"]
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "de-CH"
+}
