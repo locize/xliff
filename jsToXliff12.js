@@ -38,10 +38,15 @@ function jsToXliff12(obj, opt, cb) {
     Object.keys(obj.resources[nsName]).forEach((k) => {
       const u = makeElement('trans-unit', {id: escape(k)}, true);
       u.elements.push(makeElement('source', null, makeValue(obj.resources[nsName][k].source, ElementTypes12)));
-      u.elements.push(makeElement('target', null, makeValue(obj.resources[nsName][k].target, ElementTypes12)));
+
+      if (obj.resources[nsName][k].target) {
+        u.elements.push(makeElement('target', null, makeValue(obj.resources[nsName][k].target, ElementTypes12)));
+      }
+
       if ('note' in obj.resources[nsName][k]) {
         u.elements.push(makeElement('note', null, [makeText(obj.resources[nsName][k].note)]));
       }
+
       b.elements.push(u);
     });
   });
