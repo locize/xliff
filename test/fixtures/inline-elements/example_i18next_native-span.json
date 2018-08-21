@@ -6,20 +6,16 @@
           { "Span": { "id": "name", "ctype": "x-i18next-param", "contents": "{{name}}" } },
           " is ",
           { "Span": { "id": "how", "ctype": "x-i18next-param", "contents": "{{how}}" } }
-        ],
-        "target": ""
+        ]
       },
       "data-models": {
-        "source": ["i am ", { "Span": { "id": "author.name", "ctype": "x-i18next-param", "contents": "{{author.name}}" } }],
-        "target": ""
+        "source": ["i am ", { "Span": { "id": "author.name", "ctype": "x-i18next-param", "contents": "{{author.name}}" } }]
       },
       "keyEscaped": {
-        "source": ["no danger ", { "Span": { "id": "myVar", "ctype": "x-i18next-param", "contents": "{{myVar}}" } }],
-        "target": ""
+        "source": ["no danger ", { "Span": { "id": "myVar", "ctype": "x-i18next-param", "contents": "{{myVar}}" } }]
       },
       "keyUnescaped": {
-        "source": ["dangerous ", { "Span": { "id": "myVar", "ctype": "x-i18next-unescaped-param", "contents": "{{- myVar}}" } }],
-        "target": ""
+        "source": ["dangerous ", { "Span": { "id": "myVar", "ctype": "x-i18next-unescaped-param", "contents": "{{- myVar}}" } }]
       }
     }
   },
