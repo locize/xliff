@@ -2,20 +2,16 @@
   "resources": {
     "namespace1": {
       "basic": {
-        "source": "{{name}} is {{how}}",
-        "target": ""
+        "source": "{{name}} is {{how}}"
       },
       "data-models": {
-        "source": "i am {{author.name}}",
-        "target": ""
+        "source": "i am {{author.name}}"
       },
       "keyEscaped": {
-        "source": "no danger {{myVar}}",
-        "target": ""
+        "source": "no danger {{myVar}}"
       },
       "keyUnescaped": {
-        "source": "dangerous {{- myVar}}",
-        "target": ""
+        "source": "dangerous {{- myVar}}"
       }
     }
   },
