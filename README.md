@@ -76,11 +76,17 @@ const xliff2js = require('xliff/xliff2js');
 xliff2js(xliff, (err, res) => {
   // res is like js
 });
+// or without callback
+const res = xliff2js(xliff);
+// res is like js
 
 const js2xliff = require('xliff/js2xliff');
 js2xliff(js, (err, res) => {
   // res is like xliff
 });
+// or without callback
+const res = js2xliff(js);
+// res is like xliff
 
 const targetOfjs = require('xliff/targetOfjs');
 targetOfjs(js, (err, res) => {
@@ -91,6 +97,14 @@ targetOfjs(js, (err, res) => {
   //   "key.nested": "XLIFF Daten Manager"
   // }
 });
+// or without callback
+const res = targetOfjs(js);
+// res is:
+// {
+//   "key1": "Hallo",
+//   "key2": "Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten",
+//   "key.nested": "XLIFF Daten Manager"
+// }
 
 const sourceOfjs = require('xliff/sourceOfjs');
 sourceOfjs(js, (err, res) => {
@@ -101,6 +115,14 @@ sourceOfjs(js, (err, res) => {
   //   "key.nested": "XLIFF Data Manager"
   // }
 });
+// or without callback
+const res = sourceOfjs(js);
+// res is:
+// {
+//   "key1": "Hello",
+//   "key2": "An application to manipulate and process XLIFF documents",
+//   "key.nested": "XLIFF Data Manager"
+// }
 
 const createjs = require('xliff/createjs');
 createjs(
@@ -120,6 +142,9 @@ createjs(
   (err, res) => {
   // res is like js
 });
+// or without callback
+//const res = createjs(...
+
 
 const createxliff = require('xliff/createxliff');
 createxliff(
@@ -139,6 +164,8 @@ createxliff(
   (err, res) => {
   // res is like xliff
 });
+// or without callback
+//const res = createxliff(...
 ```
 
 ##### XLIFF 1.2
@@ -189,11 +216,15 @@ createxliff(
   xliff12ToJs(xliff, (err, res) => {
     // res is like js
   });
+  // or without callback
+  //const res = xliff12ToJs(...
 
   const jsToXliff12 = require('xliff/jsToXliff12');
   jsToXliff12(js, (err, res) => {
     // res is like xliff
   });
+  // or without callback
+  //const res = jsToXliff12(...
 
   const createxliff12 = require('xliff/createxliff12');
   createxliff12(
@@ -213,7 +244,8 @@ createxliff(
     (err, res) => {
     // res is like xliff
   });
-
+  // or without callback
+  //const res = createxliff12(...
 
 ```
 

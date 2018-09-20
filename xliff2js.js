@@ -4,7 +4,9 @@ const extractValue = require('./xml-js/xmlToObject').extractValue;
 
 function xliffToJs(str, cb) {
   if (typeof str !== 'string') {
-    return cb(new Error('The first parameter was not a string'));
+    const err = new Error('The first parameter was not a string');
+    if (cb) return cb(err);
+    return err;
   }
 
   const result = {};
@@ -13,7 +15,8 @@ function xliffToJs(str, cb) {
   try {
     xmlObj = convert.xml2js(str, {});
   } catch (err) {
-    return cb(err);
+    if (cb) return cb(err);
+    return err;
   }
 
   const xliffRoot = xmlObj.elements[0];
@@ -52,7 +55,8 @@ function xliffToJs(str, cb) {
     return resources;
   }, {});
 
-  cb(null, result);
+  if (cb) return cb(null, result);
+  return result;
 }
 
 module.exports = xliffToJs;

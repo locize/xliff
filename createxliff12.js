@@ -7,6 +7,10 @@ module.exports = (srcLng, trgLng, srcKeys, trgKeys, ns, cb) => {
     ns = null;
   }
 
+  if (!cb) {
+    return jsToXliff12(createjs(srcLng, trgLng, srcKeys, trgKeys, ns));
+  }
+
   createjs(srcLng, trgLng, srcKeys, trgKeys, ns, (err, res) => {
     if (err) return cb(err);
     jsToXliff12(res, cb);
