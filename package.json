@@ -4,7 +4,7 @@
   "description": "xliff2js and js2xliff converter xliff utils",
   "main": "index.js",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.0.0"
   },
   "dependencies": {
     "xml-js": "1.6.8"
