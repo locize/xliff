@@ -1,7 +1,7 @@
 module.exports = (js, what, cb) => {
   const res = {};
 
-  const nsKeys = Object.keys(js.resources);
+  const nsKeys = Object.keys(js.resources || {});
   if (nsKeys.length === 1) {
     const ns = js.resources[nsKeys[0]];
     const keys = Object.keys(ns);
