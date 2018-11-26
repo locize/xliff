@@ -19,7 +19,7 @@ function xliffToJs(str, cb) {
     return err;
   }
 
-  const xliffRoot = xmlObj.elements[0];
+  const xliffRoot = xmlObj.elements.find((ele) => ele.name === 'xliff');
 
   if (xliffRoot.attributes) {
     const srcLang = xliffRoot.attributes['srcLang'];
@@ -33,6 +33,8 @@ function xliffToJs(str, cb) {
 
       // namespace
       resources[namespace] = file.elements.reduce((file, unit) => {
+        if (unit.name !== 'unit') return file;
+
         const key = unit.attributes.id;
 
         // source, target, note
