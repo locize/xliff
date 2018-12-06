@@ -20,6 +20,18 @@ describe('extractValue() converts XML source/target values into xliff.js objects
     expect(extractValue({ type: 'text', text: 'Hello \n' }, ElementTypes12)).to.eql('Hello ');
   });
 
+  it('removes a trailing line break and space from a "formatted" XML text element', () => {
+    expect(extractValue({ type: 'text', text: 'Hello \n   ' }, ElementTypes12)).to.eql('Hello ');
+  });
+
+  it('removes trailing line breaks from a "formatted" XML text element with an embedded line break', () => {
+    expect(extractValue({ type: 'text', text: 'Hello \n There\n   ' }, ElementTypes12)).to.eql('Hello \n There');
+  });
+
+  it('does not throw away content from a "formatted" XML text element with no trailing line break', () => {
+    expect(extractValue({ type: 'text', text: 'Hello \n There' }, ElementTypes12)).to.eql('Hello \n There');
+  });
+
   it('creates objects for all supported inline element types', () => {
     const supportedElementTypes = Object.keys(ElementTypes);
     supportedElementTypes.forEach((expectedType) => {

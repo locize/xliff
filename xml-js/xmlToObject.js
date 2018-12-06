@@ -13,7 +13,10 @@ function extractValue(valueElements, elementTypeInfo) {
 
   // text node
   if (valueElement.type === 'text') {
-    return valueElement.text.indexOf('\n') === -1 ? valueElement.text : valueElement.text.substr(0, valueElement.text.lastIndexOf('\n'));
+    if (/\n\s*$/.test(valueElement.text)) {
+      return valueElement.text.substr(0, valueElement.text.lastIndexOf('\n'));
+    }
+    return valueElement.text;
   }
 
   // nested inline element tag
