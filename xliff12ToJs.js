@@ -30,7 +30,7 @@ function xliff12ToJs(str, cb) {
   result.resources = xliffRoot.elements.reduce((resources, file) => {
     const namespace = file.attributes.original;
 
-    const body = file.elements[0];
+    const body = file.elements.find(e => e.name === 'body');
     const transUnits = body.elements;
 
     // namespace
