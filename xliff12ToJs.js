@@ -19,7 +19,7 @@ function xliff12ToJs(str, cb) {
     return err;
   }
 
-  const xliffRoot = xmlObj.elements[0];
+  const xliffRoot = xmlObj.elements.find((ele) => ele.name === 'xliff');
 
   const srcLang = xliffRoot.elements[0].attributes['source-language'];
   const trgLang = xliffRoot.elements[0].attributes['target-language'];
