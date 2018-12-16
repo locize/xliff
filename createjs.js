@@ -10,8 +10,8 @@ module.exports = (srcLng, trgLng, srcKeys, trgKeys, ns, cb) => {
 
     Object.keys(trgKeys).forEach((srcKey) => {
       js.resources[ns][srcKey] = {
-        source: srcKeys[srcKey],
-        target: trgKeys[srcKey]
+        source: srcKeys[srcKey] || '',
+        target: trgKeys[srcKey] || ''
       };
     });
 
@@ -30,8 +30,8 @@ module.exports = (srcLng, trgLng, srcKeys, trgKeys, ns, cb) => {
 
     Object.keys(trgKeys[ns]).forEach((srcKey) => {
       js.resources[ns][srcKey] = {
-        source: srcKeys[ns][srcKey],
-        target: trgKeys[ns][srcKey]
+        source: srcKeys[ns][srcKey] || '',
+        target: trgKeys[ns][srcKey] || ''
       };
     });
   });
