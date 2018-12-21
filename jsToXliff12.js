@@ -30,15 +30,19 @@ function jsToXliff12(obj, opt, cb) {
       original: nsName,
       datatype: 'plaintext',
       'source-language': obj.sourceLanguage,
-      'target-language': obj.targetLanguage
     };
+    if (obj.targetLanguage != null) {
+      fileAttributes['target-language'] = obj.targetLanguage;
+    }
     const f = makeElement('file', fileAttributes, [b]);
     root.elements.push(f);
 
     Object.keys(obj.resources[nsName]).forEach((k) => {
       const u = makeElement('trans-unit', {id: escape(k)}, true);
       u.elements.push(makeElement('source', null, makeValue(obj.resources[nsName][k].source, ElementTypes12)));
-      u.elements.push(makeElement('target', null, makeValue(obj.resources[nsName][k].target, ElementTypes12)));
+      if (obj.resources[nsName][k].target != null) {
+        u.elements.push(makeElement('target', null, makeValue(obj.resources[nsName][k].target, ElementTypes12)));
+      }
       if ('note' in obj.resources[nsName][k]) {
         u.elements.push(makeElement('note', null, [makeText(obj.resources[nsName][k].note)]));
       }
