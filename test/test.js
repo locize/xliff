@@ -117,6 +117,40 @@ describe('xliff 1.2 source/target attributes', () => {
 
 });
 
+describe('xliff additional attributes', () => {
+  test('xliff2js', (fn) => (done) => {
+    fn(fixtures.example_additional_attributes.xliff, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res).to.eql(fixtures.example_additional_attributes.js);
+      done();
+    });
+  });
+  test('js2xliff', (fn) => (done) => {
+    fn(fixtures.example_additional_attributes.js, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res).to.eql(fixtures.example_additional_attributes.xliff);
+      done();
+    });
+  });
+});
+
+describe('xliff 1.2 additional attributes', () => {
+  test('xliff12ToJs', (fn) => (done) => {
+    fn(fixtures.example_additional_attributes.xliff12, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res).to.eql(fixtures.example_additional_attributes.js);
+      done();
+    });
+  });
+  test('jsToXliff12', (fn) => (done) => {
+    fn(fixtures.example_additional_attributes.js, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res).to.eql(fixtures.example_additional_attributes.xliff12);
+      done();
+    });
+  });
+});
+
 describe('multi', () => {
 
   test('xliff2js', (fn) => (done) => {
