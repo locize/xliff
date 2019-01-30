@@ -7,7 +7,7 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "xml-js": "1.6.8"
+    "xml-js": "1.6.9"
   },
   "devDependencies": {
     "eslint": "^5.9.0",
