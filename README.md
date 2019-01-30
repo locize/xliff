@@ -495,3 +495,37 @@ var inlineElementObj = makeInlineElement(ElementTypes.GenericSpan, 'name', attri
 
 var source = [ 'Hello ', inlineElementObj ];
 ```
+
+### Additional attributes example
+It is possible to pass `additionalAttributes` to your js file. These will be added to the `<trans-unit>` element in xliff:
+
+```js
+const js = {
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": "Hello",
+        "target": "Hallo",
+        "additionalAttributes": {
+          "translate": "no",
+          "approved": "yes"
+        }
+      }
+    }
+  }
+}
+```
+
+Of course, this also works the other way around:
+```js
+const xliff = `<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US" trgLang="de-CH">
+  <file id="namespace1">
+    <unit id="key1" translate="no" approved="yes">
+      <segment>
+        <source>Hello</source>
+        <target>Hallo</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>`
+```

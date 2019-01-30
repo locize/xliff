@@ -49,6 +49,11 @@ function xliff12ToJs(str, cb) {
 
         return unit;
       }, { source: '' });
+      const additionalAttributes = transUnit.attributes;
+      delete additionalAttributes.id;
+      if (Object.keys(additionalAttributes).length) {
+        Object.assign(file[key], {additionalAttributes});
+      }
 
       return file;
     }, {});

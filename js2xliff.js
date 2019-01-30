@@ -35,7 +35,8 @@ function js2xliff(obj, opt, cb) {
       if ('note' in obj.resources[nsName][k]) {
         segment.elements.push(makeElement('note', null, [makeText(obj.resources[nsName][k].note)]));
       }
-      const u = makeElement('unit', {id: escape(k)}, [segment]);
+      const additionalAttributes = obj.resources[nsName][k].additionalAttributes != null ? obj.resources[nsName][k].additionalAttributes : {};
+      const u = makeElement('unit', Object.assign({id: escape(k)}, additionalAttributes), [segment]);
       f.elements.push(u);
     });
   });

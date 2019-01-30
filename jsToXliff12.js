@@ -38,7 +38,8 @@ function jsToXliff12(obj, opt, cb) {
     root.elements.push(f);
 
     Object.keys(obj.resources[nsName]).forEach((k) => {
-      const u = makeElement('trans-unit', {id: escape(k)}, true);
+      const additionalAttributes = obj.resources[nsName][k].additionalAttributes != null ? obj.resources[nsName][k].additionalAttributes : {};
+      const u = makeElement('trans-unit', Object.assign({id: escape(k)}, additionalAttributes), true);
       u.elements.push(makeElement('source', null, makeValue(obj.resources[nsName][k].source, ElementTypes12)));
       if (obj.resources[nsName][k].target != null) {
         u.elements.push(makeElement('target', null, makeValue(obj.resources[nsName][k].target, ElementTypes12)));
