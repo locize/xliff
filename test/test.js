@@ -26,6 +26,26 @@ describe('single', () => {
     });
   });
 
+  describe('angular', () => {
+
+    test('xliff12ToJs', (fn) => (done) => {
+      fn(fixtures.example_angular.xliff12, { namespace: 'example_angular' }, (err, res) => {
+        expect(err).not.to.be.ok();
+        expect(res).to.eql(fixtures.example_angular.js);
+        done();
+      });
+    });
+
+    test('xliff2js', (fn) => (done) => {
+      fn(fixtures.example_angular.xliff, { namespace: 'example_angular' }, (err, res) => {
+        expect(err).not.to.be.ok();
+        expect(res).to.eql(fixtures.example_angular.js);
+        done();
+      });
+    });
+
+  });
+
   test('js2xliff', (fn) => (done) => {
     fn(fixtures.example.js, (err, res) => {
       expect(err).not.to.be.ok();

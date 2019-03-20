@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "example_angular": {
+      "this.is.the.id": {
+        "source": "This is the text."
+      }
+    }
+  },
+  "sourceLanguage": "en"
+}

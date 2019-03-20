@@ -2,7 +2,14 @@ const convert = require('xml-js');
 const ElementTypes12 = require('./inline-elements/ElementTypes12');
 const extractValue = require('./xml-js/xmlToObject').extractValue;
 
-function xliff12ToJs(str, cb) {
+function xliff12ToJs(str, options, cb) {
+  if (typeof options === 'function') {
+    cb = options;
+    options = {};
+  }
+  if (options === undefined && cb === undefined) {
+    options = {};
+  }
   if (typeof str !== 'string') {
     const err = new Error('The first parameter was not a string');
     if (cb) return cb(err);
@@ -26,9 +33,10 @@ function xliff12ToJs(str, cb) {
 
   result.sourceLanguage = srcLang;
   result.targetLanguage = trgLang;
+  if (!result.targetLanguage) delete result.targetLanguage;
 
   result.resources = xliffRoot.elements.reduce((resources, file) => {
-    const namespace = file.attributes.original;
+    const namespace = options.namespace || file.attributes.original;
 
     const body = file.elements.find((e) => e.name === 'body');
     const transUnits = body.elements;

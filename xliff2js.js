@@ -2,7 +2,14 @@ const convert = require('xml-js');
 const ElementTypes2 = require('./inline-elements/ElementTypes2');
 const extractValue = require('./xml-js/xmlToObject').extractValue;
 
-function xliffToJs(str, cb) {
+function xliffToJs(str, options, cb) {
+  if (typeof options === 'function') {
+    cb = options;
+    options = {};
+  }
+  if (options === undefined && cb === undefined) {
+    options = {};
+  }
   if (typeof str !== 'string') {
     const err = new Error('The first parameter was not a string');
     if (cb) return cb(err);
@@ -27,9 +34,13 @@ function xliffToJs(str, cb) {
 
     result.sourceLanguage = srcLang;
     result.targetLanguage = trgLang;
+    if (!result.targetLanguage) delete result.targetLanguage;
 
     result.resources = xliffRoot.elements.reduce((resources, file) => {
-      const namespace = file.attributes.id;
+      const namespace = options.namespace || file.attributes.id;
+
+      const initValues = { source: '', target: '' };
+      if (!result.targetLanguage) delete initValues.target;
 
       // namespace
       resources[namespace] = file.elements.reduce((file, unit) => {
@@ -50,7 +61,7 @@ function xliffToJs(str, cb) {
           });
 
           return unit;
-        }, { source: '', target: '' });
+        }, JSON.parse(JSON.stringify(initValues)));
         const additionalAttributes = unit.attributes;
         delete additionalAttributes.id;
         if (Object.keys(additionalAttributes).length) {

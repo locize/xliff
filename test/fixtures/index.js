@@ -29,5 +29,10 @@ module.exports = {
     js: require('./example_additional_attributes'),
     xliff: fs.readFileSync(path.join(__dirname, 'example_additional_attributes.xliff')).toString().replace(/\n$/, ''),
     xliff12: fs.readFileSync(path.join(__dirname, 'example_additional_attributes12.xliff')).toString().replace(/\n$/, '')
+  },
+  example_angular: {
+    js: require('./example_angular'),
+    xliff: fs.readFileSync(path.join(__dirname, 'example_angular.xliff')).toString().replace(/\n$/, ''),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_angular12.xliff')).toString().replace(/\n$/, '')
   }
 };
