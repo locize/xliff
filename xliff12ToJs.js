@@ -39,6 +39,7 @@ function xliff12ToJs(str, options, cb) {
     const namespace = options.namespace || file.attributes.original;
 
     const body = file.elements.find((e) => e.name === 'body');
+    body.elements = body.elements || [];
     const transUnits = body.elements.filter((transunit) => transunit.type !== 'comment');
 
     // namespace

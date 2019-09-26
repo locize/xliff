@@ -43,6 +43,7 @@ function xliffToJs(str, options, cb) {
       if (!result.targetLanguage) delete initValues.target;
 
       // namespace
+      file.elements = file.elements || [];
       resources[namespace] = file.elements.reduce((file, unit) => {
         if (unit.name !== 'unit') return file;
 
