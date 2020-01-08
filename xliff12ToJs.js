@@ -65,9 +65,6 @@ function xliff12ToJs(str, options, cb) {
 }
 
 function createTransUnitTag(transUnit) {
-  const additionalAttributes = transUnit.attributes;
-  delete additionalAttributes.id;
-
   const jsUnit = transUnit.elements.reduce((unit, element) => {
     switch (element.name) {
       case 'source':
@@ -78,18 +75,12 @@ function createTransUnitTag(transUnit) {
     }
 
     return unit;
-  }, {});
+  }, {source: ''});
 
-  if (Object.keys(additionalAttributes).length) {
-    Object.assign(jsUnit, { additionalAttributes });
-  }
-  return jsUnit;
+  return addAdditionalAttributes(jsUnit, transUnit.attributes);
 }
 
 function createGroupTag(groupUnit, childs) {
-  const additionalAttributes = groupUnit.attributes;
-  delete additionalAttributes.id;
-
   const jsGroupUnit = {
     groupUnits: childs.reduce((groupFile, groupTransUnit) => {
       const key = groupTransUnit.attributes.id;
@@ -98,11 +89,18 @@ function createGroupTag(groupUnit, childs) {
     }, {})
   };
 
+  return addAdditionalAttributes(jsGroupUnit, groupUnit.attributes);
+}
+
+function addAdditionalAttributes(jsUnit, attributes) {
+  const additionalAttributes = attributes;
+  delete additionalAttributes.id;
+
   if (Object.keys(additionalAttributes).length) {
-    Object.assign(jsGroupUnit, { additionalAttributes });
+    Object.assign(jsUnit, { additionalAttributes });
   }
 
-  return jsGroupUnit;
+  return jsUnit;
 }
 
 module.exports = xliff12ToJs;
