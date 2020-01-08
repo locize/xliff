@@ -291,3 +291,21 @@ describe('with additional attributes', () => {
     });
   });
 });
+
+describe('Google Actions Xliff', () => {
+  test('xliff12ToJs', (fn) => (done) => {
+    fn(fixtures.example_google.xliff12, {xmlLangAttr: true}, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res).to.eql(fixtures.example_google.js);
+      done();
+    });
+  });
+
+  test('jsToXliff12', (fn) => (done) => {
+    fn(fixtures.example_google.js, {xmlLangAttr: true}, (err, res) => {
+      expect(err).not.to.be.ok();
+      expect(res).to.eql(fixtures.example_google.xliff12);
+      done();
+    });
+  });
+});

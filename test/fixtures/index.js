@@ -34,5 +34,9 @@ module.exports = {
     js: require('./example_angular'),
     xliff: fs.readFileSync(path.join(__dirname, 'example_angular.xliff')).toString().replace(/\n$/, ''),
     xliff12: fs.readFileSync(path.join(__dirname, 'example_angular12.xliff')).toString().replace(/\n$/, '')
+  },
+  example_google: {
+    js: require('./example_google_action'),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_google_action.xliff')).toString().replace(/\n$/, ''),
   }
 };

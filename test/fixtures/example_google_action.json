@@ -1,0 +1,103 @@
+{
+  "sourceLanguage": "de",
+  "targetLanguage": "de",
+  "resources": {
+    "agent.proto": {
+      "tu1": {
+        "source": "assistant app name",
+        "target": "assistant app name",
+        "note": "The default display name for this app (if there is not a translation available).",
+        "additionalAttributes": {
+          "resname": "assistantAppName"
+        }
+      },
+      "tu2": {
+        "source": "assistant app pronunciation",
+        "target": "assistant app pronunciation",
+        "note": "For triggering. This is the unique name for this app to directly invoke it within a voice (spoken) context.",
+        "additionalAttributes": {
+          "resname": "pronunciation"
+        }
+      },
+      "tu3": {
+        "source": "SHORT DESCRIPTION",
+        "target": "SHORT DESCRIPTION",
+        "note": "The default short description for the app (if there is not a translation available). This is limited to 80 characters.",
+        "additionalAttributes": {
+          "resname": "shortDescription"
+        }
+      },
+      "tu4": {
+        "source": "LONG DESCRIPTION",
+        "target": "LONG DESCRIPTION",
+        "note": "The default long description for the app (if there is not a translation available). This is limited to 4000 characters.",
+        "additionalAttributes": {
+          "resname": "fullDescription"
+        }
+      },
+      "tu5": {
+        "source": "Developer Name",
+        "target": "Developer Name",
+        "note": "The name of the publisher to be displayed to users.",
+        "additionalAttributes": {
+          "resname": "developerName"
+        }
+      },
+      "tu6": {
+        "source": "developer@example.com",
+        "target": "developer@example.com",
+        "note": "The contact email address for the publisher.",
+        "additionalAttributes": {
+          "resname": "email"
+        }
+      },
+      "tu7": {
+        "source": "https://example.com/terms",
+        "target": "https://example.com/terms",
+        "note": "The URL to the ToS (Terms of Service) for the app.",
+        "additionalAttributes": {
+          "resname": "linkToTermsOfService"
+        }
+      },
+      "tu8": {
+        "source": "female_1",
+        "target": "female_1",
+        "note": "The voice name for this app in the VUI (voice user interface) context. Example values supported: male_1, male_2, female_1, female_2",
+        "additionalAttributes": {
+          "resname": "assistantAppVoice"
+        }
+      },
+      "tu9": {
+        "source": "female_1",
+        "target": "female_1",
+        "note": "The external voice name for this app in the VUI (voice user interface) context. Does not contain locale information.",
+        "additionalAttributes": {
+          "resname": "assistantAppExternalVoiceName"
+        }
+      },
+      "tu10": {
+        "source": "https://example.com/privacy",
+        "target": "https://example.com/privacy",
+        "note": "The URL for the app's privacy policy.",
+        "additionalAttributes": {
+          "resname": "linkToPrivacyPolicy"
+        }
+      },
+      "grpId1": {
+        "additionalAttributes": {
+          "resname": "sampleInvocations"
+        },
+        "groupUnits": {
+          "tu11": {
+            "source": "Mit assistant app sprechen",
+            "target": "Mit assistant app sprechen",
+            "note": "Sample invocation phrase displayed as part of app description in the directory of all agents.",
+            "additionalAttributes": {
+              "resname": "sampleInvocations.1"
+            }
+          }
+        }
+      }
+    }
+  }
+}

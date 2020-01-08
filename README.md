@@ -187,6 +187,12 @@ createxliff(
           <source>XLIFF Data Manager</source>
           <target>XLIFF Daten Manager</target>
         </trans-unit>
+        <group id="group">
+          <trans-unit id="groupUnit">
+            <source>Group</source>
+            <target>Gruppe</target>
+          </trans-unit>
+        </group>
       </body>
     </file>
   </xliff>`
@@ -205,6 +211,14 @@ createxliff(
         "key.nested": {
           "source": "XLIFF Data Manager",
           "target": "XLIFF Daten Manager"
+        },
+        "group": {
+          "groupUnits":{
+            "groupUnit": {
+              "source": "Group",
+              "target": "Gruppe"
+            }
+          }
         }
       }
     },
