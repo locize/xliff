@@ -1,15 +1,24 @@
-const tagToElementType = require('../inline-elements/typeToTagMaps').tagToElementType;
+const tagToElementType = require('../inline-elements/typeToTagMaps')
+  .tagToElementType;
 
 function extractValue(valueElements, elementTypeInfo) {
-  if (valueElements === undefined || valueElements === null || valueElements === '') {
+  if (
+    valueElements === undefined ||
+    valueElements === null ||
+    valueElements === ''
+  ) {
     return '';
   }
 
   if (Array.isArray(valueElements) && valueElements.length > 1) {
-    return valueElements.map((valueElement) => extractValue(valueElement, elementTypeInfo));
+    return valueElements.map((valueElement) =>
+      extractValue(valueElement, elementTypeInfo)
+    );
   }
 
-  const valueElement = Array.isArray(valueElements) ? valueElements[0] || '' : valueElements;
+  const valueElement = Array.isArray(valueElements)
+    ? valueElements[0] || ''
+    : valueElements;
 
   // text node
   if (valueElement.type === 'text') {

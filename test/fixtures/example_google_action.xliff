@@ -1,0 +1,63 @@
+<xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="agent.proto" datatype="plaintext" source-language="de" target-language="de">
+    <body>
+      <trans-unit id="tu1" resname="assistantAppName">
+        <source xml:lang="de">assistant app name</source>
+        <target xml:lang="de">assistant app name</target>
+        <note>The default display name for this app (if there is not a translation available).</note>
+      </trans-unit>
+      <trans-unit id="tu2" resname="pronunciation">
+        <source xml:lang="de">assistant app pronunciation</source>
+        <target xml:lang="de">assistant app pronunciation</target>
+        <note>For triggering. This is the unique name for this app to directly invoke it within a voice (spoken) context.</note>
+      </trans-unit>
+      <trans-unit id="tu3" resname="shortDescription">
+        <source xml:lang="de">SHORT DESCRIPTION</source>
+        <target xml:lang="de">SHORT DESCRIPTION</target>
+        <note>The default short description for the app (if there is not a translation available). This is limited to 80 characters.</note>
+      </trans-unit>
+      <trans-unit id="tu4" resname="fullDescription">
+        <source xml:lang="de">LONG DESCRIPTION</source>
+        <target xml:lang="de">LONG DESCRIPTION</target>
+        <note>The default long description for the app (if there is not a translation available). This is limited to 4000 characters.</note>
+      </trans-unit>
+      <trans-unit id="tu5" resname="developerName">
+        <source xml:lang="de">Developer Name</source>
+        <target xml:lang="de">Developer Name</target>
+        <note>The name of the publisher to be displayed to users.</note>
+      </trans-unit>
+      <trans-unit id="tu6" resname="email">
+        <source xml:lang="de">developer@example.com</source>
+        <target xml:lang="de">developer@example.com</target>
+        <note>The contact email address for the publisher.</note>
+      </trans-unit>
+      <trans-unit id="tu7" resname="linkToTermsOfService">
+        <source xml:lang="de">https://example.com/terms</source>
+        <target xml:lang="de">https://example.com/terms</target>
+        <note>The URL to the ToS (Terms of Service) for the app.</note>
+      </trans-unit>
+      <trans-unit id="tu8" resname="assistantAppVoice">
+        <source xml:lang="de">female_1</source>
+        <target xml:lang="de">female_1</target>
+        <note>The voice name for this app in the VUI (voice user interface) context. Example values supported: male_1, male_2, female_1, female_2</note>
+      </trans-unit>
+      <trans-unit id="tu9" resname="assistantAppExternalVoiceName">
+        <source xml:lang="de">female_1</source>
+        <target xml:lang="de">female_1</target>
+        <note>The external voice name for this app in the VUI (voice user interface) context. Does not contain locale information.</note>
+      </trans-unit>
+      <trans-unit id="tu10" resname="linkToPrivacyPolicy">
+        <source xml:lang="de">https://example.com/privacy</source>
+        <target xml:lang="de">https://example.com/privacy</target>
+        <note>The URL for the app's privacy policy.</note>
+      </trans-unit>
+      <group id="grpId1" resname="sampleInvocations">
+        <trans-unit id="tu11" resname="sampleInvocations.1">
+          <source xml:lang="de">Mit assistant app sprechen</source>
+          <target xml:lang="de">Mit assistant app sprechen</target>
+          <note>Sample invocation phrase displayed as part of app description in the directory of all agents.</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

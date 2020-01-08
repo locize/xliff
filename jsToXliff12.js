@@ -13,7 +13,8 @@ function jsToXliff12(obj, opt, cb) {
   }
 
   const options = {
-    spaces: opt.indent || '  '
+    spaces: opt.indent || '  ',
+    xmlLangAttr: !!opt.xmlLangAttr
   };
 
   const rootAttributes = {
@@ -37,17 +38,12 @@ function jsToXliff12(obj, opt, cb) {
     const f = makeElement('file', fileAttributes, [b]);
     root.elements.push(f);
 
-    Object.keys(obj.resources[nsName]).forEach((k) => {
-      const additionalAttributes = obj.resources[nsName][k].additionalAttributes != null ? obj.resources[nsName][k].additionalAttributes : {};
-      const u = makeElement('trans-unit', Object.assign({id: escape(k)}, additionalAttributes), true);
-      u.elements.push(makeElement('source', null, makeValue(obj.resources[nsName][k].source, ElementTypes12)));
-      if (obj.resources[nsName][k].target != null) {
-        u.elements.push(makeElement('target', null, makeValue(obj.resources[nsName][k].target, ElementTypes12)));
+    Object.keys(obj.resources[nsName]).forEach((key) => {
+      if (obj.resources[nsName][key].groupUnits) {
+        b.elements.push(createGroupUnitTag(key, obj.resources[nsName][key], obj, options));
+      } else {
+        b.elements.push(createTransUnitTag(key, obj.resources[nsName][key], obj, options));
       }
-      if ('note' in obj.resources[nsName][k]) {
-        u.elements.push(makeElement('note', null, [makeText(obj.resources[nsName][k].note)]));
-      }
-      b.elements.push(u);
     });
   });
 
@@ -58,6 +54,41 @@ function jsToXliff12(obj, opt, cb) {
   const xml = convert.js2xml(xmlJs, options);
   if (cb) cb(null, xml);
   return xml;
+}
+
+function createGroupUnitTag(key, resource, obj, options) {
+  const additionalAttributes = resource.additionalAttributes != null ? resource.additionalAttributes : {};
+  const u = makeElement('group', Object.assign({id: escape(key)}, additionalAttributes), true);
+  Object.keys(resource.groupUnits).forEach((transUnitKey) => {
+    u.elements.push(createTransUnitTag(transUnitKey, resource.groupUnits[transUnitKey], obj, options));
+  });
+  return u;
+}
+
+function createTransUnitTag(key, resource, obj, options) {
+  const additionalAttributes = resource.additionalAttributes != null ? resource.additionalAttributes : {};
+  const u = makeElement('trans-unit', Object.assign({id: escape(key)}, additionalAttributes), true);
+  let sourceAttributes = null;
+  if (options.xmlLangAttr) {
+    sourceAttributes = {
+      'xml:lang': obj.sourceLanguage
+    };
+  }
+  u.elements.push(makeElement('source', sourceAttributes, makeValue(resource.source, ElementTypes12)));
+  if (resource.target != null) {
+    let targetAttributes = null;
+    if (options.xmlLangAttr && obj.targetLanguage) {
+      targetAttributes = {
+        'xml:lang': obj.targetLanguage
+      };
+    }
+    u.elements.push(makeElement('target', targetAttributes, makeValue(resource.target, ElementTypes12)));
+  }
+  if ('note' in resource) {
+    u.elements.push(makeElement('note', null, [makeText(resource.note)]));
+  }
+
+  return u;
 }
 
 module.exports = jsToXliff12;
