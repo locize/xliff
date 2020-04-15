@@ -1,82 +1,73 @@
-const expect = require('expect.js');
-const fixtures = require('./fixtures');
+const expect = require('expect.js')
+const fixtures = require('./fixtures')
 
-function test(what, t) {
+function test (what, t) {
   describe(what, () => {
-    it('index', t(require('../')[what]));
-    it('direct', t(require('../' + what)));
-  });
+    it('index', t(require('../')[what]))
+    it('direct', t(require('../cjs/' + what)))
+  })
 }
 
 describe('single', () => {
-
   test('xliff2js', (fn) => (done) => {
     fn(fixtures.example.xliff, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example.js);
-      done();
-    });
-  });
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example.js)
+      done()
+    })
+  })
 
   test('xliff12ToJs', (fn) => (done) => {
     fn(fixtures.example.xliff12, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example.js);
-      done();
-    });
-  });
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example.js)
+      done()
+    })
+  })
 
   describe('angular', () => {
-
     test('xliff12ToJs', (fn) => (done) => {
       fn(fixtures.example_angular.xliff12, { namespace: 'example_angular' }, (err, res) => {
-        expect(err).not.to.be.ok();
-        expect(res).to.eql(fixtures.example_angular.js);
-        done();
-      });
-    });
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_angular.js)
+        done()
+      })
+    })
 
     test('xliff2js', (fn) => (done) => {
       fn(fixtures.example_angular.xliff, { namespace: 'example_angular' }, (err, res) => {
-        expect(err).not.to.be.ok();
-        expect(res).to.eql(fixtures.example_angular.js);
-        done();
-      });
-    });
-
-  });
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_angular.js)
+        done()
+      })
+    })
+  })
 
   test('js2xliff', (fn) => (done) => {
     fn(fixtures.example.js, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example.xliff);
-      done();
-    });
-  });
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example.xliff)
+      done()
+    })
+  })
 
   test('jsToXliff12', (fn) => (done) => {
     fn(fixtures.example.js, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example.xliff12);
-      done();
-    });
-  });
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example.xliff12)
+      done()
+    })
+  })
 
-  test('targetOfjs', (fn) => (done) => {
-    fn(fixtures.example.js, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res['key.nested']).to.eql(fixtures.example.js.resources.namespace1['key.nested'].target);
-      done();
-    });
-  });
+  test('targetOfjs', (fn) => () => {
+    const res = fn(fixtures.example.js)
+    expect(res['key.nested']).to.eql(fixtures.example.js.resources.namespace1['key.nested'].target)
+  })
 
-  test('sourceOfjs', (fn) => (done) => {
-    fn(fixtures.example.js, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res['key.nested']).to.eql(fixtures.example.js.resources.namespace1['key.nested'].source);
-      done();
-    });
-  });
+  test('sourceOfjs', (fn) => () => {
+    const res = fn(fixtures.example.js)
+    expect(res['key.nested']).to.eql(fixtures.example.js.resources.namespace1['key.nested'].source)
+  })
 
   test('createjs', (fn) => (done) => {
     fn(
@@ -86,12 +77,12 @@ describe('single', () => {
       fixtures.example.js_target,
       'namespace1',
       (err, res) => {
-        expect(err).not.to.be.ok();
-        expect(res).to.eql(fixtures.example.js);
-        done();
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example.js)
+        done()
       }
-    );
-  });
+    )
+  })
 
   test('createxliff', (fn) => (done) => {
     fn(
@@ -101,12 +92,12 @@ describe('single', () => {
       fixtures.example.js_target,
       'namespace1',
       (err, res) => {
-        expect(err).not.to.be.ok();
-        expect(res).to.eql(fixtures.example.xliff);
-        done();
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example.xliff)
+        done()
       }
-    );
-  });
+    )
+  })
 
   test('createxliff12', (fn) => (done) => {
     fn(
@@ -116,70 +107,60 @@ describe('single', () => {
       fixtures.example.js_target,
       'namespace1',
       (err, res) => {
-        expect(err).not.to.be.ok();
-        expect(res).to.eql(fixtures.example.xliff12);
-        done();
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example.xliff12)
+        done()
       }
-    );
-  });
-
-});
+    )
+  })
+})
 
 describe('xliff 1.2 source/target attributes', () => {
-
   test('xliff12ToJs', (fn) => (done) => {
     fn(fixtures.example_source_attr.xliff12, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example.js);
-      done();
-    });
-  });
-
-});
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example.js)
+      done()
+    })
+  })
+})
 
 describe('multi', () => {
-
   test('xliff2js', (fn) => (done) => {
     fn(fixtures.example_multi.xliff, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example_multi.js);
-      done();
-    });
-  });
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_multi.js)
+      done()
+    })
+  })
 
   test('xliff12ToJs', (fn) => (done) => {
     fn(fixtures.example_multi.xliff12, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example_multi.js);
-      done();
-    });
-  });
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_multi.js)
+      done()
+    })
+  })
 
   test('js2xliff', (fn) => (done) => {
     fn(fixtures.example_multi.js, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example_multi.xliff);
-      done();
-    });
-  });
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_multi.xliff)
+      done()
+    })
+  })
 
-  test('targetOfjs', (fn) => (done) => {
-    fn(fixtures.example_multi.js, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res.namespace1['key.nested']).to.eql(fixtures.example_multi.js.resources.namespace1['key.nested'].target);
-      expect(res.namespace2['k']).to.eql(fixtures.example_multi.js.resources.namespace2['k'].target);
-      done();
-    });
-  });
+  test('targetOfjs', (fn) => () => {
+    const res = fn(fixtures.example_multi.js)
+    expect(res.namespace1['key.nested']).to.eql(fixtures.example_multi.js.resources.namespace1['key.nested'].target)
+    expect(res.namespace2.k).to.eql(fixtures.example_multi.js.resources.namespace2.k.target)
+  })
 
-  test('sourceOfjs', (fn) => (done) => {
-    fn(fixtures.example_multi.js, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res.namespace1['key.nested']).to.eql(fixtures.example_multi.js.resources.namespace1['key.nested'].source);
-      expect(res.namespace2['k']).to.eql(fixtures.example_multi.js.resources.namespace2['k'].source);
-      done();
-    });
-  });
+  test('sourceOfjs', (fn) => () => {
+    const res = fn(fixtures.example_multi.js)
+    expect(res.namespace1['key.nested']).to.eql(fixtures.example_multi.js.resources.namespace1['key.nested'].source)
+    expect(res.namespace2.k).to.eql(fixtures.example_multi.js.resources.namespace2.k.source)
+  })
 
   test('createjs', (fn) => (done) => {
     fn(
@@ -188,12 +169,12 @@ describe('multi', () => {
       fixtures.example_multi.js_source,
       fixtures.example_multi.js_target,
       (err, res) => {
-        expect(err).not.to.be.ok();
-        expect(res).to.eql(fixtures.example_multi.js);
-        done();
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_multi.js)
+        done()
       }
-    );
-  });
+    )
+  })
 
   test('createxliff', (fn) => (done) => {
     fn(
@@ -202,110 +183,101 @@ describe('multi', () => {
       fixtures.example_multi.js_source,
       fixtures.example_multi.js_target,
       (err, res) => {
-        expect(err).not.to.be.ok();
-        expect(res).to.eql(fixtures.example_multi.xliff);
-        done();
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_multi.xliff)
+        done()
       }
-    );
-  });
-
-});
+    )
+  })
+})
 
 describe('with notes', () => {
-
   test('xliff2js', (fn) => (done) => {
     fn(fixtures.example_note.xliff, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example_note.js);
-      done();
-    });
-  });
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_note.js)
+      done()
+    })
+  })
 
   test('xliff12ToJs', (fn) => (done) => {
     fn(fixtures.example_note.xliff12, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example_note.js);
-      done();
-    });
-  });
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_note.js)
+      done()
+    })
+  })
 
   test('js2xliff', (fn) => (done) => {
     fn(fixtures.example_note.js, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example_note.xliff);
-      done();
-    });
-  });
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_note.xliff)
+      done()
+    })
+  })
 
-  test('targetOfjs', (fn) => (done) => {
-    fn(fixtures.example_note.js, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res.namespace1['key.nested']).to.eql(fixtures.example_note.js.resources.namespace1['key.nested'].target);
-      expect(res.namespace2['k']).to.eql(fixtures.example_note.js.resources.namespace2['k'].target);
-      done();
-    });
-  });
+  test('targetOfjs', (fn) => () => {
+    const res = fn(fixtures.example_note.js)
+    expect(res.namespace1['key.nested']).to.eql(fixtures.example_note.js.resources.namespace1['key.nested'].target)
+    expect(res.namespace2.k).to.eql(fixtures.example_note.js.resources.namespace2.k.target)
+  })
 
-  test('sourceOfjs', (fn) => (done) => {
-    fn(fixtures.example_note.js, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res.namespace1['key.nested']).to.eql(fixtures.example_note.js.resources.namespace1['key.nested'].source);
-      expect(res.namespace2['k']).to.eql(fixtures.example_note.js.resources.namespace2['k'].source);
-      done();
-    });
-  });
-
-});
+  test('sourceOfjs', (fn) => () => {
+    const res = fn(fixtures.example_note.js)
+    expect(res.namespace1['key.nested']).to.eql(fixtures.example_note.js.resources.namespace1['key.nested'].source)
+    expect(res.namespace2.k).to.eql(fixtures.example_note.js.resources.namespace2.k.source)
+  })
+})
 
 describe('with additional attributes', () => {
   describe('xliff 2.0', () => {
     test('xliff2js', (fn) => (done) => {
       fn(fixtures.example_additional_attributes.xliff, (err, res) => {
-        expect(err).not.to.be.ok();
-        expect(res).to.eql(fixtures.example_additional_attributes.js);
-        done();
-      });
-    });
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_additional_attributes.js)
+        done()
+      })
+    })
     test('js2xliff', (fn) => (done) => {
       fn(fixtures.example_additional_attributes.js, (err, res) => {
-        expect(err).not.to.be.ok();
-        expect(res).to.eql(fixtures.example_additional_attributes.xliff);
-        done();
-      });
-    });
-  });
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_additional_attributes.xliff)
+        done()
+      })
+    })
+  })
   describe('xliff 1.2', () => {
     test('xliff12ToJs', (fn) => (done) => {
       fn(fixtures.example_additional_attributes.xliff12, (err, res) => {
-        expect(err).not.to.be.ok();
-        expect(res).to.eql(fixtures.example_additional_attributes.js);
-        done();
-      });
-    });
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_additional_attributes.js)
+        done()
+      })
+    })
     test('jsToXliff12', (fn) => (done) => {
       fn(fixtures.example_additional_attributes.js, (err, res) => {
-        expect(err).not.to.be.ok();
-        expect(res).to.eql(fixtures.example_additional_attributes.xliff12);
-        done();
-      });
-    });
-  });
-});
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_additional_attributes.xliff12)
+        done()
+      })
+    })
+  })
+})
 
 describe('Google Actions Xliff', () => {
   test('xliff12ToJs', (fn) => (done) => {
-    fn(fixtures.example_google.xliff12, {xmlLangAttr: true}, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example_google.js);
-      done();
-    });
-  });
+    fn(fixtures.example_google.xliff12, { xmlLangAttr: true }, (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_google.js)
+      done()
+    })
+  })
 
   test('jsToXliff12', (fn) => (done) => {
-    fn(fixtures.example_google.js, {xmlLangAttr: true}, (err, res) => {
-      expect(err).not.to.be.ok();
-      expect(res).to.eql(fixtures.example_google.xliff12);
-      done();
-    });
-  });
-});
+    fn(fixtures.example_google.js, { xmlLangAttr: true }, (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_google.xliff12)
+      done()
+    })
+  })
+})

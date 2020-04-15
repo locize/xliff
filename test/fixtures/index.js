@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('fs')
+const path = require('path')
 
 module.exports = {
   example: {
@@ -11,7 +11,7 @@ module.exports = {
   },
   example_source_attr: {
     // The JS should be the same as example.js
-    xliff12: fs.readFileSync(path.join(__dirname, 'example_source_attr12.xliff')).toString().replace(/\n$/, ''),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_source_attr12.xliff')).toString().replace(/\n$/, '')
   },
   example_multi: {
     js: require('./example_multi.json'),
@@ -23,7 +23,7 @@ module.exports = {
   example_note: {
     js: require('./example_note.json'),
     xliff: fs.readFileSync(path.join(__dirname, 'example_note.xliff')).toString().replace(/\n$/, ''),
-    xliff12: fs.readFileSync(path.join(__dirname, 'example_note12.xliff')).toString().replace(/\n$/, ''),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_note12.xliff')).toString().replace(/\n$/, '')
   },
   example_additional_attributes: {
     js: require('./example_additional_attributes'),
@@ -37,6 +37,6 @@ module.exports = {
   },
   example_google: {
     js: require('./example_google_action'),
-    xliff12: fs.readFileSync(path.join(__dirname, 'example_google_action.xliff')).toString().replace(/\n$/, ''),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_google_action.xliff')).toString().replace(/\n$/, '')
   }
-};
+}

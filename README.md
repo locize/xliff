@@ -10,16 +10,22 @@ Alternatively, you can install using npm:
 npm install --save xliff
 ```
 
-You can then `require()` xliff as normal:
+You can then `import` or `require()` xliff as normal:
 
 ```js
-const xliff = require('xliff');
+import xliff from 'xliff'
+// or
+const xliff = require('xliff')
+
+xliff.xliff2js(xml, (err, res) => {})
 ```
 
-Or you can directly `require()` its functions:
+Or you can directly `import` or `require()` its functions:
 
 ```js
-const xliff2js = require('xliff/xliff2js');
+import xliff2js from 'xliff/xliff2js'
+// or
+const xliff2js = require('xliff/cjs/xliff2js')
 ```
 
 ## Usage
@@ -49,7 +55,7 @@ const xliff = `<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0
       </segment>
     </unit>
   </file>
-</xliff>`;
+</xliff>`
 
 const js = {
   "resources": {
@@ -70,35 +76,26 @@ const js = {
   },
   "sourceLanguage": "en-US",
   "targetLanguage": "de-CH"
-};
+}
 
-const xliff2js = require('xliff/xliff2js');
+import xliff2js from 'xliff/xliff2js'
 xliff2js(xliff, (err, res) => {
   // res is like js
-});
+})
 // or without callback
-const res = xliff2js(xliff);
+const res = await xliff2js(xliff)
 // res is like js
 
-const js2xliff = require('xliff/js2xliff');
+import js2xliff from 'xliff/js2xliff'
 js2xliff(js, (err, res) => {
   // res is like xliff
-});
+})
 // or without callback
-const res = js2xliff(js);
+const res = await js2xliff(js)
 // res is like xliff
 
-const targetOfjs = require('xliff/targetOfjs');
-targetOfjs(js, (err, res) => {
-  // res is:
-  // {
-  //   "key1": "Hallo",
-  //   "key2": "Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten",
-  //   "key.nested": "XLIFF Daten Manager"
-  // }
-});
-// or without callback
-const res = targetOfjs(js);
+import targetOfjs from 'xliff/targetOfjs'
+const res = targetOfjs(js)
 // res is:
 // {
 //   "key1": "Hallo",
@@ -106,17 +103,8 @@ const res = targetOfjs(js);
 //   "key.nested": "XLIFF Daten Manager"
 // }
 
-const sourceOfjs = require('xliff/sourceOfjs');
-sourceOfjs(js, (err, res) => {
-  // res is:
-  // {
-  //   "key1": "Hello",
-  //   "key2": "An application to manipulate and process XLIFF documents",
-  //   "key.nested": "XLIFF Data Manager"
-  // }
-});
-// or without callback
-const res = sourceOfjs(js);
+import sourceOfjs from 'xliff/sourceOfjs'
+const res = sourceOfjs(js)
 // res is:
 // {
 //   "key1": "Hello",
@@ -124,7 +112,7 @@ const res = sourceOfjs(js);
 //   "key.nested": "XLIFF Data Manager"
 // }
 
-const createjs = require('xliff/createjs');
+import createjs from 'xliff/createjs'
 createjs(
   js.sourceLanguage,
   js.targetLanguage,
@@ -141,12 +129,12 @@ createjs(
   'namespace1',
   (err, res) => {
   // res is like js
-});
+})
 // or without callback
-//const res = createjs(...
+//const res = await createjs(...
 
 
-const createxliff = require('xliff/createxliff');
+import createxliff from 'xliff/createxliff'
 createxliff(
   js.sourceLanguage,
   js.targetLanguage,
@@ -163,9 +151,9 @@ createxliff(
   'namespace1',
   (err, res) => {
   // res is like xliff
-});
+})
 // or without callback
-//const res = createxliff(...
+//const res = await createxliff(...
 ```
 
 ##### XLIFF 1.2
@@ -226,21 +214,21 @@ createxliff(
     "targetLanguage": "de-CH"
   }
 
-  const xliff12ToJs = require('xliff/xliff12ToJs');
+  import xliff12ToJs from 'xliff/xliff12ToJs'
   xliff12ToJs(xliff, (err, res) => {
     // res is like js
-  });
+  })
   // or without callback
-  //const res = xliff12ToJs(...
+  //const res = await xliff12ToJs(...
 
-  const jsToXliff12 = require('xliff/jsToXliff12');
+  import jsToXliff12 from 'xliff/jsToXliff12'
   jsToXliff12(js, (err, res) => {
     // res is like xliff
-  });
+  })
   // or without callback
-  //const res = jsToXliff12(...
+  //const res = await jsToXliff12(...
 
-  const createxliff12 = require('xliff/createxliff12');
+  import createxliff12 from 'xliff/createxliff12'
   createxliff12(
     js.sourceLanguage,
     js.targetLanguage,
@@ -257,9 +245,9 @@ createxliff(
     'namespace1',
     (err, res) => {
     // res is like xliff
-  });
+  })
   // or without callback
-  //const res = createxliff12(...
+  //const res = await createxliff12(...
 
 ```
 
@@ -504,10 +492,10 @@ You can create this structure using the `makeInlineElement()` function with the 
 ```
 // import or require makeInlineElements and ElementTypes
 // signature: makeInlineElement(type, id, attributes, contents)
-var attributesObj = { ctype: 'x-python-brace-param' };
-var inlineElementObj = makeInlineElement(ElementTypes.GenericSpan, 'name', attributesObj, '{name}');
+var attributesObj = { ctype: 'x-python-brace-param' }
+var inlineElementObj = makeInlineElement(ElementTypes.GenericSpan, 'name', attributesObj, '{name}')
 
-var source = [ 'Hello ', inlineElementObj ];
+var source = [ 'Hello ', inlineElementObj ]
 ```
 
 ### Additional attributes example

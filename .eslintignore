@@ -1,0 +1,7 @@
+/build
+/node_modules
+/cjs
+/dist
+/xliff.js
+/xliff.min.js
+/example
