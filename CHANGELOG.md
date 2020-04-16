@@ -1,3 +1,7 @@
+### 5.0.2
+
+- fix xliff2js option default
+
 ### 5.0.1
 
 - ofjs backwards compatability
