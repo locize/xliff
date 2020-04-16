@@ -1,3 +1,7 @@
+### 5.0.1
+
+- ofjs backwards compatability
+
 ### 5.0.0
 
 - complete refactoring to make this module universal

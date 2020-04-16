@@ -604,7 +604,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = ofjs;
 
-function ofjs(js, what) {
+function ofjs(js, what, cb) {
   var res = {};
   var nsKeys = Object.keys(js.resources || {});
 
@@ -614,6 +614,7 @@ function ofjs(js, what) {
     keys.forEach(function (key) {
       res[key] = ns[key][what];
     });
+    if (cb) return cb(null, res);
     return res;
   }
 
@@ -625,6 +626,7 @@ function ofjs(js, what) {
       res[nsKey][key] = ns[key][what];
     });
   });
+  if (cb) return cb(null, res);
   return res;
 }
 
@@ -641,8 +643,8 @@ var _ofjs = _interopRequireDefault(require("./ofjs.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function sourceOfjs(js) {
-  return (0, _ofjs["default"])(js, 'source');
+function sourceOfjs(js, cb) {
+  return (0, _ofjs["default"])(js, 'source', cb);
 }
 
 module.exports = exports.default;
@@ -658,8 +660,8 @@ var _ofjs = _interopRequireDefault(require("./ofjs.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function targetOfjs(js) {
-  return (0, _ofjs["default"])(js, 'target');
+function targetOfjs(js, cb) {
+  return (0, _ofjs["default"])(js, 'target', cb);
 }
 
 module.exports = exports.default;
