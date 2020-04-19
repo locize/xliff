@@ -75,9 +75,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = createxliff;
 
-var _createjs = require("./createjs.js");
+var _createjs = _interopRequireDefault(require("./createjs.js"));
 
-var _js2xliff = require("./js2xliff.js");
+var _js2xliff = _interopRequireDefault(require("./js2xliff.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var createjs = _createjs["default"].createjsClb;
+var js2xliff = _js2xliff["default"].js2xliffClb;
 
 var createxliffClb = function createxliffClb(srcLng, trgLng, srcKeys, trgKeys, ns, cb) {
   if (!ns || typeof ns !== 'string') {
@@ -86,12 +91,12 @@ var createxliffClb = function createxliffClb(srcLng, trgLng, srcKeys, trgKeys, n
   }
 
   if (!cb) {
-    return (0, _js2xliff.js2xliffClb)((0, _createjs.createjsClb)(srcLng, trgLng, srcKeys, trgKeys, ns));
+    return js2xliff(createjs(srcLng, trgLng, srcKeys, trgKeys, ns));
   }
 
-  (0, _createjs.createjsClb)(srcLng, trgLng, srcKeys, trgKeys, ns, function (err, res) {
+  createjs(srcLng, trgLng, srcKeys, trgKeys, ns, function (err, res) {
     if (err) return cb(err);
-    (0, _js2xliff.js2xliffClb)(res, cb);
+    js2xliff(res, cb);
   });
 };
 
@@ -124,9 +129,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = createxliff12;
 
-var _createjs = require("./createjs.js");
+var _createjs = _interopRequireDefault(require("./createjs.js"));
 
-var _jsToXliff = require("./jsToXliff12.js");
+var _jsToXliff = _interopRequireDefault(require("./jsToXliff12.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var createjs = _createjs["default"].createjsClb;
+var jsToXliff12 = _jsToXliff["default"].jsToXliff12Clb;
 
 var createxliff12Clb = function createxliff12Clb(srcLng, trgLng, srcKeys, trgKeys, ns, cb) {
   if (!ns || typeof ns !== 'string') {
@@ -135,12 +145,12 @@ var createxliff12Clb = function createxliff12Clb(srcLng, trgLng, srcKeys, trgKey
   }
 
   if (!cb) {
-    return (0, _jsToXliff.jsToXliff12Clb)((0, _createjs.createjsClb)(srcLng, trgLng, srcKeys, trgKeys, ns));
+    return jsToXliff12(createjs(srcLng, trgLng, srcKeys, trgKeys, ns));
   }
 
-  (0, _createjs.createjsClb)(srcLng, trgLng, srcKeys, trgKeys, ns, function (err, res) {
+  createjs(srcLng, trgLng, srcKeys, trgKeys, ns, function (err, res) {
     if (err) return cb(err);
-    (0, _jsToXliff.jsToXliff12Clb)(res, cb);
+    jsToXliff12(res, cb);
   });
 };
 
@@ -712,9 +722,7 @@ var xliff12ToJsClb = function xliff12ToJsClb(str, options, cb) {
     options = {};
   }
 
-  if (options === undefined && cb === undefined) {
-    options = {};
-  }
+  options = options || {};
 
   if (typeof str !== 'string') {
     var err = new Error('The first parameter was not a string');
@@ -854,9 +862,7 @@ var xliffToJsClb = function xliffToJsClb(str, options, cb) {
     options = {};
   }
 
-  if (options === undefined && cb === undefined) {
-    options = {};
-  }
+  options = options || {};
 
   if (typeof str !== 'string') {
     var err = new Error('The first parameter was not a string');
