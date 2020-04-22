@@ -181,6 +181,60 @@ module.exports = exports.default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "xliff2js", {
+  enumerable: true,
+  get: function get() {
+    return _xliff2js["default"];
+  }
+});
+Object.defineProperty(exports, "xliff12ToJs", {
+  enumerable: true,
+  get: function get() {
+    return _xliff12ToJs["default"];
+  }
+});
+Object.defineProperty(exports, "js2xliff", {
+  enumerable: true,
+  get: function get() {
+    return _js2xliff["default"];
+  }
+});
+Object.defineProperty(exports, "jsToXliff12", {
+  enumerable: true,
+  get: function get() {
+    return _jsToXliff["default"];
+  }
+});
+Object.defineProperty(exports, "targetOfjs", {
+  enumerable: true,
+  get: function get() {
+    return _targetOfjs["default"];
+  }
+});
+Object.defineProperty(exports, "sourceOfjs", {
+  enumerable: true,
+  get: function get() {
+    return _sourceOfjs["default"];
+  }
+});
+Object.defineProperty(exports, "createjs", {
+  enumerable: true,
+  get: function get() {
+    return _createjs["default"];
+  }
+});
+Object.defineProperty(exports, "createxliff", {
+  enumerable: true,
+  get: function get() {
+    return _createxliff["default"];
+  }
+});
+Object.defineProperty(exports, "createxliff12", {
+  enumerable: true,
+  get: function get() {
+    return _createxliff2["default"];
+  }
+});
 exports["default"] = void 0;
 
 var _xliff2js = _interopRequireDefault(require("./xliff2js.js"));
@@ -215,7 +269,6 @@ var _default = {
   createxliff12: _createxliff2["default"]
 };
 exports["default"] = _default;
-module.exports = exports.default;
 },{"./createjs.js":1,"./createxliff.js":2,"./createxliff12.js":3,"./js2xliff.js":10,"./jsToXliff12.js":11,"./sourceOfjs.js":13,"./targetOfjs.js":14,"./xliff12ToJs.js":16,"./xliff2js.js":17}],5:[function(require,module,exports){
 "use strict";
 

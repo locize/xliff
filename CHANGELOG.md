@@ -1,3 +1,7 @@
+### 5.0.4
+
+- fix export for dynamic imports
+
 ### 5.0.3
 
 - fix createxliff imports
