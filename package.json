@@ -48,6 +48,39 @@
     "./xliff12ToJs": {
       "require": "./cjs/xliff12ToJs.js",
       "default": "./lib/xliff12ToJs.js"
+    },
+    "./cjs": {
+      "default": "./cjs/index.js"
+    },
+    "./cjs/createjs": {
+      "default": "./cjs/createjs.js"
+    },
+    "./cjs/createxliff": {
+      "default": "./cjs/createxliff.js"
+    },
+    "./cjs/createxliff12": {
+      "default": "./cjs/createxliff12.js"
+    },
+    "./cjs/js2xliff": {
+      "default": "./cjs/js2xliff.js"
+    },
+    "./cjs/jsToXliff12": {
+      "default": "./cjs/jsToXliff12.js"
+    },
+    "./cjs/ofjs": {
+      "default": "./cjs/ofjs.js"
+    },
+    "./cjs/sourceOfjs": {
+      "default": "./cjs/sourceOfjs.js"
+    },
+    "./cjs/targetOfjs": {
+      "default": "./cjs/targetOfjs.js"
+    },
+    "./cjs/xliff2js": {
+      "default": "./cjs/xliff2js.js"
+    },
+    "./cjs/xliff12ToJs": {
+      "default": "./cjs/xliff12ToJs.js"
     }
   },
   "module": "./lib/index.js",

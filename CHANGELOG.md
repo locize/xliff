@@ -1,3 +1,7 @@
+### 5.0.5
+
+- fix export for node v14 cjs
+
 ### 5.0.4
 
 - fix export for dynamic imports
