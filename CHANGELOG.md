@@ -1,3 +1,7 @@
+### 5.0.6
+
+- transpile also esm
+
 ### 5.0.5
 
 - fix export for node v14 cjs

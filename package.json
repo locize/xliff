@@ -8,47 +8,47 @@
     "./package.json": "./package.json",
     ".": {
       "require": "./cjs/index.js",
-      "default": "./lib/index.js"
+      "default": "./esm/index.js"
     },
     "./createjs": {
       "require": "./cjs/createjs.js",
-      "default": "./lib/createjs.js"
+      "default": "./esm/createjs.js"
     },
     "./createxliff": {
       "require": "./cjs/createxliff.js",
-      "default": "./lib/createxliff.js"
+      "default": "./esm/createxliff.js"
     },
     "./createxliff12": {
       "require": "./cjs/createxliff12.js",
-      "default": "./lib/createxliff12.js"
+      "default": "./esm/createxliff12.js"
     },
     "./js2xliff": {
       "require": "./cjs/js2xliff.js",
-      "default": "./lib/js2xliff.js"
+      "default": "./esm/js2xliff.js"
     },
     "./jsToXliff12": {
       "require": "./cjs/jsToXliff12.js",
-      "default": "./lib/jsToXliff12.js"
+      "default": "./esm/jsToXliff12.js"
     },
     "./ofjs": {
       "require": "./cjs/ofjs.js",
-      "default": "./lib/ofjs.js"
+      "default": "./esm/ofjs.js"
     },
     "./sourceOfjs": {
       "require": "./cjs/sourceOfjs.js",
-      "default": "./lib/sourceOfjs.js"
+      "default": "./esm/sourceOfjs.js"
     },
     "./targetOfjs": {
       "require": "./cjs/targetOfjs.js",
-      "default": "./lib/targetOfjs.js"
+      "default": "./esm/targetOfjs.js"
     },
     "./xliff2js": {
       "require": "./cjs/xliff2js.js",
-      "default": "./lib/xliff2js.js"
+      "default": "./esm/xliff2js.js"
     },
     "./xliff12ToJs": {
       "require": "./cjs/xliff12ToJs.js",
-      "default": "./lib/xliff12ToJs.js"
+      "default": "./esm/xliff12ToJs.js"
     },
     "./cjs": {
       "default": "./cjs/index.js"
@@ -82,32 +82,67 @@
     },
     "./cjs/xliff12ToJs": {
       "default": "./cjs/xliff12ToJs.js"
+    },
+    "./esm": {
+      "default": "./esm/index.js"
+    },
+    "./esm/createjs": {
+      "default": "./esm/createjs.js"
+    },
+    "./esm/createxliff": {
+      "default": "./esm/createxliff.js"
+    },
+    "./esm/createxliff12": {
+      "default": "./esm/createxliff12.js"
+    },
+    "./esm/js2xliff": {
+      "default": "./esm/js2xliff.js"
+    },
+    "./esm/jsToXliff12": {
+      "default": "./esm/jsToXliff12.js"
+    },
+    "./esm/ofjs": {
+      "default": "./esm/ofjs.js"
+    },
+    "./esm/sourceOfjs": {
+      "default": "./esm/sourceOfjs.js"
+    },
+    "./esm/targetOfjs": {
+      "default": "./esm/targetOfjs.js"
+    },
+    "./esm/xliff2js": {
+      "default": "./esm/xliff2js.js"
+    },
+    "./esm/xliff12ToJs": {
+      "default": "./esm/xliff12ToJs.js"
     }
   },
-  "module": "./lib/index.js",
+  "module": "./esm/index.js",
   "dependencies": {
     "xml-js": "1.6.11"
   },
   "devDependencies": {
-    "@babel/cli": "7.8.4",
-    "@babel/core": "7.9.0",
-    "@babel/preset-env": "7.9.5",
+    "@babel/cli": "7.10.4",
+    "@babel/core": "7.10.4",
+    "@babel/preset-env": "7.10.4",
     "babel-plugin-add-module-exports": "1.0.2",
     "browserify": "16.5.1",
-    "eslint": "6.8.0",
+    "eslint": "7.3.1",
     "eslint-config-standard": "14.1.1",
-    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-import": "2.22.0",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-require-path-exists": "1.1.9",
     "eslint-plugin-standard": "4.0.1",
     "expect.js": "0.3.1",
-    "mocha": "7.1.1",
-    "uglify-js": "3.9.1"
+    "mocha": "8.0.1",
+    "uglify-js": "3.10.0"
   },
   "scripts": {
     "lint": "eslint .",
-    "compile": "rm -rf cjs && mkdir cjs && babel lib -d cjs --presets=@babel/preset-env --plugins=add-module-exports && echo '{\"type\":\"commonjs\"}' > cjs/package.json",
+    "compile:esm": "rm -rf esm && mkdir esm && BABEL_ENV=esm babel lib -d esm",
+    "compile:cjs": "rm -rf cjs && mkdir cjs && BABEL_ENV=cjs babel lib -d cjs && echo '{\"type\":\"commonjs\"}' > cjs/package.json",
+    "compile": "npm run compile:esm && npm run compile:cjs",
     "browser": "browserify --standalone xliff cjs/index.js -o xliff.js && uglifyjs xliff.js --compress --mangle -o xliff.min.js",
     "build": "npm run compile && npm run browser",
     "test": "npm run lint && npm run build && mocha test -R spec",
