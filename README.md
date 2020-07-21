@@ -54,6 +54,14 @@ const xliff = `<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0
         <target>XLIFF Daten Manager</target>
       </segment>
     </unit>
+    <group id="group">
+      <unit id="groupUnit">
+        <segment>
+          <source>Group</source>
+          <target>Gruppe</target>
+        </segment>
+      </unit>
+    </group>
   </file>
 </xliff>`
 
@@ -71,6 +79,14 @@ const js = {
       "key.nested": {
         "source": "XLIFF Data Manager",
         "target": "XLIFF Daten Manager"
+      },
+      "group": {
+        "groupUnits":{
+          "groupUnit": {
+            "source": "Group",
+            "target": "Gruppe"
+          }
+        }
       }
     }
   },

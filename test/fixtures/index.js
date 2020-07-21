@@ -38,5 +38,10 @@ module.exports = {
   example_google: {
     js: require('./example_google_action'),
     xliff12: fs.readFileSync(path.join(__dirname, 'example_google_action.xliff')).toString().replace(/\n$/, '')
+  },
+  example_groups: {
+    js: require('./example_groups'),
+    xliff: fs.readFileSync(path.join(__dirname, 'example_groups.xliff')).toString().replace(/\n$/, ''),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_groups12.xliff')).toString().replace(/\n$/, '')
   }
 }
