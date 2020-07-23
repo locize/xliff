@@ -1,0 +1,26 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US" trgLang="de-CH">
+  <file id="namespace1">
+    <unit id="standalone">
+      <segment>
+        <source>Hello</source>
+        <target>Hallo</target>
+      </segment>
+    </unit>
+    <group id="group1">
+      <unit id="in-group">
+        <segment>
+          <source>An application to manipulate and process XLIFF documents</source>
+          <target>Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten</target>
+        </segment>
+      </unit>
+      <group id="nested-group1">
+        <unit id="in-nested-group">
+          <segment>
+            <source>XLIFF Data Manager</source>
+            <target>XLIFF Daten Manager</target>
+          </segment>
+        </unit>
+      </group>
+    </group>
+  </file>
+</xliff>

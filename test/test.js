@@ -281,3 +281,38 @@ describe('Google Actions Xliff', () => {
     })
   })
 })
+
+describe('groups', () => {
+  describe('xliff 2.0', () => {
+    test('xliff2js', (fn) => (done) => {
+      fn(fixtures.example_groups.xliff, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_groups.js)
+        done()
+      })
+    })
+    test('js2xliff', (fn) => (done) => {
+      fn(fixtures.example_groups.js, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_groups.xliff)
+        done()
+      })
+    })
+  })
+  describe('xliff 1.2', () => {
+    test('xliff12ToJs', (fn) => (done) => {
+      fn(fixtures.example_groups.xliff12, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_groups.js)
+        done()
+      })
+    })
+    test('jsToXliff12', (fn) => (done) => {
+      fn(fixtures.example_groups.js, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_groups.xliff12)
+        done()
+      })
+    })
+  })
+})

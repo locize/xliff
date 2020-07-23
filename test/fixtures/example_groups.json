@@ -1,0 +1,28 @@
+{
+  "resources": {
+    "namespace1": {
+      "standalone": {
+        "source": "Hello",
+        "target": "Hallo"
+      },
+      "group1": {
+        "groupUnits": {
+          "in-group": {
+            "source": "An application to manipulate and process XLIFF documents",
+            "target": "Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten"
+          },
+          "nested-group1": {
+            "groupUnits": {
+              "in-nested-group": {
+                "source": "XLIFF Data Manager",
+                "target": "XLIFF Daten Manager"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "de-CH"
+}

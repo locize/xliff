@@ -1,0 +1,22 @@
+<xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="namespace1" datatype="plaintext" source-language="en-US" target-language="de-CH">
+    <body>
+      <trans-unit id="standalone">
+        <source>Hello</source>
+        <target>Hallo</target>
+      </trans-unit>
+      <group id="group1">
+        <trans-unit id="in-group">
+          <source>An application to manipulate and process XLIFF documents</source>
+          <target>Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten</target>
+        </trans-unit>
+        <group id="nested-group1">
+          <trans-unit id="in-nested-group">
+            <source>XLIFF Data Manager</source>
+            <target>XLIFF Daten Manager</target>
+          </trans-unit>
+        </group>
+      </group>
+    </body>
+  </file>
+</xliff>
