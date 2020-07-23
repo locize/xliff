@@ -1,3 +1,7 @@
+### 5.1.0
+
+- Add support for nested `<group>` tags
+
 ### 5.0.6
 
 - transpile also esm
