@@ -1154,6 +1154,10 @@ function extractValue(valueElements, elementTypeInfo) {
     return inlineElementFactory(valueElement.name, valueElement.attributes.id, valueElement.attributes, extractValue(valueElement.elements, elementTypeInfo));
   }
 
+  if (valueElement.type === 'cdata') {
+    return valueElement.cdata;
+  }
+
   return '';
 }
 },{"../inline-elements/typeToTagMaps.js":9}],20:[function(require,module,exports){
