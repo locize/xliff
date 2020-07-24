@@ -1,0 +1,20 @@
+{
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": "Hello",
+        "target": "Hola"
+      },
+      "key2": {
+        "source": "validateAndSubmitCdata",
+        "target": "Validate & Submit"
+      },
+      "key3": {
+        "source": "validateAndSubmitNoCdata",
+        "target": "Validate & Submit"
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "es-ES"
+}

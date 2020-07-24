@@ -316,3 +316,22 @@ describe('groups', () => {
     })
   })
 })
+
+describe('CDATA Sections', () => {
+  test('xliff2js', (fn) => (done) => {
+    fn(fixtures.example_cdata.xliff, (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_cdata.js)
+      done()
+    })
+  })
+  test('xliff12ToJs', (fn) => (done) => {
+    fn(fixtures.example_cdata.xliff12, (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_cdata.js)
+      done()
+    })
+  })
+})
+
+

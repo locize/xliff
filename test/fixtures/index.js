@@ -43,5 +43,10 @@ module.exports = {
     js: require('./example_groups'),
     xliff: fs.readFileSync(path.join(__dirname, 'example_groups.xliff')).toString().replace(/\n$/, ''),
     xliff12: fs.readFileSync(path.join(__dirname, 'example_groups12.xliff')).toString().replace(/\n$/, '')
+  },
+  example_cdata: {
+    js: require('./example_cdata'),
+    xliff: fs.readFileSync(path.join(__dirname, 'example_cdata.xliff')).toString().replace(/\n$/, ''),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_cdata12.xliff')).toString().replace(/\n$/, '')
   }
 }

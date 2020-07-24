@@ -1,0 +1,23 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US" trgLang="es-ES">
+  <file id="namespace1">
+    <unit id="key1">
+      <segment>
+        <source>Hello</source>
+        <target>Hola</target>
+      </segment>
+    </unit>
+    <unit id="key2">
+      <segment>
+        <source>validateAndSubmitCdata</source>
+        <target><![CDATA[Validate & Submit]]></target>
+      </segment>
+    </unit>
+    <unit id="key3">
+      <segment>
+        <source>validateAndSubmitNoCdata</source>
+        <target>Validate &amp; Submit</target>
+      </segment>
+    </unit>
+
+  </file>
+</xliff>
