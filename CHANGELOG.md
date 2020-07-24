@@ -1,3 +1,7 @@
+### 5.2.0
+
+- Add support for cdata sections
+
 ### 5.1.0
 
 - Add support for nested `<group>` tags
