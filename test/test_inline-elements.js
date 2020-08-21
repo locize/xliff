@@ -245,3 +245,21 @@ describe('with i18next placeholders as native span elements (unstructured)', () 
     })
   })
 })
+
+describe('with marker segment', () => {
+  test('jsToXliff12', (fn) => (done) => {
+    fn(fixtures.example_marker.js, (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_marker.xliff12)
+      done()
+    })
+  })
+
+  test('xliff12ToJs', (fn) => (done) => {
+    fn(fixtures.example_marker.xliff12, (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_marker.js)
+      done()
+    })
+  })
+})

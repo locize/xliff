@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": ["Hello ", { "Marker": {"mtype": "protected" , "contents": "ABrandName" } }],
+        "target": ["Hallo ", { "Marker": {"mtype": "protected" , "contents": "ABrandName" } }]
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "de-CH"
+}
