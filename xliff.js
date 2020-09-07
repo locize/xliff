@@ -283,7 +283,8 @@ var _default = {
   GenericSpanEnd: 'GenericSpanEnd',
   Span: 'Span',
   SpanStart: 'SpanStart',
-  SpanEnd: 'SpanEnd'
+  SpanEnd: 'SpanEnd',
+  Marker: 'Marker'
 };
 exports.default = _default;
 module.exports = exports.default;
@@ -306,7 +307,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var _default = {
-  elementTypeToTagMap: (_elementTypeToTagMap = {}, _defineProperty(_elementTypeToTagMap, _ElementTypes.default.Standalone, 'x'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.GenericSpan, 'g'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.GenericSpanStart, 'bx'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.GenericSpanEnd, 'ex'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.Span, 'ph'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.SpanStart, 'bpt'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.SpanEnd, 'ept'), _elementTypeToTagMap),
+  elementTypeToTagMap: (_elementTypeToTagMap = {}, _defineProperty(_elementTypeToTagMap, _ElementTypes.default.Standalone, 'x'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.GenericSpan, 'g'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.GenericSpanStart, 'bx'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.GenericSpanEnd, 'ex'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.Span, 'ph'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.SpanStart, 'bpt'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.SpanEnd, 'ept'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.Marker, 'mrk'), _elementTypeToTagMap),
   tagToElementTypeMap: {
     x: _ElementTypes.default.Standalone,
     g: _ElementTypes.default.GenericSpan,
@@ -314,22 +315,25 @@ var _default = {
     ex: _ElementTypes.default.GenericSpanEnd,
     ph: _ElementTypes.default.Span,
     bpt: _ElementTypes.default.SpanStart,
-    ept: _ElementTypes.default.SpanEnd
+    ept: _ElementTypes.default.SpanEnd,
+    mrk: _ElementTypes.default.Marker
   },
-  factories: (_factories = {}, _defineProperty(_factories, _ElementTypes.default.Standalone, function (type, id, attributes) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.Standalone, id, attributes);
-  }), _defineProperty(_factories, _ElementTypes.default.GenericSpan, function (type, id, attributes, contents) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpan, id, attributes, contents);
-  }), _defineProperty(_factories, _ElementTypes.default.GenericSpanStart, function (type, id, attributes) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpanStart, id, attributes);
-  }), _defineProperty(_factories, _ElementTypes.default.GenericSpanEnd, function (type, id, attributes) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpanEnd, id, attributes);
-  }), _defineProperty(_factories, _ElementTypes.default.Span, function (type, id, attributes, contents) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.Span, id, attributes, contents);
-  }), _defineProperty(_factories, _ElementTypes.default.SpanStart, function (type, id, attributes, contents) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.SpanStart, id, attributes, contents);
-  }), _defineProperty(_factories, _ElementTypes.default.SpanEnd, function (type, id, attributes, contents) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.SpanEnd, id, attributes, contents);
+  factories: (_factories = {}, _defineProperty(_factories, _ElementTypes.default.Standalone, function (attributes) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.Standalone, attributes);
+  }), _defineProperty(_factories, _ElementTypes.default.GenericSpan, function (attributes, contents) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpan, attributes, contents);
+  }), _defineProperty(_factories, _ElementTypes.default.GenericSpanStart, function (attributes) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpanStart, attributes);
+  }), _defineProperty(_factories, _ElementTypes.default.GenericSpanEnd, function (attributes) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpanEnd, attributes);
+  }), _defineProperty(_factories, _ElementTypes.default.Span, function (attributes, contents) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.Span, attributes, contents);
+  }), _defineProperty(_factories, _ElementTypes.default.SpanStart, function (attributes, contents) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.SpanStart, attributes, contents);
+  }), _defineProperty(_factories, _ElementTypes.default.SpanEnd, function (attributes, contents) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.SpanEnd, attributes, contents);
+  }), _defineProperty(_factories, _ElementTypes.default.Marker, function (attributes, contents) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.Marker, attributes, contents);
   }), _factories)
 };
 exports.default = _default;
@@ -360,20 +364,20 @@ var _default = {
     sc: _ElementTypes.default.SpanStart,
     ec: _ElementTypes.default.SpanEnd
   },
-  factories: (_factories = {}, _defineProperty(_factories, _ElementTypes.default.Standalone, function (type, id, attributes) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.Standalone, id, attributes);
-  }), _defineProperty(_factories, _ElementTypes.default.GenericSpan, function (type, id, attributes, contents) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpan, id, attributes, contents);
-  }), _defineProperty(_factories, _ElementTypes.default.GenericSpanStart, function (type, id, attributes) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpanStart, id, attributes);
-  }), _defineProperty(_factories, _ElementTypes.default.GenericSpanEnd, function (type, id, attributes) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpanEnd, id, attributes);
-  }), _defineProperty(_factories, _ElementTypes.default.Span, function (type, id, attributes, contents) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.Span, id, attributes, contents);
-  }), _defineProperty(_factories, _ElementTypes.default.SpanStart, function (type, id, attributes, contents) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.SpanStart, id, attributes, contents);
-  }), _defineProperty(_factories, _ElementTypes.default.SpanEnd, function (type, id, attributes, contents) {
-    return (0, _makeInlineElement.default)(_ElementTypes.default.SpanEnd, id, attributes, contents);
+  factories: (_factories = {}, _defineProperty(_factories, _ElementTypes.default.Standalone, function (attributes) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.Standalone, attributes);
+  }), _defineProperty(_factories, _ElementTypes.default.GenericSpan, function (attributes, contents) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpan, attributes, contents);
+  }), _defineProperty(_factories, _ElementTypes.default.GenericSpanStart, function (attributes) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpanStart, attributes);
+  }), _defineProperty(_factories, _ElementTypes.default.GenericSpanEnd, function (attributes) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpanEnd, attributes);
+  }), _defineProperty(_factories, _ElementTypes.default.Span, function (attributes, contents) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.Span, attributes, contents);
+  }), _defineProperty(_factories, _ElementTypes.default.SpanStart, function (attributes, contents) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.SpanStart, attributes, contents);
+  }), _defineProperty(_factories, _ElementTypes.default.SpanEnd, function (attributes, contents) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.SpanEnd, attributes, contents);
   }), _factories)
 };
 exports.default = _default;
@@ -388,13 +392,11 @@ exports.default = makeInlineElement;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function makeInlineElement(type, id, attributes, contents) {
+function makeInlineElement(type, attributes, contents) {
   var contentsObj = contents !== undefined ? {
     contents: contents
   } : {};
-  var dataObj = Object.assign({}, attributes, {
-    id: id
-  }, contentsObj);
+  var dataObj = Object.assign({}, attributes, contentsObj);
   return _defineProperty({}, type, dataObj);
 }
 
@@ -1151,7 +1153,7 @@ function extractValue(valueElements, elementTypeInfo) {
 
   if (valueElement.type === 'element' && elementType !== undefined) {
     var inlineElementFactory = elementTypeInfo.factories[elementType];
-    return inlineElementFactory(valueElement.name, valueElement.attributes.id, valueElement.attributes, extractValue(valueElement.elements, elementTypeInfo));
+    return inlineElementFactory(valueElement.attributes, extractValue(valueElement.elements, elementTypeInfo));
   }
 
   if (valueElement.type === 'cdata') {

@@ -44,5 +44,9 @@ module.exports = {
   example_i18next_unstructured_nativeSpan: {
     js: require('./example_i18next_unstructured_native-span.json'),
     xliff12: fs.readFileSync(path.join(__dirname, 'example_i18next_unstructured_native-span12.xliff')).toString().replace(/\n$/, '')
+  },
+  example_marker: {
+    js: require('./example_marker.json'),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_marker12.xliff')).toString().replace(/\n$/, '')
   }
 }
