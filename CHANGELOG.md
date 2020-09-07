@@ -1,3 +1,7 @@
+### 5.3.0
+
+- Add support for mrk
+
 ### 5.2.0
 
 - Add support for cdata sections
