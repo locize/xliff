@@ -1,3 +1,7 @@
+### 5.3.1
+
+- Fix ignoring {indent: false} option on xml generation
+
 ### 5.3.0
 
 - Add support for mrk
