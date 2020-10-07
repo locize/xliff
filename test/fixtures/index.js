@@ -5,7 +5,9 @@ module.exports = {
   example: {
     js: require('./example.json'),
     xliff: fs.readFileSync(path.join(__dirname, 'example.xliff')).toString().replace(/\n$/, ''),
+    xliff_compact: fs.readFileSync(path.join(__dirname, 'example_compact.xliff')).toString().replace(/\n$/, ''),
     xliff12: fs.readFileSync(path.join(__dirname, 'example12.xliff')).toString().replace(/\n$/, ''),
+    xliff12_compact: fs.readFileSync(path.join(__dirname, 'example_compact12.xliff')).toString().replace(/\n$/, ''),
     js_source: require('./example_source.json'),
     js_target: require('./example_target.json')
   },

@@ -1,8 +1,8 @@
 const expect = require('expect.js')
 const fixtures = require('./fixtures')
 
-function test (what, t) {
-  describe(what, () => {
+function test (what, t, comment = "") {
+  describe(what + " " + comment, () => {
     it('index', t(require('../')[what]))
     it('direct', t(require('../cjs/' + what)))
   })
@@ -51,6 +51,14 @@ describe('single', () => {
     })
   })
 
+  test('js2xliff', (fn) => (done) => {
+    fn(fixtures.example.js, {indent: false}, (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example.xliff_compact)
+      done()
+    })
+  }, "with {indent: false}")
+
   test('jsToXliff12', (fn) => (done) => {
     fn(fixtures.example.js, (err, res) => {
       expect(err).not.to.be.ok()
@@ -58,6 +66,14 @@ describe('single', () => {
       done()
     })
   })
+
+  test('jsToXliff12', (fn) => (done) => {
+    fn(fixtures.example.js, {indent: false}, (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example.xliff12_compact)
+      done()
+    })
+  }, "with {indent: false}")
 
   test('targetOfjs', (fn) => () => {
     const res = fn(fixtures.example.js)
