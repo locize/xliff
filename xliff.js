@@ -447,7 +447,7 @@ var js2xliffClb = function js2xliffClb(obj, opt, cb) {
     indent: '  '
   };
   var options = {
-    spaces: opt.indent || '  '
+    spaces: 'indent' in opt ? opt.indent : '  '
   };
   var rootAttributes = {
     xmlns: 'urn:oasis:names:tc:xliff:document:2.0',
@@ -560,7 +560,7 @@ var jsToXliff12Clb = function jsToXliff12Clb(obj, opt, cb) {
     indent: '  '
   };
   var options = {
-    spaces: opt.indent || '  ',
+    spaces: 'indent' in opt ? opt.indent : '  ',
     xmlLangAttr: !!opt.xmlLangAttr
   };
   var rootAttributes = {
