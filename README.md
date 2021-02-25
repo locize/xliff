@@ -102,6 +102,9 @@ xliff2js(xliff, (err, res) => {
 const res = await xliff2js(xliff)
 // res is like js
 
+// there's also an option to disable the automatic escape logic
+// xliff2js(xliff, { escape: false }, (err, res) => {})
+
 import js2xliff from 'xliff/js2xliff'
 js2xliff(js, (err, res) => {
   // res is like xliff
@@ -237,12 +240,18 @@ createxliff(
   // or without callback
   //const res = await xliff12ToJs(...
 
+  // there's also an option to disable the automatic escape logic
+  // xliff12ToJs(xliff, { escape: false }, (err, res) => {})
+
   import jsToXliff12 from 'xliff/jsToXliff12'
   jsToXliff12(js, (err, res) => {
     // res is like xliff
   })
   // or without callback
   //const res = await jsToXliff12(...
+
+  // there's also an option to try to detect if the content is ICU based (useful for angular format)
+  // jsToXliff12(js, { detectICU: true }, (err, res) => {})
 
   import createxliff12 from 'xliff/createxliff12'
   createxliff12(

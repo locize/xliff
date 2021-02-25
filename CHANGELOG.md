@@ -1,3 +1,7 @@
+### 5.4.0
+
+- introduce detectICU and escape function
+
 ### 5.3.1
 
 - Fix ignoring {indent: false} option on xml generation

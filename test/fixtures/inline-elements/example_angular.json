@@ -1,0 +1,21 @@
+{
+  "sourceLanguage": "en-US",
+  "resources": {
+    "ng2.template": {
+      "27515543696334242": {
+        "source": "Welcome (\n<x id=\"INTERPOLATION\" equiv-text=\"{{ count }}\"/>)&gt; \n<x id=\"ICU\" equiv-text=\"{count, plural, =0 {noone} =1 {number one} other\n    {anyone}}\"/>",
+        "additionalAttributes": {
+          "datatype": "html"
+        },
+        "successor": "224564336508490126"
+      },
+      "224564336508490126": {
+        "source": "{VAR_PLURAL, plural, =0 {noone} =1 {number one} other {anyone}}",
+        "additionalAttributes": {
+          "datatype": "html"
+        },
+        "predecessor": "27515543696334242"
+      }
+    }
+  }
+}

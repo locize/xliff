@@ -48,5 +48,11 @@ module.exports = {
   example_marker: {
     js: require('./example_marker.json'),
     xliff12: fs.readFileSync(path.join(__dirname, 'example_marker12.xliff')).toString().replace(/\n$/, '')
+  },
+  // angular
+  example_angular: {
+    js: require('./example_angular.json'),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_angular12.xliff')).toString().replace(/\n$/, ''),
+    xliff12escaped: fs.readFileSync(path.join(__dirname, 'example_angular_escaped12.xliff')).toString().replace(/\n$/, '')
   }
 }
