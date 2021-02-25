@@ -3,9 +3,10 @@
     <body>
       <trans-unit id="27515543696334242" datatype="html">
         <source>Welcome (
-&lt;x id="INTERPOLATION" equiv-text="{{ count }}"/&gt;)&amp;gt; 
-&lt;x id="ICU" equiv-text="{count, plural, =0 {noone} =1 {number one} other
-    {anyone}}"/&gt;</source>
+          <x id="INTERPOLATION" equiv-text="{{ count }}"/>)&gt; 
+          <x id="ICU" equiv-text="{count, plural, =0 {noone} =1 {number one} other
+    {anyone}}"/>
+        </source>
       </trans-unit>
       <trans-unit id="224564336508490126" datatype="html">
         <source>{VAR_PLURAL, plural, =0 {noone} =1 {number one} other {anyone}}</source>

@@ -265,27 +265,35 @@ describe('with marker segment', () => {
 })
 
 describe('with angular', () => {
-  test('xliff12ToJs', (fn) => (done) => {
-    fn(fixtures.example_angular.xliff12, { detectICU: true }, (err, res) => {
-      expect(err).not.to.be.ok()
-      expect(res).to.eql(fixtures.example_angular.js)
-      done()
+  describe('normal', () => {
+    test('xliff12ToJs', (fn) => (done) => {
+      fn(fixtures.example_angular.xliff12, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_angular.js)
+        done()
+      })
     })
-  })
 
-  test('jsToXliff12', (fn) => (done) => {
-    fn(fixtures.example_angular.js, { escape: false }, (err, res) => {
-      expect(err).not.to.be.ok()
-      expect(res).to.eql(fixtures.example_angular.xliff12)
-      done()
-    })
-  })
-
-  describe('normally escaped', () => {
     test('jsToXliff12', (fn) => (done) => {
       fn(fixtures.example_angular.js, (err, res) => {
         expect(err).not.to.be.ok()
-        expect(res).to.eql(fixtures.example_angular.xliff12escaped)
+        expect(res).to.eql(fixtures.example_angular.xliff12ident)
+        done()
+      })
+    })
+
+    test('xliff2js', (fn) => (done) => {
+      fn(fixtures.example_angular.xliff, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_angular.js)
+        done()
+      })
+    })
+
+    test('js2xliff', (fn) => (done) => {
+      fn(fixtures.example_angular.js, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_angular.xliff)
         done()
       })
     })

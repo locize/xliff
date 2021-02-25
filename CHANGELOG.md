@@ -1,3 +1,7 @@
+### 5.5.0
+
+- remove detectICU and escape function again
+
 ### 5.4.0
 
 - introduce detectICU and escape function

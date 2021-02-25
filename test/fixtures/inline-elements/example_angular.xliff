@@ -1,0 +1,18 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US">
+  <file id="ng2.template">
+    <unit id="27515543696334242" datatype="html">
+      <segment>
+        <source>Welcome (
+          <ph id="INTERPOLATION" equiv-text="{{ count }}"/>)&gt; 
+          <ph id="ICU" equiv-text="{count, plural, =0 {noone} =1 {number one} other
+    {anyone}}"/>
+        </source>
+      </segment>
+    </unit>
+    <unit id="224564336508490126" datatype="html">
+      <segment>
+        <source>{VAR_PLURAL, plural, =0 {noone} =1 {number one} other {anyone}}</source>
+      </segment>
+    </unit>
+  </file>
+</xliff>

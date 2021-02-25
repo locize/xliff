@@ -52,7 +52,8 @@ module.exports = {
   // angular
   example_angular: {
     js: require('./example_angular.json'),
+    xliff: fs.readFileSync(path.join(__dirname, 'example_angular.xliff')).toString().replace(/\n$/, ''),
     xliff12: fs.readFileSync(path.join(__dirname, 'example_angular12.xliff')).toString().replace(/\n$/, ''),
-    xliff12escaped: fs.readFileSync(path.join(__dirname, 'example_angular_escaped12.xliff')).toString().replace(/\n$/, '')
+    xliff12ident: fs.readFileSync(path.join(__dirname, 'example_angular12_ident.xliff')).toString().replace(/\n$/, '')
   }
 }
