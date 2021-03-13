@@ -954,6 +954,9 @@ var xliffToJsClb = function xliffToJsClb(str, options, cb) {
     result.sourceLanguage = srcLang;
     result.targetLanguage = trgLang;
     if (!result.targetLanguage) delete result.targetLanguage;
+    xliffRoot.elements = xliffRoot.elements.filter(function (child) {
+      return child.type !== 'comment';
+    });
     result.resources = xliffRoot.elements.reduce(function (resources, file) {
       var namespace = options.namespace || file.attributes.id;
       var initValues = {
