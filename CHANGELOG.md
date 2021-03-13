@@ -1,3 +1,7 @@
+### 5.5.1
+
+- ignore comments in xliff2js, like in xliff12ToJs
+
 ### 5.5.0
 
 - remove detectICU and escape function again

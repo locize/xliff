@@ -962,6 +962,9 @@ var xliffToJsClb = function xliffToJsClb(str, options, cb) {
       };
       if (!result.targetLanguage) delete initValues.target;
       file.elements = file.elements || [];
+      file.elements = file.elements.filter(function (child) {
+        return child.type !== 'comment';
+      });
       resources[namespace] = createUnits(file, initValues);
       return resources;
     }, {});
