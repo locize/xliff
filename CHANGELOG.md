@@ -1,3 +1,7 @@
+### 5.5.2
+
+- ignore other comments in xliff2js
+
 ### 5.5.1
 
 - ignore comments in xliff2js, like in xliff12ToJs
