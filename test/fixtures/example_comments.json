@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "file/path/wooo": {
+      "foo": {
+        "source": "",
+        "target": "woosh"
+      }
+    }
+  },
+  "sourceLanguage": "en-us",
+  "targetLanguage": "en-us"
+}

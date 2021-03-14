@@ -350,4 +350,12 @@ describe('CDATA Sections', () => {
   })
 })
 
-
+describe('Comments', () => {
+  test('xliff2js', (fn) => (done) => {
+    fn(fixtures.example_comments.xliff, (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_comments.js)
+      done()
+    })
+  })
+})

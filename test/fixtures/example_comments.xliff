@@ -1,0 +1,9 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-us" trgLang="en-us">
+  <file id="file/path/wooo">
+    <!-- comment a 
+    -->
+    <unit id="foo"><segment><target>woosh</target></segment></unit>
+  </file>
+      <!-- comment a 
+    -->
+</xliff>
