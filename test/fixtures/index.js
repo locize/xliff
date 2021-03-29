@@ -54,5 +54,9 @@ module.exports = {
   example_comments: {
     js: require('./example_comments'),
     xliff: fs.readFileSync(path.join(__dirname, 'example_comments.xliff')).toString().replace(/\n$/, '')
+  },
+  example_ignorable: {
+    js: require('./example_ignorable'),
+    xliff: fs.readFileSync(path.join(__dirname, 'example_ignorable.xliff')).toString().replace(/\n$/, '')
   }
 }
