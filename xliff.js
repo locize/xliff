@@ -1016,6 +1016,7 @@ function createUnits(parent, initValues) {
 
 function createUnit(unit, initValues) {
   return unit.elements.reduce(function (unit, segment) {
+    if (segment.name !== 'segment') return unit;
     segment.elements.forEach(function (element) {
       switch (element.name) {
         case 'source':

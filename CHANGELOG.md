@@ -1,3 +1,7 @@
+### 5.5.3
+
+- skip ignorable non-segments
+
 ### 5.5.2
 
 - ignore other comments in xliff2js
