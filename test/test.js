@@ -359,3 +359,13 @@ describe('Comments', () => {
     })
   })
 })
+
+describe('Ignorable non-segments', ()=>{
+  test('xliff2js', (fn) => (done) => {
+    fn(fixtures.example_ignorable.xliff, (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_ignorable.js)
+      done()
+    })
+  })
+})

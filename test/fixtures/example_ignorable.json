@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": "Source",
+        "target": "Target"
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "ru-RU"
+}
