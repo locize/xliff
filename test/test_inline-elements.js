@@ -41,6 +41,22 @@ describe('Inline elements', () => {
         done()
       })
     })
+
+    test('js2xliff', (fn) => (done) => {
+      fn(fixtures.example_standalone_only.js, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_standalone_only.xliff)
+        done()
+      })
+    })
+
+    test('jsToXliff12', (fn) => (done) => {
+      fn(fixtures.example_standalone_only.js, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_standalone_only.xliff12)
+        done()
+      })
+    })
   })
 
   describe('with generic span elements (1.2: `<g></g>`; 2.x: `<pc></pc>`)', () => {

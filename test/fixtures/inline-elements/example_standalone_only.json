@@ -1,0 +1,28 @@
+{
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": {
+          "Standalone": {
+            "id": "INTERPOLATION",
+            "equiv-text": "Step: number;"
+          }
+        },
+        "additionalAttributes": {
+          "datatype": "html"
+        },
+        "target": {
+          "Standalone": {
+            "id": "INTERPOLATION",
+            "equiv-text": "Step: number;"
+          }
+        },
+        "additionalAttributes": {
+          "datatype": "html"
+        }
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "de-CH"
+}

@@ -7,6 +7,11 @@ module.exports = {
     xliff: fs.readFileSync(path.join(__dirname, 'example_standalone.xliff')).toString().replace(/\n$/, ''),
     xliff12: fs.readFileSync(path.join(__dirname, 'example_standalone12.xliff')).toString().replace(/\n$/, '')
   },
+  example_standalone_only: {
+    js: require('./example_standalone_only.json'),
+    xliff: fs.readFileSync(path.join(__dirname, 'example_standalone_only.xliff')).toString().replace(/\n$/, ''),
+    xliff12: fs.readFileSync(path.join(__dirname, 'example_standalone_only12.xliff')).toString().replace(/\n$/, '')
+  },
   example_genericSpan: {
     js: require('./example_generic-span.json'),
     xliff: fs.readFileSync(path.join(__dirname, 'example_generic-span.xliff')).toString().replace(/\n$/, ''),
