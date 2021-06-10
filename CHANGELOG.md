@@ -1,3 +1,7 @@
+### 5.6.0
+
+- try to handle `<x id="INTERPOLATION"`
+
 ### 5.5.3
 
 - skip ignorable non-segments
