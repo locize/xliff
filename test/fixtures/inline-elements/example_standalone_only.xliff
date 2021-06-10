@@ -1,0 +1,14 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US" trgLang="de-CH">
+  <file id="namespace1">
+    <unit id="key1" datatype="html">
+      <segment>
+        <source>
+          <ph id="INTERPOLATION" equiv-text="Step: number;"/>
+        </source>
+        <target>
+          <ph id="INTERPOLATION" equiv-text="Step: number;"/>
+        </target>
+      </segment>
+    </unit>
+  </file>
+</xliff>
