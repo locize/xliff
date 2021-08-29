@@ -1,3 +1,7 @@
+### 5.6.1
+
+- fix notes handling for xliff v2
+
 ### 5.6.0
 
 - try to handle `<x id="INTERPOLATION"`

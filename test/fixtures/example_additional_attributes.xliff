@@ -10,8 +10,10 @@
       <segment>
         <source>An application to manipulate and process XLIFF documents</source>
         <target>Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten</target>
-        <note>Description note</note>
       </segment>
+      <notes>
+        <note>Description note</note>
+      </notes>
     </unit>
     <unit id="key.nested">
       <segment>
@@ -25,8 +27,10 @@
       <segment>
         <source>v</source>
         <target>v2</target>
-        <note>n</note>
       </segment>
+      <notes>
+        <note>n</note>
+      </notes>
     </unit>
   </file>
 </xliff>

@@ -495,15 +495,16 @@ function createUnitTag(id, unit) {
   var segment = (0, _objectToXml.makeElement)('segment', null, true);
   segment.elements.push((0, _objectToXml.makeElement)('source', null, (0, _objectToXml.makeValue)(unit.source, _ElementTypes.default)));
   if (unit.target !== undefined) segment.elements.push((0, _objectToXml.makeElement)('target', null, (0, _objectToXml.makeValue)(unit.target, _ElementTypes.default)));
+  var subEle = [segment];
 
   if ('note' in unit) {
-    segment.elements.push((0, _objectToXml.makeElement)('note', null, [(0, _objectToXml.makeText)(unit.note)]));
+    subEle.push((0, _objectToXml.makeElement)('notes', null, [(0, _objectToXml.makeElement)('note', null, [(0, _objectToXml.makeText)(unit.note)])]));
   }
 
   var additionalAttributes = unit.additionalAttributes != null ? unit.additionalAttributes : {};
   return (0, _objectToXml.makeElement)('unit', Object.assign({
     id: (0, _escape.default)(id)
-  }, additionalAttributes), [segment]);
+  }, additionalAttributes), subEle);
 }
 
 var js2xliff = function js2xliff(obj, opt, cb) {
@@ -1016,7 +1017,7 @@ function createUnits(parent, initValues) {
 
 function createUnit(unit, initValues) {
   return unit.elements.reduce(function (unit, segment) {
-    if (segment.name !== 'segment') return unit;
+    if (['segment', 'notes'].indexOf(segment.name) < 0) return unit;
     segment.elements.forEach(function (element) {
       switch (element.name) {
         case 'source':

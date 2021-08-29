@@ -4,22 +4,28 @@
       <segment>
         <source>Hello</source>
         <target>Hallo</target>
-        <note>Hello note</note>
       </segment>
+      <notes>
+        <note>Hello note</note>
+      </notes>
     </unit>
     <unit id="key2">
       <segment>
         <source>An application to manipulate and process XLIFF documents</source>
         <target>Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten</target>
-        <note>Description note</note>
       </segment>
+      <notes>
+        <note>Description note</note>
+      </notes>
     </unit>
     <unit id="key.nested">
       <segment>
         <source>XLIFF Data Manager</source>
         <target>XLIFF Daten Manager</target>
-        <note>Nested note</note>
       </segment>
+      <notes>
+        <note>Nested note</note>
+      </notes>
     </unit>
   </file>
   <file id="namespace2">
@@ -27,8 +33,10 @@
       <segment>
         <source>v</source>
         <target>v2</target>
-        <note>n</note>
       </segment>
+      <notes>
+        <note>n</note>
+      </notes>
     </unit>
   </file>
 </xliff>
