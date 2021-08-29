@@ -7,13 +7,13 @@
       </segment>
     </unit>
     <unit id="key2">
+      <notes>
+        <note>Description note</note>
+      </notes>
       <segment>
         <source>An application to manipulate and process XLIFF documents</source>
         <target>Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten</target>
       </segment>
-      <notes>
-        <note>Description note</note>
-      </notes>
     </unit>
     <unit id="key.nested">
       <segment>
@@ -24,13 +24,13 @@
   </file>
   <file id="namespace2">
     <unit id="k" translate="no" approved="yes">
+      <notes>
+        <note>n</note>
+      </notes>
       <segment>
         <source>v</source>
         <target>v2</target>
       </segment>
-      <notes>
-        <note>n</note>
-      </notes>
     </unit>
   </file>
 </xliff>

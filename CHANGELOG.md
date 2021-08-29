@@ -1,3 +1,7 @@
+### 5.6.2
+
+- move notes element before the segment element for xliff v2
+
 ### 5.6.1
 
 - fix notes handling for xliff v2

@@ -498,7 +498,7 @@ function createUnitTag(id, unit) {
   var subEle = [segment];
 
   if ('note' in unit) {
-    subEle.push((0, _objectToXml.makeElement)('notes', null, [(0, _objectToXml.makeElement)('note', null, [(0, _objectToXml.makeText)(unit.note)])]));
+    subEle.unshift((0, _objectToXml.makeElement)('notes', null, [(0, _objectToXml.makeElement)('note', null, [(0, _objectToXml.makeText)(unit.note)])]));
   }
 
   var additionalAttributes = unit.additionalAttributes != null ? unit.additionalAttributes : {};
