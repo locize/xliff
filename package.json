@@ -139,13 +139,13 @@
     "uglify-js": "3.13.9"
   },
   "scripts": {
-    "lint": "eslint . --fix",
+    "lint": "eslint .",
     "compile:esm": "rm -rf esm && mkdir esm && BABEL_ENV=esm babel lib -d esm",
     "compile:cjs": "rm -rf cjs && mkdir cjs && BABEL_ENV=cjs babel lib -d cjs && echo '{\"type\":\"commonjs\"}' > cjs/package.json",
     "compile": "npm run compile:esm && npm run compile:cjs",
     "browser": "browserify --standalone xliff cjs/index.js -o xliff.js && uglifyjs xliff.js --compress --mangle -o xliff.min.js",
     "build": "npm run compile && npm run browser",
-    "test": "npm run lint && npm run build && mocha test unit-R spec",
+    "test": "npm run lint && npm run build && mocha test -R spec",
     "preversion": "npm run test && npm run build && git push",
     "postversion": "git push && git push --tags"
   },
