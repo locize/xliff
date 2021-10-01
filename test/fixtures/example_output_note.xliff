@@ -1,0 +1,37 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US" trgLang="de-CH">
+  <file id="namespace1">
+    <unit id="key1">
+      <notes>
+        <note>key1 note</note>
+      </notes>
+      <segment>
+        <source>Hello</source>
+        <target>Hallo</target>
+      </segment>
+    </unit>
+    <unit id="key2">
+      <segment>
+        <source>An application to manipulate and process XLIFF documents</source>
+        <target>Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten</target>
+      </segment>
+    </unit>
+    <unit id="key.nested">
+      <notes>
+        <note>key.nested note</note>
+      </notes>
+      <segment>
+        <source>XLIFF Data Manager</source>
+        <target>XLIFF Daten Manager</target>
+      </segment>
+    </unit>
+    <unit id="to &apos; &quot;esc&lt;ap&gt; &amp; e">
+      <notes>
+        <note>special chars note</note>
+      </notes>
+      <segment>
+        <source>special chars</source>
+        <target>spezielle Charakter</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>
