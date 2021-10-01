@@ -1,3 +1,7 @@
+### 5.7.0
+
+- expose noteKeys on createjs and createxliff function
+
 ### 5.6.2
 
 - move notes element before the segment element for xliff v2
