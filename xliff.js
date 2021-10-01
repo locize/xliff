@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var createjsClb = function createjsClb(srcLng, trgLng, srcKeys, trgKeys, ns, cb) {
+var createjsClb = function createjsClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, cb) {
   var js = {
     sourceLanguage: srcLng,
     targetLanguage: trgLng,
@@ -25,6 +25,10 @@ var createjsClb = function createjsClb(srcLng, trgLng, srcKeys, trgKeys, ns, cb)
         source: srcKeys[srcKey] || '',
         target: trgKeys[srcKey] || ''
       };
+
+      if (ntKeys && ntKeys[srcKey]) {
+        js.resources[ns][srcKey].note = ntKeys[srcKey];
+      }
     });
     if (cb) cb(null, js);
     return js;
@@ -37,16 +41,20 @@ var createjsClb = function createjsClb(srcLng, trgLng, srcKeys, trgKeys, ns, cb)
         source: srcKeys[ns][srcKey] || '',
         target: trgKeys[ns][srcKey] || ''
       };
+
+      if (ntKeys && ntKeys[ns] && ntKeys[ns][srcKey]) {
+        js.resources[ns][srcKey].note = ntKeys[ns][srcKey];
+      }
     });
   });
   if (cb) cb(null, js);
   return js;
 };
 
-var createjs = function createjs(srcLng, trgLng, srcKeys, trgKeys, ns, cb) {
+var createjs = function createjs(srcLng, trgLng, srcKeys, trgKeys, ns, cb, ntKeys) {
   if (!cb && ns === undefined) {
     return new Promise(function (resolve, reject) {
-      return createjsClb(srcLng, trgLng, srcKeys, trgKeys, ns, function (err, ret) {
+      return createjsClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, function (err, ret) {
         return err ? reject(err) : resolve(ret);
       });
     });
@@ -54,13 +62,13 @@ var createjs = function createjs(srcLng, trgLng, srcKeys, trgKeys, ns, cb) {
 
   if (!cb && typeof ns !== 'function') {
     return new Promise(function (resolve, reject) {
-      return createjsClb(srcLng, trgLng, srcKeys, trgKeys, ns, function (err, ret) {
+      return createjsClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, function (err, ret) {
         return err ? reject(err) : resolve(ret);
       });
     });
   }
 
-  return createjsClb(srcLng, trgLng, srcKeys, trgKeys, ns, cb);
+  return createjsClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, cb);
 };
 
 createjs.createjsClb = createjsClb;
@@ -84,26 +92,26 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var createjs = _createjs.default.createjsClb;
 var js2xliff = _js2xliff.default.js2xliffClb;
 
-var createxliffClb = function createxliffClb(srcLng, trgLng, srcKeys, trgKeys, ns, cb) {
+var createxliffClb = function createxliffClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, cb) {
   if (!ns || typeof ns !== 'string') {
     cb = ns;
     ns = null;
   }
 
   if (!cb) {
-    return js2xliff(createjs(srcLng, trgLng, srcKeys, trgKeys, ns));
+    return js2xliff(createjs(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns));
   }
 
-  createjs(srcLng, trgLng, srcKeys, trgKeys, ns, function (err, res) {
+  createjs(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, function (err, res) {
     if (err) return cb(err);
     js2xliff(res, cb);
   });
 };
 
-function createxliff(srcLng, trgLng, srcKeys, trgKeys, ns, cb) {
+function createxliff(srcLng, trgLng, srcKeys, trgKeys, ns, cb, ntKeys) {
   if (!cb && ns === undefined) {
     return new Promise(function (resolve, reject) {
-      return createxliffClb(srcLng, trgLng, srcKeys, trgKeys, ns, function (err, ret) {
+      return createxliffClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, function (err, ret) {
         return err ? reject(err) : resolve(ret);
       });
     });
@@ -111,13 +119,13 @@ function createxliff(srcLng, trgLng, srcKeys, trgKeys, ns, cb) {
 
   if (!cb && typeof ns !== 'function') {
     return new Promise(function (resolve, reject) {
-      return createxliffClb(srcLng, trgLng, srcKeys, trgKeys, ns, function (err, ret) {
+      return createxliffClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, function (err, ret) {
         return err ? reject(err) : resolve(ret);
       });
     });
   }
 
-  return createxliffClb(srcLng, trgLng, srcKeys, trgKeys, ns, cb);
+  return createxliffClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, cb);
 }
 
 module.exports = exports.default;
@@ -138,26 +146,26 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var createjs = _createjs.default.createjsClb;
 var jsToXliff12 = _jsToXliff.default.jsToXliff12Clb;
 
-var createxliff12Clb = function createxliff12Clb(srcLng, trgLng, srcKeys, trgKeys, ns, cb) {
+var createxliff12Clb = function createxliff12Clb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, cb) {
   if (!ns || typeof ns !== 'string') {
     cb = ns;
     ns = null;
   }
 
   if (!cb) {
-    return jsToXliff12(createjs(srcLng, trgLng, srcKeys, trgKeys, ns));
+    return jsToXliff12(createjs(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns));
   }
 
-  createjs(srcLng, trgLng, srcKeys, trgKeys, ns, function (err, res) {
+  createjs(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, function (err, res) {
     if (err) return cb(err);
     jsToXliff12(res, cb);
   });
 };
 
-function createxliff12(srcLng, trgLng, srcKeys, trgKeys, ns, cb) {
+function createxliff12(srcLng, trgLng, srcKeys, trgKeys, ns, cb, ntKeys) {
   if (!cb && ns === undefined) {
     return new Promise(function (resolve, reject) {
-      return createxliff12Clb(srcLng, trgLng, srcKeys, trgKeys, ns, function (err, ret) {
+      return createxliff12Clb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, function (err, ret) {
         return err ? reject(err) : resolve(ret);
       });
     });
@@ -165,13 +173,13 @@ function createxliff12(srcLng, trgLng, srcKeys, trgKeys, ns, cb) {
 
   if (!cb && typeof ns !== 'function') {
     return new Promise(function (resolve, reject) {
-      return createxliff12Clb(srcLng, trgLng, srcKeys, trgKeys, ns, function (err, ret) {
+      return createxliff12Clb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, function (err, ret) {
         return err ? reject(err) : resolve(ret);
       });
     });
   }
 
-  return createxliff12Clb(srcLng, trgLng, srcKeys, trgKeys, ns, cb);
+  return createxliff12Clb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, cb);
 }
 
 module.exports = exports.default;
@@ -3931,6 +3939,7 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],27:[function(require,module,exports){
+/*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 /* eslint-disable node/no-deprecated-api */
 var buffer = require('buffer')
 var Buffer = buffer.Buffer
@@ -3952,6 +3961,8 @@ if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow)
 function SafeBuffer (arg, encodingOrOffset, length) {
   return Buffer(arg, encodingOrOffset, length)
 }
+
+SafeBuffer.prototype = Object.create(Buffer.prototype)
 
 // Copy static methods from Buffer
 copyProps(Buffer, SafeBuffer)

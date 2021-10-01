@@ -100,6 +100,22 @@ describe('single', () => {
     )
   })
 
+  test("createjs", (fn) => (done) => {
+    fn(
+      fixtures.example.js.sourceLanguage,
+      fixtures.example.js.targetLanguage,
+      fixtures.example.js_source,
+      fixtures.example.js_target,
+      "namespace1",
+      (err, res) => {
+        expect(err).not.to.be.ok();
+        expect(res).to.eql(fixtures.example.js_output_notes);
+        done();
+      },
+      fixtures.example.js_input_notes
+    );
+  }, "with notes")
+
   test('createxliff', (fn) => (done) => {
     fn(
       fixtures.example.js.sourceLanguage,
@@ -115,6 +131,22 @@ describe('single', () => {
     )
   })
 
+  test("createxliff", (fn) => (done) => {
+    fn(
+      fixtures.example.js.sourceLanguage,
+      fixtures.example.js.targetLanguage,
+      fixtures.example.js_source,
+      fixtures.example.js_target,
+      "namespace1",
+      (err, res) => {
+        expect(err).not.to.be.ok();
+        expect(res).to.eql(fixtures.example.xliff_output_notes);
+        done();
+      },
+      fixtures.example.js_input_notes
+    );
+  }, "with notes")
+
   test('createxliff12', (fn) => (done) => {
     fn(
       fixtures.example.js.sourceLanguage,
@@ -129,6 +161,22 @@ describe('single', () => {
       }
     )
   })
+
+  test("createxliff12", (fn) => (done) => {
+    fn(
+      fixtures.example.js.sourceLanguage,
+      fixtures.example.js.targetLanguage,
+      fixtures.example.js_source,
+      fixtures.example.js_target,
+      "namespace1",
+      (err, res) => {
+        expect(err).not.to.be.ok();
+        expect(res).to.eql(fixtures.example.xliff12_output_notes);
+        done();
+      },
+      fixtures.example.js_input_notes
+    );
+  }, "with notes")
 })
 
 describe('xliff 1.2 source/target attributes', () => {

@@ -1,0 +1,5 @@
+{
+  "key1": "key1 note",
+  "key.nested": "key.nested note",
+  "to ' \"esc<ap> & e": "special chars note"
+}

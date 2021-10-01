@@ -145,7 +145,13 @@ createjs(
   'namespace1',
   (err, res) => {
   // res is like js
-})
+  }
+  // you can specify notes with this param (ntKeys)
+  // ,{
+  //    "key1": "custom note for key1",
+  //    "key.nested": "another note for nested key"
+  // }
+)
 // or without callback
 //const res = await createjs(...
 
@@ -166,8 +172,14 @@ createxliff(
   },
   'namespace1',
   (err, res) => {
-  // res is like xliff
-})
+  // res is like xliff  
+  }  
+  // you can specify notes with this param (ntKeys)
+  // ,{
+  //    "key1": "custom note for key1",
+  //    "key.nested": "another note for nested key"
+  // }
+)
 // or without callback
 //const res = await createxliff(...
 ```
@@ -261,7 +273,13 @@ createxliff(
     'namespace1',
     (err, res) => {
     // res is like xliff
-  })
+    }
+    // you can specify notes with this param (ntKeys)
+    // ,{
+    //    "key1": "custom note for key1",
+    //    "key.nested": "another note for nested key"
+    // }
+  )
   // or without callback
   //const res = await createxliff12(...
 
