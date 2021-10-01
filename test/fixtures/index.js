@@ -9,7 +9,9 @@ module.exports = {
     xliff12: fs.readFileSync(path.join(__dirname, 'example12.xliff')).toString().replace(/\n$/, ''),
     xliff12_compact: fs.readFileSync(path.join(__dirname, 'example_compact12.xliff')).toString().replace(/\n$/, ''),
     js_source: require('./example_source.json'),
-    js_target: require('./example_target.json')
+    js_target: require('./example_target.json'),
+    js_input_notes: require('./example_input_note.json'),
+    js_output_notes: require('./example_output_note.json')
   },
   example_source_attr: {
     // The JS should be the same as example.js

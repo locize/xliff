@@ -505,7 +505,7 @@ function createUnitTag(id, unit) {
   if (unit.target !== undefined) segment.elements.push((0, _objectToXml.makeElement)('target', null, (0, _objectToXml.makeValue)(unit.target, _ElementTypes.default)));
   var subEle = [segment];
 
-  if ('note' in unit && unit.note != null) {
+  if ('note' in unit) {
     subEle.unshift((0, _objectToXml.makeElement)('notes', null, [(0, _objectToXml.makeElement)('note', null, [(0, _objectToXml.makeText)(unit.note)])]));
   }
 
@@ -650,7 +650,7 @@ function createTransUnitTag(key, resource, obj, options) {
     u.elements.push((0, _objectToXml.makeElement)('target', targetAttributes, (0, _objectToXml.makeValue)(resource.target, _ElementTypes.default)));
   }
 
-  if ('note' in resource && resource.note != null) {
+  if ('note' in resource) {
     u.elements.push((0, _objectToXml.makeElement)('note', null, [(0, _objectToXml.makeText)(resource.note)]));
   }
 
