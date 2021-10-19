@@ -1,3 +1,7 @@
+### 5.7.1
+
+- a bit friendlier when not having target values
+
 ### 5.7.0
 
 - expose noteKeys on createjs and createxliff function

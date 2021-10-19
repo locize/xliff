@@ -18,9 +18,11 @@ var createjsClb = function createjsClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys,
     ns = null;
   }
 
+  trgKeys = trgKeys || {};
+
   if (ns && typeof ns === 'string') {
     js.resources[ns] = {};
-    Object.keys(trgKeys).forEach(function (srcKey) {
+    Object.keys(srcKeys).forEach(function (srcKey) {
       js.resources[ns][srcKey] = {
         source: srcKeys[srcKey] || '',
         target: trgKeys[srcKey] || ''
@@ -34,9 +36,9 @@ var createjsClb = function createjsClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys,
     return js;
   }
 
-  Object.keys(trgKeys).forEach(function (ns) {
+  Object.keys(srcKeys).forEach(function (ns) {
     js.resources[ns] = {};
-    Object.keys(trgKeys[ns]).forEach(function (srcKey) {
+    Object.keys(srcKeys[ns]).forEach(function (srcKey) {
       js.resources[ns][srcKey] = {
         source: srcKeys[ns][srcKey] || '',
         target: trgKeys[ns][srcKey] || ''
