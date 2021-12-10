@@ -1,3 +1,7 @@
+### 5.7.2
+
+- fix if no source but target
+
 ### 5.7.1
 
 - a bit friendlier when not having target values
