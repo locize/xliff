@@ -1,3 +1,8 @@
+### 6.0.0
+
+- better group handling support
+- support multiple notes
+
 ### 5.7.2
 
 - fix if no source but target
