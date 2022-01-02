@@ -3,7 +3,7 @@ name: node
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   test:
