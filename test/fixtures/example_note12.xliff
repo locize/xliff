@@ -10,12 +10,27 @@
         <source xml:lang="en-US">An application to manipulate and process XLIFF documents</source>
         <target xml:lang="de-CH">Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten</target>
         <note>Description note</note>
+        <note>Developer note</note>
       </trans-unit>
       <trans-unit id="key.nested">
         <source xml:lang="en-US">XLIFF Data Manager</source>
         <target xml:lang="de-CH">XLIFF Daten Manager</target>
         <note>Nested note</note>
       </trans-unit>
+      <group id="group1">
+        <trans-unit id="in-group">
+          <source>An application to manipulate and process XLIFF documents</source>
+          <target>Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten</target>
+          <note>Group note</note>
+        </trans-unit>
+        <group id="nested-group1">
+          <trans-unit id="in-nested-group">
+            <source>XLIFF Data Manager</source>
+            <target>XLIFF Daten Manager</target>
+            <note>Nested group note</note>
+          </trans-unit>
+        </group>
+      </group>
     </body>
   </file>
   <file original="namespace2">

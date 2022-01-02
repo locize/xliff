@@ -938,11 +938,25 @@ function createUnits(childElements) {
 
 function createTransUnitTag(transUnit) {
   var jsUnit = transUnit.elements.reduce(function (unit, element) {
+    var value = (0, _xmlToObject.extractValue)(element.elements, _ElementTypes.default);
+
     switch (element.name) {
       case 'source':
       case 'target':
+        unit[element.name] = value;
+        break;
+
       case 'note':
-        unit[element.name] = (0, _xmlToObject.extractValue)(element.elements, _ElementTypes.default);
+        if (unit[element.name]) {
+          if (!Array.isArray(unit[element.name])) {
+            unit[element.name] = [unit[element.name]];
+          }
+
+          unit[element.name].push(value);
+        } else {
+          unit[element.name] = value;
+        }
+
         break;
     }
 
@@ -1108,11 +1122,25 @@ function createUnit(unit, initValues) {
   return unit.elements.reduce(function (unit, segment) {
     if (['segment', 'notes'].indexOf(segment.name) < 0) return unit;
     segment.elements.forEach(function (element) {
+      var value = (0, _xmlToObject.extractValue)(element.elements, _ElementTypes.default);
+
       switch (element.name) {
         case 'source':
         case 'target':
+          unit[element.name] = value;
+          break;
+
         case 'note':
-          unit[element.name] = (0, _xmlToObject.extractValue)(element.elements, _ElementTypes.default);
+          if (unit[element.name]) {
+            if (!Array.isArray(unit[element.name])) {
+              unit[element.name] = [unit[element.name]];
+            }
+
+            unit[element.name].push(value);
+          } else {
+            unit[element.name] = value;
+          }
+
           break;
       }
     });

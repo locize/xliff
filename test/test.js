@@ -78,11 +78,23 @@ describe('single', () => {
   test('targetOfjs', (fn) => () => {
     const res = fn(fixtures.example.js)
     expect(res['key.nested']).to.eql(fixtures.example.js.resources.namespace1['key.nested'].target)
+    const res2 = fn(fixtures.example_groups.js)
+    expect(res2['standalone']).to.eql(fixtures.example_groups.js.resources.namespace1['standalone'].target)
+    expect(res2['group1']['in-group']).to.eql(
+      fixtures.example_groups.js.resources.namespace1['group1'].groupUnits['in-group'].target)
+    expect(res2['group1']['nested-group1']['in-nested-group']).to.eql(
+      fixtures.example_groups.js.resources.namespace1['group1'].groupUnits['nested-group1'].groupUnits['in-nested-group'].target)
   })
 
   test('sourceOfjs', (fn) => () => {
     const res = fn(fixtures.example.js)
     expect(res['key.nested']).to.eql(fixtures.example.js.resources.namespace1['key.nested'].source)
+    const res2 = fn(fixtures.example_groups.js)
+    expect(res2['standalone']).to.eql(fixtures.example_groups.js.resources.namespace1['standalone'].source)
+    expect(res2['group1']['in-group']).to.eql(
+      fixtures.example_groups.js.resources.namespace1['group1'].groupUnits['in-group'].source)
+    expect(res2['group1']['nested-group1']['in-nested-group']).to.eql(
+      fixtures.example_groups.js.resources.namespace1['group1'].groupUnits['nested-group1'].groupUnits['in-nested-group'].source)
   })
 
   test('createjs', (fn) => (done) => {
@@ -284,12 +296,20 @@ describe('with notes', () => {
     const res = fn(fixtures.example_note.js)
     expect(res.namespace1['key.nested']).to.eql(fixtures.example_note.js.resources.namespace1['key.nested'].target)
     expect(res.namespace2.k).to.eql(fixtures.example_note.js.resources.namespace2.k.target)
+    expect(res.namespace1['group1']['in-group']).to.eql(
+      fixtures.example_note.js.resources.namespace1['group1'].groupUnits['in-group'].target)
+    expect(res.namespace1['group1']['nested-group1']['in-nested-group']).to.eql(
+      fixtures.example_note.js.resources.namespace1['group1'].groupUnits['nested-group1'].groupUnits['in-nested-group'].target)
   })
 
   test('sourceOfjs', (fn) => () => {
     const res = fn(fixtures.example_note.js)
     expect(res.namespace1['key.nested']).to.eql(fixtures.example_note.js.resources.namespace1['key.nested'].source)
     expect(res.namespace2.k).to.eql(fixtures.example_note.js.resources.namespace2.k.source)
+    expect(res.namespace1['group1']['in-group']).to.eql(
+      fixtures.example_note.js.resources.namespace1['group1'].groupUnits['in-group'].source)
+    expect(res.namespace1['group1']['nested-group1']['in-nested-group']).to.eql(
+      fixtures.example_note.js.resources.namespace1['group1'].groupUnits['nested-group1'].groupUnits['in-nested-group'].source)
   })
 })
 
