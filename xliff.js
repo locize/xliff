@@ -6,6 +6,36 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function setSegment(category, srcObj, trgObj, ntObj, key) {
+  var srcValue = srcObj[key] || '';
+  var trgValue = trgObj[key] || '';
+
+  if (_typeof(srcValue) === 'object' && _typeof(trgValue) === 'object') {
+    category[key] = {
+      groupUnits: {}
+    };
+    var grpObj = category[key].groupUnits;
+    Object.keys(srcValue).forEach(function (grpKey) {
+      setSegment(grpObj, srcObj[key], trgObj[key], ntObj[key], grpKey);
+
+      if (ntObj && ntObj[key] && ntObj[key][grpKey]) {
+        category[key].note = ntObj[key][grpKey];
+      }
+    });
+  } else {
+    category[key] = {
+      source: srcValue,
+      target: trgValue
+    };
+
+    if (ntObj && ntObj[key]) {
+      category[key].note = ntObj[key];
+    }
+  }
+}
+
 var createjsClb = function createjsClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, cb) {
   var js = {
     sourceLanguage: srcLng,
@@ -22,15 +52,9 @@ var createjsClb = function createjsClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys,
 
   if (ns && typeof ns === 'string') {
     js.resources[ns] = {};
+    var nsObj = js.resources[ns];
     Object.keys(srcKeys).forEach(function (srcKey) {
-      js.resources[ns][srcKey] = {
-        source: srcKeys[srcKey] || '',
-        target: trgKeys[srcKey] || ''
-      };
-
-      if (ntKeys && ntKeys[srcKey]) {
-        js.resources[ns][srcKey].note = ntKeys[srcKey];
-      }
+      setSegment(nsObj, srcKeys, trgKeys, ntKeys, srcKey);
     });
     if (cb) cb(null, js);
     return js;
@@ -39,14 +63,7 @@ var createjsClb = function createjsClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys,
   Object.keys(srcKeys).forEach(function (ns) {
     js.resources[ns] = {};
     Object.keys(srcKeys[ns]).forEach(function (srcKey) {
-      js.resources[ns][srcKey] = {
-        source: srcKeys[ns][srcKey] || '',
-        target: trgKeys[ns][srcKey] || ''
-      };
-
-      if (ntKeys && ntKeys[ns] && ntKeys[ns][srcKey]) {
-        js.resources[ns][srcKey].note = ntKeys[ns][srcKey];
-      }
+      setSegment(js.resources[ns], srcKeys[ns], trgKeys[ns], ntKeys && ntKeys[ns], srcKey);
     });
   });
   if (cb) cb(null, js);
@@ -191,42 +208,6 @@ module.exports = exports.default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "xliff2js", {
-  enumerable: true,
-  get: function get() {
-    return _xliff2js.default;
-  }
-});
-Object.defineProperty(exports, "xliff12ToJs", {
-  enumerable: true,
-  get: function get() {
-    return _xliff12ToJs.default;
-  }
-});
-Object.defineProperty(exports, "js2xliff", {
-  enumerable: true,
-  get: function get() {
-    return _js2xliff.default;
-  }
-});
-Object.defineProperty(exports, "jsToXliff12", {
-  enumerable: true,
-  get: function get() {
-    return _jsToXliff.default;
-  }
-});
-Object.defineProperty(exports, "targetOfjs", {
-  enumerable: true,
-  get: function get() {
-    return _targetOfjs.default;
-  }
-});
-Object.defineProperty(exports, "sourceOfjs", {
-  enumerable: true,
-  get: function get() {
-    return _sourceOfjs.default;
-  }
-});
 Object.defineProperty(exports, "createjs", {
   enumerable: true,
   get: function get() {
@@ -246,6 +227,42 @@ Object.defineProperty(exports, "createxliff12", {
   }
 });
 exports.default = void 0;
+Object.defineProperty(exports, "js2xliff", {
+  enumerable: true,
+  get: function get() {
+    return _js2xliff.default;
+  }
+});
+Object.defineProperty(exports, "jsToXliff12", {
+  enumerable: true,
+  get: function get() {
+    return _jsToXliff.default;
+  }
+});
+Object.defineProperty(exports, "sourceOfjs", {
+  enumerable: true,
+  get: function get() {
+    return _sourceOfjs.default;
+  }
+});
+Object.defineProperty(exports, "targetOfjs", {
+  enumerable: true,
+  get: function get() {
+    return _targetOfjs.default;
+  }
+});
+Object.defineProperty(exports, "xliff12ToJs", {
+  enumerable: true,
+  get: function get() {
+    return _xliff12ToJs.default;
+  }
+});
+Object.defineProperty(exports, "xliff2js", {
+  enumerable: true,
+  get: function get() {
+    return _xliff2js.default;
+  }
+});
 
 var _xliff2js = _interopRequireDefault(require("./xliff2js.js"));
 
@@ -509,13 +526,35 @@ function createUnitTag(id, unit) {
   var subEle = [segment];
 
   if ('note' in unit) {
-    subEle.unshift((0, _objectToXml.makeElement)('notes', null, [(0, _objectToXml.makeElement)('note', null, [(0, _objectToXml.makeText)(unit.note)])]));
+    var noteElms = [];
+    createNoteObjects(unit.note).forEach(function (noteObj) {
+      noteElms.push((0, _objectToXml.makeElement)('note', null, [noteObj]));
+    });
+    subEle.unshift((0, _objectToXml.makeElement)('notes', null, noteElms));
   }
 
   var additionalAttributes = unit.additionalAttributes != null ? unit.additionalAttributes : {};
   return (0, _objectToXml.makeElement)('unit', Object.assign({
     id: (0, _escape.default)(id)
   }, additionalAttributes), subEle);
+}
+
+function createNoteObjects(note) {
+  var arrNote = [];
+  var baseNote = (0, _objectToXml.makeText)(note);
+
+  if (Array.isArray(baseNote.text)) {
+    baseNote.text.forEach(function (text) {
+      arrNote.push({
+        type: baseNote.type,
+        text: text
+      });
+    });
+  } else {
+    arrNote.push(baseNote);
+  }
+
+  return arrNote;
 }
 
 var js2xliff = function js2xliff(obj, opt, cb) {
@@ -655,10 +694,30 @@ function createTransUnitTag(key, resource, obj, options) {
   }
 
   if ('note' in resource) {
-    u.elements.push((0, _objectToXml.makeElement)('note', null, [(0, _objectToXml.makeText)(resource.note)]));
+    createNoteObjects(resource.note).forEach(function (noteObj) {
+      u.elements.push((0, _objectToXml.makeElement)('note', null, [noteObj]));
+    });
   }
 
   return u;
+}
+
+function createNoteObjects(note) {
+  var arrNote = [];
+  var baseNote = (0, _objectToXml.makeText)(note);
+
+  if (Array.isArray(baseNote.text)) {
+    baseNote.text.forEach(function (text) {
+      arrNote.push({
+        type: baseNote.type,
+        text: text
+      });
+    });
+  } else {
+    arrNote.push(baseNote);
+  }
+
+  return arrNote;
 }
 
 var jsToXliff12 = function jsToXliff12(obj, opt, cb) {
@@ -701,7 +760,9 @@ function ofjs(js, what, cb) {
     var ns = js.resources[nsKeys[0]];
     var keys = Object.keys(ns);
     keys.forEach(function (key) {
-      res[key] = ns[key][what];
+      var value = getSegment(ns[key], what);
+      if (value === undefined) return;
+      res[key] = value;
     });
     if (cb) return cb(null, res);
     return res;
@@ -712,11 +773,27 @@ function ofjs(js, what, cb) {
     var ns = js.resources[nsKey];
     var keys = Object.keys(ns);
     keys.forEach(function (key) {
-      res[nsKey][key] = ns[key][what];
+      var value = getSegment(ns[key], what);
+      if (value !== undefined) res[nsKey][key] = value;
     });
   });
   if (cb) return cb(null, res);
   return res;
+}
+
+function getSegment(category, what) {
+  var value = category[what];
+
+  if (value === undefined && category.groupUnits) {
+    value = {};
+    var groupKeys = Object.keys(category.groupUnits);
+    groupKeys.forEach(function (groupKey) {
+      var groupValue = getSegment(category.groupUnits[groupKey], what);
+      if (groupValue !== undefined) value[groupKey] = groupValue;
+    });
+  }
+
+  return value;
 }
 
 module.exports = exports.default;
@@ -3943,6 +4020,7 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],27:[function(require,module,exports){
+/*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 /* eslint-disable node/no-deprecated-api */
 var buffer = require('buffer')
 var Buffer = buffer.Buffer
@@ -3964,6 +4042,8 @@ if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow)
 function SafeBuffer (arg, encodingOrOffset, length) {
   return Buffer(arg, encodingOrOffset, length)
 }
+
+SafeBuffer.prototype = Object.create(Buffer.prototype)
 
 // Copy static methods from Buffer
 copyProps(Buffer, SafeBuffer)
