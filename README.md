@@ -1,4 +1,4 @@
-[![travis](https://img.shields.io/travis/locize/xliff.svg)](https://travis-ci.org/locize/xliff) [![npm](https://img.shields.io/npm/v/xliff.svg)](https://npmjs.org/package/xliff)
+[![node](https://github.com/locize/xliff/actions/workflows/node.yml/badge.svg)](https://github.com/locize/xliff/actions/workflows/node.yml) [![travis](https://img.shields.io/travis/locize/xliff.svg)](https://travis-ci.org/locize/xliff) [![npm](https://img.shields.io/npm/v/xliff.svg)](https://npmjs.org/package/xliff)
 
 ## Download
 
