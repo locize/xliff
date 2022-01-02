@@ -142,7 +142,7 @@
   "scripts": {
     "lint": "eslint .",
     "compile:esm": "rm -rf esm && mkdir esm && cross-env BABEL_ENV=esm babel lib -d esm",
-    "compile:cjs": "rm -rf cjs && mkdir cjs && cross-env BABEL_ENV=cjs babel lib -d cjs && node -e 'console.log(`{\"type\":\"commonjs\"}`)' > cjs/package.json",
+    "compile:cjs": "rm -rf cjs && mkdir cjs && cross-env BABEL_ENV=cjs babel lib -d cjs && node -e \"console.log(JSON.stringify({type:'commonjs'}))\" > cjs/package.json",
     "compile": "npm run compile:esm && npm run compile:cjs",
     "browser": "browserify --standalone xliff cjs/index.js -o xliff.js && uglifyjs xliff.js --compress --mangle -o xliff.min.js",
     "build": "npm run compile && npm run browser",
