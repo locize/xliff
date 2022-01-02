@@ -9,12 +9,30 @@
       "key2": {
         "source": "An application to manipulate and process XLIFF documents",
         "target": "Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten",
-        "note": "Description note"
+        "note": ["Description note", "Developer note"]
       },
       "key.nested": {
         "source": "XLIFF Data Manager",
         "target": "XLIFF Daten Manager",
         "note": "Nested note"
+      },
+      "group1": {
+        "groupUnits": {
+          "in-group": {
+            "source": "An application to manipulate and process XLIFF documents",
+            "target": "Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten",
+            "note": "Group note"
+          },
+          "nested-group1": {
+            "groupUnits": {
+              "in-nested-group": {
+                "source": "XLIFF Data Manager",
+                "target": "XLIFF Daten Manager",
+                "note": "Nested group note"
+              }
+            }
+          }
+        }
       }
     },
     "namespace2": {

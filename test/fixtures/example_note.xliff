@@ -12,6 +12,7 @@
     <unit id="key2">
       <notes>
         <note>Description note</note>
+        <note>Developer note</note>
       </notes>
       <segment>
         <source>An application to manipulate and process XLIFF documents</source>
@@ -27,6 +28,28 @@
         <target>XLIFF Daten Manager</target>
       </segment>
     </unit>
+    <group id="group1">
+      <unit id="in-group">
+        <notes>
+          <note>Group note</note>
+        </notes>
+        <segment>
+          <source>An application to manipulate and process XLIFF documents</source>
+          <target>Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten</target>
+        </segment>
+      </unit>
+      <group id="nested-group1">
+        <unit id="in-nested-group">
+          <notes>
+            <note>Nested group note</note>
+          </notes>
+          <segment>
+            <source>XLIFF Data Manager</source>
+            <target>XLIFF Daten Manager</target>
+          </segment>
+        </unit>
+      </group>
+    </group>
   </file>
   <file id="namespace2">
     <unit id="k">

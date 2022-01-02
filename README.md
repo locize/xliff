@@ -116,7 +116,10 @@ const res = targetOfjs(js)
 // {
 //   "key1": "Hallo",
 //   "key2": "Eine Applikation um XLIFF Dokumente zu manipulieren und verarbeiten",
-//   "key.nested": "XLIFF Daten Manager"
+//   "key.nested": "XLIFF Daten Manager",
+//   "group": {
+//     "groupUnit": "Gruppe"
+//   }
 // }
 
 import sourceOfjs from 'xliff/sourceOfjs'
@@ -125,7 +128,10 @@ const res = sourceOfjs(js)
 // {
 //   "key1": "Hello",
 //   "key2": "An application to manipulate and process XLIFF documents",
-//   "key.nested": "XLIFF Data Manager"
+//   "key.nested": "XLIFF Data Manager",
+//   "group": {
+//     "groupUnit": "Group"
+//   }
 // }
 
 import createjs from 'xliff/createjs'
