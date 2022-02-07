@@ -898,23 +898,29 @@ var xliff12ToJsClb = function xliff12ToJsClb(str, options, cb) {
   var xliffRoot = xmlObj.elements.find(function (ele) {
     return ele.name === 'xliff';
   });
-  var srcLang = xliffRoot.elements[0].attributes['source-language'];
-  var trgLang = xliffRoot.elements[0].attributes['target-language'];
-  result.sourceLanguage = srcLang;
-  result.targetLanguage = trgLang;
-  if (!result.targetLanguage) delete result.targetLanguage;
-  result.resources = xliffRoot.elements.reduce(function (resources, file) {
-    var namespace = options.namespace || file.attributes.original;
-    var body = file.elements.find(function (e) {
-      return e.name === 'body';
-    });
-    body.elements = body.elements || [];
-    var bodyChildren = body.elements.filter(function (child) {
-      return child.type !== 'comment';
-    });
-    resources[namespace] = createUnits(bodyChildren);
-    return resources;
-  }, {});
+
+  if (xliffRoot.elements && xliffRoot.elements.length) {
+    var srcLang = xliffRoot.elements[0].attributes['source-language'];
+    var trgLang = xliffRoot.elements[0].attributes['target-language'];
+    result.sourceLanguage = srcLang;
+    result.targetLanguage = trgLang;
+    if (!result.targetLanguage) delete result.targetLanguage;
+    result.resources = xliffRoot.elements.reduce(function (resources, file) {
+      var namespace = options.namespace || file.attributes.original;
+      var body = file.elements.find(function (e) {
+        return e.name === 'body';
+      });
+      body.elements = body.elements || [];
+      var bodyChildren = body.elements.filter(function (child) {
+        return child.type !== 'comment';
+      });
+      resources[namespace] = createUnits(bodyChildren);
+      return resources;
+    }, {});
+  } else {
+    result.resources = {};
+  }
+
   if (cb) return cb(null, result);
   return result;
 };

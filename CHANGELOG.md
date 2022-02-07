@@ -1,3 +1,7 @@
+### 6.0.1
+
+- handle empty xliff files [#52](https://github.com/locize/xliff/pull/52)
+
 ### 6.0.0
 
 - better group handling support
