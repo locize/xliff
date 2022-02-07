@@ -63,5 +63,8 @@ module.exports = {
   example_ignorable: {
     js: require('./example_ignorable'),
     xliff: fixNewLines(fs.readFileSync(path.join(__dirname, 'example_ignorable.xliff')).toString())
+  },
+  example_empty:{
+    xliff12: fixNewLines(fs.readFileSync(path.join(__dirname, 'example_empty12.xliff')).toString())
   }
 }
