@@ -201,6 +201,17 @@ describe('xliff 1.2 source/target attributes', () => {
   })
 })
 
+describe('xliff 1.2 empty file', () => {
+  test('xliff12ToJs', (fn) => (done) => {
+    fn(fixtures.example_empty.xliff12, (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res).to.eql({ resources: {} })
+      done()
+    })
+  })
+})
+
+
 describe('multi', () => {
   test('xliff2js', (fn) => (done) => {
     fn(fixtures.example_multi.xliff, (err, res) => {
