@@ -9,8 +9,8 @@ exports.default = void 0;
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function setSegment(category, srcObj, trgObj, ntObj, key) {
-  var srcValue = srcObj[key] || '';
-  var trgValue = trgObj[key] || '';
+  var srcValue = srcObj[key];
+  var trgValue = trgObj[key];
 
   if (_typeof(srcValue) === 'object' && _typeof(trgValue) === 'object') {
     category[key] = {
@@ -49,18 +49,22 @@ var createjsClb = function createjsClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys,
   }
 
   trgKeys = trgKeys || {};
+  var keys = Object.keys(srcKeys);
+  Object.keys(trgKeys).forEach(function (k) {
+    if (keys.indexOf(k) < 0) keys.push(k);
+  });
 
   if (ns && typeof ns === 'string') {
     js.resources[ns] = {};
     var nsObj = js.resources[ns];
-    Object.keys(srcKeys).forEach(function (srcKey) {
+    keys.forEach(function (srcKey) {
       setSegment(nsObj, srcKeys, trgKeys, ntKeys, srcKey);
     });
     if (cb) cb(null, js);
     return js;
   }
 
-  Object.keys(srcKeys).forEach(function (ns) {
+  keys.forEach(function (ns) {
     js.resources[ns] = {};
     Object.keys(srcKeys[ns]).forEach(function (srcKey) {
       setSegment(js.resources[ns], srcKeys[ns], trgKeys[ns], ntKeys && ntKeys[ns], srcKey);
@@ -968,9 +972,7 @@ function createTransUnitTag(transUnit) {
     }
 
     return unit;
-  }, {
-    source: ''
-  });
+  }, {});
   return addAdditionalAttributes(jsUnit, transUnit.attributes);
 }
 
@@ -1070,10 +1072,7 @@ var xliffToJsClb = function xliffToJsClb(str, options, cb) {
     });
     result.resources = xliffRoot.elements.reduce(function (resources, file) {
       var namespace = options.namespace || file.attributes.id;
-      var initValues = {
-        source: '',
-        target: ''
-      };
+      var initValues = {};
       if (!result.targetLanguage) delete initValues.target;
       file.elements = file.elements || [];
       file.elements = file.elements.filter(function (child) {

@@ -1,0 +1,47 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US" trgLang="ar">
+  <file id="namespace1">
+    <unit id="key1">
+      <segment>
+        <source>Hello</source>
+        <target>Hello (AR)</target>
+      </segment>
+    </unit>
+    <unit id="key2_one">
+      <segment>
+        <source>singular</source>
+        <target>singular (AR)</target>
+      </segment>
+    </unit>
+    <unit id="key2_three">
+      <segment>
+        <source>three</source>
+      </segment>
+    </unit>
+    <unit id="key2_other">
+      <segment>
+        <source>other</source>
+        <target>other (AR)</target>
+      </segment>
+    </unit>
+    <unit id="key2_zero">
+      <segment>
+        <target>zero (AR)</target>
+      </segment>
+    </unit>
+    <unit id="key2_two">
+      <segment>
+        <target>two (AR)</target>
+      </segment>
+    </unit>
+    <unit id="key2_few">
+      <segment>
+        <target>few (AR)</target>
+      </segment>
+    </unit>
+    <unit id="key2_many">
+      <segment>
+        <target>many (AR)</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

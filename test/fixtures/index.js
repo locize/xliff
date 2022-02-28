@@ -16,6 +16,13 @@ module.exports = {
     js_input_notes: require('./example_input_note.json'),
     js_output_notes: require('./example_output_note.json')
   },
+  example_diff: {
+    js: require('./example_diff.json'),
+    xliff: fixNewLines(fs.readFileSync(path.join(__dirname, 'example_diff.xliff')).toString()),
+    xliff12: fixNewLines(fs.readFileSync(path.join(__dirname, 'example12_diff.xliff')).toString()),
+    js_source: require('./example_diff_source.json'),
+    js_target: require('./example_diff_target.json')
+  },
   example_source_attr: {
     // The JS should be the same as example.js
     xliff12: fixNewLines(fs.readFileSync(path.join(__dirname, 'example_source_attr12.xliff')).toString())

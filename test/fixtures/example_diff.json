@@ -1,0 +1,35 @@
+{
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": "Hello",
+        "target": "Hello (AR)"
+      },
+      "key2_one": {
+        "source": "singular",
+        "target": "singular (AR)"
+      },
+      "key2_three": {
+        "source": "three"
+      },
+      "key2_other": {
+        "source": "other",
+        "target": "other (AR)"
+      },
+      "key2_zero": {
+        "target": "zero (AR)"
+      },
+      "key2_two": {
+        "target": "two (AR)"
+      },
+      "key2_few": {
+        "target": "few (AR)"
+      },
+      "key2_many": {
+        "target": "many (AR)"
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "ar"
+}

@@ -1,0 +1,33 @@
+<xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="namespace1" datatype="plaintext" source-language="en-US" target-language="ar">
+    <body>
+      <trans-unit id="key1">
+        <source>Hello</source>
+        <target>Hello (AR)</target>
+      </trans-unit>
+      <trans-unit id="key2_one">
+        <source>singular</source>
+        <target>singular (AR)</target>
+      </trans-unit>
+      <trans-unit id="key2_three">
+        <source>three</source>
+      </trans-unit>
+      <trans-unit id="key2_other">
+        <source>other</source>
+        <target>other (AR)</target>
+      </trans-unit>
+      <trans-unit id="key2_zero">
+        <target>zero (AR)</target>
+      </trans-unit>
+      <trans-unit id="key2_two">
+        <target>two (AR)</target>
+      </trans-unit>
+      <trans-unit id="key2_few">
+        <target>few (AR)</target>
+      </trans-unit>
+      <trans-unit id="key2_many">
+        <target>many (AR)</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

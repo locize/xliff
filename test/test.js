@@ -191,6 +191,55 @@ describe('single', () => {
   }, "with notes")
 })
 
+describe('xliff with different keys', () => {
+  test('createxliff12', (fn) => (done) => {
+    fn(
+      fixtures.example_diff.js.sourceLanguage,
+      fixtures.example_diff.js.targetLanguage,
+      fixtures.example_diff.js_source,
+      fixtures.example_diff.js_target,
+      'namespace1',
+      (err, res) => {
+        expect(err).not.to.be.ok()
+        console.log(res)
+        expect(res).to.eql(fixtures.example_diff.xliff12)
+        done()
+      }
+    )
+  })
+
+  test('createxliff', (fn) => (done) => {
+    fn(
+      fixtures.example_diff.js.sourceLanguage,
+      fixtures.example_diff.js.targetLanguage,
+      fixtures.example_diff.js_source,
+      fixtures.example_diff.js_target,
+      'namespace1',
+      (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_diff.xliff)
+        done()
+      }
+    )
+  })
+
+  test('xliff2js', (fn) => (done) => {
+    fn(fixtures.example_diff.xliff, (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_diff.js)
+      done()
+    })
+  })
+
+  test('xliff12ToJs', (fn) => (done) => {
+    fn(fixtures.example_diff.xliff12, (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res).to.eql(fixtures.example_diff.js)
+      done()
+    })
+  })
+})
+
 describe('xliff 1.2 source/target attributes', () => {
   test('xliff12ToJs', (fn) => (done) => {
     fn(fixtures.example_source_attr.xliff12, (err, res) => {
