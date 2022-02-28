@@ -1,3 +1,7 @@
+### 6.0.2
+
+- do not error on empty groups [#53](https://github.com/locize/xliff/issues/53)
+
 ### 6.0.1
 
 - handle empty xliff files [#52](https://github.com/locize/xliff/pull/52)

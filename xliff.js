@@ -928,6 +928,7 @@ var xliff12ToJsClb = function xliff12ToJsClb(str, options, cb) {
 function createUnits(childElements) {
   return childElements.reduce(function (parent, child) {
     var key = child.attributes.id;
+    if (!child.elements) return parent;
     var children = child.elements.filter(function (e) {
       return e.name === 'trans-unit' || e.name === 'group';
     });
@@ -1088,6 +1089,7 @@ var xliffToJsClb = function xliffToJsClb(str, options, cb) {
 };
 
 function createUnits(parent, initValues) {
+  if (!parent.elements) return {};
   return parent.elements.reduce(function (file, unit) {
     var key = unit.attributes.id;
     var additionalAttributes = unit.attributes;
@@ -1125,6 +1127,7 @@ function createUnits(parent, initValues) {
 }
 
 function createUnit(unit, initValues) {
+  if (!unit.elements) return undefined;
   return unit.elements.reduce(function (unit, segment) {
     if (['segment', 'notes'].indexOf(segment.name) < 0) return unit;
     segment.elements.forEach(function (element) {
