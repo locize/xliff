@@ -513,7 +513,7 @@ As a result, you should be able to have "roundtrip" support for converting betwe
 
 #### Helpers for creating inline element objects
 
-If you need to create your own inline element objects to construct a `source` or `target` array, you can use the `[makeInlineElement](./inline-elements/makeInlineElement.js)` function.
+If you need to create your own inline element objects to construct a `source` or `target` array, you can use the [`makeInlineElement()`](./lib/inline-elements/makeInlineElement.js) function.
 
 For example, suppose you have this string:
 
