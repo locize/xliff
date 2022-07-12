@@ -881,7 +881,9 @@ var xliff12ToJsClb = function xliff12ToJsClb(str, options, cb) {
     options = {};
   }
 
-  options = options || {};
+  options = options || {
+    captureSpacesBetweenElements: false
+  };
 
   if (typeof str !== 'string') {
     var err = new Error('The first parameter was not a string');
@@ -893,7 +895,7 @@ var xliff12ToJsClb = function xliff12ToJsClb(str, options, cb) {
   var xmlObj;
 
   try {
-    xmlObj = _xmlJs.default.xml2js(str, {});
+    xmlObj = _xmlJs.default.xml2js(str, options);
   } catch (err) {
     if (cb) return cb(err);
     return err;
@@ -904,19 +906,24 @@ var xliff12ToJsClb = function xliff12ToJsClb(str, options, cb) {
   });
 
   if (xliffRoot.elements && xliffRoot.elements.length) {
-    var srcLang = xliffRoot.elements[0].attributes['source-language'];
-    var trgLang = xliffRoot.elements[0].attributes['target-language'];
+    var elements = xliffRoot.elements.filter(function (e) {
+      return e.type === 'element';
+    });
+    var srcLang = elements[0].attributes['source-language'] || xliffRoot.attributes.srcLang;
+    var trgLang = elements[0].attributes['target-language'] || xliffRoot.attributes.trgLang;
     result.sourceLanguage = srcLang;
     result.targetLanguage = trgLang;
     if (!result.targetLanguage) delete result.targetLanguage;
-    result.resources = xliffRoot.elements.reduce(function (resources, file) {
+    result.resources = elements.reduce(function (resources, file) {
       var namespace = options.namespace || file.attributes.original;
-      var body = file.elements.find(function (e) {
+      var body = file.elements.filter(function (e) {
+        return e.type === 'element';
+      }).find(function (e) {
         return e.name === 'body';
       });
       body.elements = body.elements || [];
       var bodyChildren = body.elements.filter(function (child) {
-        return child.type !== 'comment';
+        return child.type !== 'comment' && child.type === 'element';
       });
       resources[namespace] = createUnits(bodyChildren);
       return resources;

@@ -1,3 +1,7 @@
+### 6.1.0
+
+- introduce captureSpacesBetweenElements option
+
 ### 6.0.3
 
 - fix when source and target has different keys
