@@ -408,6 +408,25 @@ describe('with additional attributes', () => {
   })
 })
 
+describe('with sizeRestriction attribute', () => {
+  describe('xliff 2.0', () => {
+    test('xliff2js', (fn) => (done) => {
+      fn(fixtures.example_sizeRestriction.xliff, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_sizeRestriction.js)
+        done()
+      })
+    })
+    test('js2xliff', (fn) => (done) => {
+      fn(fixtures.example_sizeRestriction.js, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_sizeRestriction.xliff)
+        done()
+      })
+    })
+  })
+})
+
 describe('Google Actions Xliff', () => {
   test('xliff12ToJs', (fn) => (done) => {
     fn(fixtures.example_google.xliff12, { xmlLangAttr: true }, (err, res) => {

@@ -73,5 +73,9 @@ module.exports = {
   },
   example_empty:{
     xliff12: fixNewLines(fs.readFileSync(path.join(__dirname, 'example_empty12.xliff')).toString())
+  },
+  example_sizeRestriction: {
+    js: require('./example_sizeRestriction'),
+    xliff: fixNewLines(fs.readFileSync(path.join(__dirname, 'example_sizeRestriction.xliff')).toString())
   }
 }

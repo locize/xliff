@@ -1,3 +1,7 @@
+### 6.2.0
+
+- special handling for sizeRestriction attribute in xliff v2
+
 ### 6.1.0
 
 - introduce captureSpacesBetweenElements option
