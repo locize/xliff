@@ -19,6 +19,10 @@
         "note": "special chars note",
         "source": "special chars",
         "target": "spezielle Charakter"
+      },
+      "keyWithEmptySource": {
+        "source": "",
+        "target": "Anything"
       }
     }
   },

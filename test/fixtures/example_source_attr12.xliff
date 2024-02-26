@@ -17,6 +17,10 @@
         <source xml:lang="en-US">special chars</source>
         <target xml:lang="de-CH">spezielle Charakter</target>
       </trans-unit>
+      <trans-unit id="keyWithEmptySource">
+        <source xml:lang="en-US"></source>
+        <target xml:lang="de-CH">Anything</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

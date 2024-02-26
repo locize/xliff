@@ -33,5 +33,11 @@
         <target>spezielle Charakter</target>
       </segment>
     </unit>
+    <unit id="keyWithEmptySource">
+      <segment>
+        <source></source>
+        <target>Anything</target>
+      </segment>
+    </unit>
   </file>
 </xliff>
