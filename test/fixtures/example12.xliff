@@ -17,6 +17,10 @@
         <source>special chars</source>
         <target>spezielle Charakter</target>
       </trans-unit>
+      <trans-unit id="keyWithEmptySource">
+        <source></source>
+        <target>Anything</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

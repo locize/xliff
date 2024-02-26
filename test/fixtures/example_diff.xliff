@@ -25,21 +25,25 @@
     </unit>
     <unit id="key2_zero">
       <segment>
+        <source></source>
         <target>zero (AR)</target>
       </segment>
     </unit>
     <unit id="key2_two">
       <segment>
+        <source></source>
         <target>two (AR)</target>
       </segment>
     </unit>
     <unit id="key2_few">
       <segment>
+        <source></source>
         <target>few (AR)</target>
       </segment>
     </unit>
     <unit id="key2_many">
       <segment>
+        <source></source>
         <target>many (AR)</target>
       </segment>
     </unit>

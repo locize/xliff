@@ -17,15 +17,19 @@
         <target>other (AR)</target>
       </trans-unit>
       <trans-unit id="key2_zero">
+        <source></source>
         <target>zero (AR)</target>
       </trans-unit>
       <trans-unit id="key2_two">
+        <source></source>
         <target>two (AR)</target>
       </trans-unit>
       <trans-unit id="key2_few">
+        <source></source>
         <target>few (AR)</target>
       </trans-unit>
       <trans-unit id="key2_many">
+        <source></source>
         <target>many (AR)</target>
       </trans-unit>
     </body>

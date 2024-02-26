@@ -20,6 +20,10 @@
         <target>spezielle Charakter</target>
         <note>special chars note</note>
       </trans-unit>
+      <trans-unit id="keyWithEmptySource">
+        <source></source>
+        <target>Anything</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
