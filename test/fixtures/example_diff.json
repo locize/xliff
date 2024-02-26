@@ -17,15 +17,19 @@
         "target": "other (AR)"
       },
       "key2_zero": {
+        "source": "",
         "target": "zero (AR)"
       },
       "key2_two": {
+        "source": "",
         "target": "two (AR)"
       },
       "key2_few": {
+        "source": "",
         "target": "few (AR)"
       },
       "key2_many": {
+        "source": "",
         "target": "many (AR)"
       }
     }
