@@ -487,7 +487,7 @@ function createGroupUnitTag(id, group) {
 function createUnitTag(id, unit) {
   var segment = (0, _objectToXml.makeElement)('segment', null, true);
   if (!unit.source && unit.target) unit.source = '';
-  if (unit.source) segment.elements.push((0, _objectToXml.makeElement)('source', null, (0, _objectToXml.makeValue)(unit.source, _ElementTypes.default)));
+  if (unit.source !== undefined) segment.elements.push((0, _objectToXml.makeElement)('source', null, (0, _objectToXml.makeValue)(unit.source, _ElementTypes.default)));
   if (unit.target !== undefined) segment.elements.push((0, _objectToXml.makeElement)('target', null, (0, _objectToXml.makeValue)(unit.target, _ElementTypes.default)));
   var subEle = [segment];
   if ('note' in unit) {
@@ -623,7 +623,7 @@ function createTransUnitTag(key, resource, obj, options) {
     };
   }
   if (!resource.source && resource.target) resource.source = '';
-  if (resource.source) u.elements.push((0, _objectToXml.makeElement)('source', sourceAttributes, (0, _objectToXml.makeValue)(resource.source, _ElementTypes.default)));
+  if (resource.source != null) u.elements.push((0, _objectToXml.makeElement)('source', sourceAttributes, (0, _objectToXml.makeValue)(resource.source, _ElementTypes.default)));
   if (resource.target != null) {
     var targetAttributes = null;
     if (options.xmlLangAttr && obj.targetLanguage) {

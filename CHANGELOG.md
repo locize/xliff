@@ -1,3 +1,7 @@
+### 6.2.1
+
+- ensure jsToXliff functions generate valid xliff files [#58](https://github.com/locize/xliff/pull/58)
+
 ### 6.2.0
 
 - special handling for sizeRestriction attribute in xliff v2
