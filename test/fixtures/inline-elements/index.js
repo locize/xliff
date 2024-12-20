@@ -3,6 +3,10 @@ const path = require('path')
 const fixNewLines = require('../fixNewLines')
 
 module.exports = {
+  example_codepoint: {
+    js: require('./example_codepoint.json'),
+    xliff: fixNewLines(fs.readFileSync(path.join(__dirname, 'example_codepoint.xliff')).toString())
+  },
   example_standalone: {
     js: require('./example_standalone.json'),
     xliff: fixNewLines(fs.readFileSync(path.join(__dirname, 'example_standalone.xliff')).toString()),

@@ -1,0 +1,28 @@
+{
+  "sourceLanguage": "en-US",
+  "targetLanguage": "es-CL",
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": [
+          "Key 1",
+          {
+            "CodePoint": {
+              "contents": "",
+              "hex": "0003"
+            }
+          }
+        ],
+        "target": [
+          "Llave 1",
+          {
+            "CodePoint": {
+              "contents": "",
+              "hex": "0003"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

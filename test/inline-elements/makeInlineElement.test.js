@@ -2,6 +2,7 @@ const expect = require('expect.js')
 const makeInlineElement = require('../../cjs/inline-elements/makeInlineElement')
 
 describe('makeInlineElement()', () => {
+
   it('sets the element type', () => {
     const expectedElementType = 'Standalone'
 

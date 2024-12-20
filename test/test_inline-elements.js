@@ -9,6 +9,16 @@ function test (what, t) {
 }
 
 describe('Inline elements', () => {
+  describe('with codepoint elements (2.x: `<cp/>`)', ()=>{
+    test('xliff2js', (fn)=>(done)=> {
+      fn(fixtures.example_codepoint.xliff, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_codepoint.js)
+        done()
+      })
+    })
+  }) 
+
   describe('with standalone elements (1.2: `<x/>`; 2.x: `<ph/>`)', () => {
     test('xliff2js', (fn) => (done) => {
       fn(fixtures.example_standalone.xliff, (err, res) => {
