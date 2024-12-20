@@ -29,6 +29,16 @@ describe('Inline elements', () => {
     })
   })
 
+  describe('with markedspanstart elements (2.x: `<sm>`)', ()=>{
+    test('xliff2js', (fn) => (done) => {
+      fn(fixtures.example_markedspanstart.xliff, (err, res)=> {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_markedspanstart.js)
+        done()
+      })
+    })
+  })
+
   describe('with standalone elements (1.2: `<x/>`; 2.x: `<ph/>`)', () => {
     test('xliff2js', (fn) => (done) => {
       fn(fixtures.example_standalone.xliff, (err, res) => {

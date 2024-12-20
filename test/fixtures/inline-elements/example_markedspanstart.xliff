@@ -1,0 +1,12 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US" trgLang="de-CH">
+  <file id="namespace1">
+    <unit id="key1">
+      <segment>
+        <source>Press the <sm id="sm1" translate="no" type="other">TAB key</sm>.
+        </source>
+        <target>Drücken Sie die <sm id="sm2" translate="no"  type="other">TAB-TASTE</sm>.
+        </target>
+      </segment>
+    </unit>
+  </file>
+</xliff>
