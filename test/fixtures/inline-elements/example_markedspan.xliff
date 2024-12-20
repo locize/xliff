@@ -1,0 +1,12 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US" trgLang="de-CH">
+  <file id="namespace1">
+    <unit id="key1">
+      <segment>
+        <source>Press the <mrk id="m1" type="term">TAB key</mrk>.
+        </source>
+        <target>Drücken Sie die <mrk id="m2" type="term">TAB-TASTE</mrk>.
+        </target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

@@ -59,6 +59,10 @@ module.exports = {
     js: require('./example_marker.json'),
     xliff12: fixNewLines(fs.readFileSync(path.join(__dirname, 'example_marker12.xliff')).toString())
   },
+  example_markedspan: {
+    js: require('./example_markedspan.json'),
+    xliff: fixNewLines(fs.readFileSync(path.join(__dirname, 'example_markedspan.xliff')).toString())
+  },
   // angular
   example_angular: {
     js: require('./example_angular.json'),

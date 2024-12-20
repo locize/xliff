@@ -1,0 +1,32 @@
+{
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": [
+          "Press the ",
+          {
+            "MarkedSpan": {
+              "contents": "TAB key",
+              "id": "m1",
+              "type": "term"
+            }
+          },
+          "."
+        ],
+        "target": [
+          "Drücken Sie die ",
+          {
+            "MarkedSpan": {
+              "contents": "TAB-TASTE",
+              "id": "m2",
+              "type": "term"
+            }
+          },
+          "."
+        ]
+      }
+    }
+  },
+  "sourceLanguage": "en-US",
+  "targetLanguage": "de-CH"
+}
