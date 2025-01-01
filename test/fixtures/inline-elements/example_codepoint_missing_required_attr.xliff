@@ -1,0 +1,10 @@
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US" trgLang="es-CL">
+  <file id="namespace1">
+    <unit id="key1">
+      <segment id="s-key-1">
+        <source>Key 1<cp/></source>
+        <target>Llave 1<cp/></target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

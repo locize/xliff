@@ -17,6 +17,28 @@ describe('Inline elements', () => {
         done()
       })
     })
+    test('xliff2js', (fn) => (done) => {
+      fn(fixtures.example_codepoint_missing_required_attribute.xliff, (err, res)=>{
+        expect(err.message).to.eql('Hex is a required attribute for <cp> element')
+        done()
+      })
+    })
+    test('xliff2js', (fn) => (done) => {
+      fn(fixtures.example_codepoint_with_content.xliff, (err, res)=>{
+        expect(err).to.be.ok()
+        expect(err.message).to.eql('<cp> element should be empty')
+        done()
+      })
+    })
+    test('xliff2js', (fn) => (done)=>{
+      fn(fixtures.example_codepoint.xliff,
+        (err, res) => {
+          expect(err).not.to.be.ok()
+          expect(res).to.eql(fixtures.example_codepoint.js)
+          done()
+        }
+      )
+    })
   })
 
   describe('with markedspan elements (2.x: `<mrk>`)', ()=>{
