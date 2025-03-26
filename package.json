@@ -50,6 +50,14 @@
       "require": "./cjs/xliff12ToJs.js",
       "default": "./esm/xliff12ToJs.js"
     },
+    "./makeInlineElement": {
+      "require": "./cjs/inline-elements/makeInlineElement.js",
+      "default": "./esm/inline-elements/makeInlineElement.js"
+    },
+    "./ElementTypes": {
+      "require": "./cjs/inline-elements/ElementTypes.js",
+      "default": "./esm/inline-elements/ElementTypes.js"
+    },
     "./cjs": {
       "default": "./cjs/index.js"
     },
@@ -83,6 +91,12 @@
     "./cjs/xliff12ToJs": {
       "default": "./cjs/xliff12ToJs.js"
     },
+    "./cjs/makeInlineElement": {
+      "default": "./cjs/inline-elements/makeInlineElement.js"
+    },
+    "./cjs/ElementTypes": {
+      "default": "./cjs/inline-elements/ElementTypes.js"
+    },
     "./esm": {
       "default": "./esm/index.js"
     },
@@ -115,6 +129,12 @@
     },
     "./esm/xliff12ToJs": {
       "default": "./esm/xliff12ToJs.js"
+    },
+    "./esm/makeInlineElement": {
+      "default": "./esm/inline-elements/makeInlineElement.js"
+    },
+    "./esm/ElementTypes": {
+      "default": "./esm/inline-elements/ElementTypes.js"
     }
   },
   "module": "./esm/index.js",
