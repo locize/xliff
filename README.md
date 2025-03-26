@@ -533,7 +533,7 @@ You can create this structure using the `makeInlineElement()` function with the 
 // import or require makeInlineElements and ElementTypes
 // signature: makeInlineElement(type, id, attributes, contents)
 var attributesObj = { ctype: 'x-python-brace-param' }
-var inlineElementObj = makeInlineElement(ElementTypes.GenericSpan, 'name', attributesObj, '{name}')
+var inlineElementObj = makeInlineElement(ElementTypes.GenericSpan, attributesObj, '{name}')
 
 var source = [ 'Hello ', inlineElementObj ]
 ```
