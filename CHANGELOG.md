@@ -1,3 +1,7 @@
+### 6.2.2
+
+- properly expose also `makeInlineElement` [#60](https://github.com/locize/xliff/pull/60)
+
 ### 6.2.1
 
 - ensure jsToXliff functions generate valid xliff files [#58](https://github.com/locize/xliff/pull/58)

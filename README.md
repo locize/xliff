@@ -1,4 +1,4 @@
-[![CI](https://github.com/locize/xliff/actions/workflows/ci.yml/badge.svg)](https://github.com/locize/xliff/actions/workflows/ci.yml) [![travis](https://img.shields.io/travis/locize/xliff.svg)](https://travis-ci.org/locize/xliff) [![npm](https://img.shields.io/npm/v/xliff.svg)](https://npmjs.org/package/xliff)
+[![CI](https://github.com/locize/xliff/actions/workflows/ci.yml/badge.svg)](https://github.com/locize/xliff/actions/workflows/ci.yml) [![npm](https://img.shields.io/npm/v/xliff.svg)](https://npmjs.org/package/xliff)
 
 ## Download
 
@@ -332,7 +332,7 @@ The parts are:
 - All other properties: Map directly to attributes of the XLIFF element tag
 
 Here's a real-world example:
-```
+```json
 {
   "Span": {
     "id": "dataType",
@@ -342,7 +342,7 @@ Here's a real-world example:
 }
 ```
 This maps to the following XLIFF inline element structure:
-```
+```xml
 <ph id="dataType" ctype="x-python-brace-param">{dataType}</ph>
 ```
 
@@ -362,7 +362,7 @@ target: "Eine Applikation um {doctype} Dokumente zu manipulieren und verarbeiten
 ```
 
 ##### JSON
-```
+```json
 {
   "resources": {
     "namespace1": {
@@ -420,7 +420,7 @@ target: "Eine Applikation um {doctype} Dokumente zu manipulieren und verarbeiten
 ```
 
 ##### XLIFF 1.2
-```
+```xml
 <xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
   <file original="namespace1" datatype="plaintext" source-language="en-US" target-language="de-CH">
     <body>
@@ -446,7 +446,7 @@ target: "Eine Applikation um {doctype} Dokumente zu manipulieren und verarbeiten
 ```
 
 ##### XLIFF 2.0
-```
+```xml
 <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="en-US" trgLang="de-CH">
   <file id="namespace1">
     <unit id="key1">
@@ -513,7 +513,11 @@ As a result, you should be able to have "roundtrip" support for converting betwe
 
 #### Helpers for creating inline element objects
 
-If you need to create your own inline element objects to construct a `source` or `target` array, you can use the [`makeInlineElement()`](./lib/inline-elements/makeInlineElement.js) function.
+If you need to create your own inline element objects to construct a `source` or `target` array, you can use the [`makeInlineElement()`](./lib/inline-elements/makeInlineElement.js) function:
+
+```js
+import { makeInlineElement } from 'xliff'
+```
 
 For example, suppose you have this string:
 
@@ -521,7 +525,7 @@ For example, suppose you have this string:
 
 You want to use it as a `source` value containing two parts -- the string "Hello " and a Generic Span element containing the placeholder variable "{name}", so that the end result (in XLIFF 1.2) should look like this:
 
-```
+```xml
 <source>Hello 
   <g id="name" ctype="x-python-brace-param">{name}</g>
 </source>
@@ -529,8 +533,9 @@ You want to use it as a `source` value containing two parts -- the string "Hello
 
 You can create this structure using the `makeInlineElement()` function with the following code:
 
-```
+```js
 // import or require makeInlineElements and ElementTypes
+import { makeInlineElement } from 'xliff'
 // signature: makeInlineElement(type, id, attributes, contents)
 var attributesObj = { ctype: 'x-python-brace-param' }
 var inlineElementObj = makeInlineElement(ElementTypes.GenericSpan, attributesObj, '{name}')
