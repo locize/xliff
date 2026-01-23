@@ -576,3 +576,30 @@ const xliff = `<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0
   </file>
 </xliff>`
 ```
+
+## XLIFF 2.2 Support & Unknowns
+
+This library parses XLIFF 2.2 (and 2.1) files permissively. Unknown attributes and elements are preserved for round-trip and future compatibility:
+
+- The parsed JS model includes `xliffVersion` (e.g. '2.2')
+- Unknown top-level elements (e.g. `<mda:metadata>`) are stored in `headerExtras`
+- Unknown attributes (e.g. `ref`) are stored in `additionalAttributes` per unit/group
+- Unknown child elements are stored in `additionalElements` per unit/group
+
+Example:
+
+```js
+const js = xliff2js(xliffString)
+console.log(js.xliffVersion) // '2.2'
+console.log(js.headerExtras) // array of unknown top-level elements
+console.log(js.resources['main']['welcome'].additionalAttributes.ref) // 'someRefValue'
+console.log(js.resources['main']['welcome'].additionalElements) // unknown child elements
+```
+
+Exporting to XLIFF 2.0/1.2 by default omits 2.2-only constructs, but preserves them in the JS model for later use.
+
+### 2.2 Generation
+By default we emit XLIFF 2.0 to remain compatible with older tooling. If you want true 2.2 output (plural/gender/select, headerExtras, etc.) use the opt-in option:
+```js
+js2xliff(jsModel, { targetXliffVersion: '2.2' })
+```

@@ -92,7 +92,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = createxliff;
 var _createjs = _interopRequireDefault(require("./createjs.js"));
 var _js2xliff = _interopRequireDefault(require("./js2xliff.js"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var createjs = _createjs.default.createjsClb;
 var js2xliff = _js2xliff.default.js2xliffClb;
 var createxliffClb = function createxliffClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, cb) {
@@ -135,7 +135,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = createxliff12;
 var _createjs = _interopRequireDefault(require("./createjs.js"));
 var _jsToXliff = _interopRequireDefault(require("./jsToXliff12.js"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var createjs = _createjs.default.createjsClb;
 var jsToXliff12 = _jsToXliff.default.jsToXliff12Clb;
 var createxliff12Clb = function createxliff12Clb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, cb) {
@@ -253,7 +253,7 @@ var _createxliff = _interopRequireDefault(require("./createxliff.js"));
 var _createxliff2 = _interopRequireDefault(require("./createxliff12.js"));
 var _makeInlineElement = _interopRequireDefault(require("./inline-elements/makeInlineElement.js"));
 var _ElementTypes = _interopRequireDefault(require("./inline-elements/ElementTypes.js"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var _default = exports.default = {
   xliff2js: _xliff2js.default,
   xliff12ToJs: _xliff12ToJs.default,
@@ -282,7 +282,10 @@ var _default = exports.default = {
   Span: 'Span',
   SpanStart: 'SpanStart',
   SpanEnd: 'SpanEnd',
-  Marker: 'Marker'
+  Marker: 'Marker',
+  Plural: 'Plural',
+  Gender: 'Gender',
+  Select: 'Select'
 };
 module.exports = exports.default;
 },{}],6:[function(require,module,exports){
@@ -294,14 +297,13 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _ElementTypes = _interopRequireDefault(require("./ElementTypes.js"));
 var _makeInlineElement = _interopRequireDefault(require("./makeInlineElement.js"));
-var _elementTypeToTagMap, _factories;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 var _default = exports.default = {
-  elementTypeToTagMap: (_elementTypeToTagMap = {}, _defineProperty(_elementTypeToTagMap, _ElementTypes.default.Standalone, 'x'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.GenericSpan, 'g'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.GenericSpanStart, 'bx'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.GenericSpanEnd, 'ex'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.Span, 'ph'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.SpanStart, 'bpt'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.SpanEnd, 'ept'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.Marker, 'mrk'), _elementTypeToTagMap),
+  elementTypeToTagMap: _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty({}, _ElementTypes.default.Standalone, 'x'), _ElementTypes.default.GenericSpan, 'g'), _ElementTypes.default.GenericSpanStart, 'bx'), _ElementTypes.default.GenericSpanEnd, 'ex'), _ElementTypes.default.Span, 'ph'), _ElementTypes.default.SpanStart, 'bpt'), _ElementTypes.default.SpanEnd, 'ept'), _ElementTypes.default.Marker, 'mrk'),
   tagToElementTypeMap: {
     x: _ElementTypes.default.Standalone,
     g: _ElementTypes.default.GenericSpan,
@@ -312,23 +314,23 @@ var _default = exports.default = {
     ept: _ElementTypes.default.SpanEnd,
     mrk: _ElementTypes.default.Marker
   },
-  factories: (_factories = {}, _defineProperty(_factories, _ElementTypes.default.Standalone, function (attributes) {
+  factories: _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty({}, _ElementTypes.default.Standalone, function (attributes) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.Standalone, attributes);
-  }), _defineProperty(_factories, _ElementTypes.default.GenericSpan, function (attributes, contents) {
+  }), _ElementTypes.default.GenericSpan, function (attributes, contents) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpan, attributes, contents);
-  }), _defineProperty(_factories, _ElementTypes.default.GenericSpanStart, function (attributes) {
+  }), _ElementTypes.default.GenericSpanStart, function (attributes) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpanStart, attributes);
-  }), _defineProperty(_factories, _ElementTypes.default.GenericSpanEnd, function (attributes) {
+  }), _ElementTypes.default.GenericSpanEnd, function (attributes) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpanEnd, attributes);
-  }), _defineProperty(_factories, _ElementTypes.default.Span, function (attributes, contents) {
+  }), _ElementTypes.default.Span, function (attributes, contents) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.Span, attributes, contents);
-  }), _defineProperty(_factories, _ElementTypes.default.SpanStart, function (attributes, contents) {
+  }), _ElementTypes.default.SpanStart, function (attributes, contents) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.SpanStart, attributes, contents);
-  }), _defineProperty(_factories, _ElementTypes.default.SpanEnd, function (attributes, contents) {
+  }), _ElementTypes.default.SpanEnd, function (attributes, contents) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.SpanEnd, attributes, contents);
-  }), _defineProperty(_factories, _ElementTypes.default.Marker, function (attributes, contents) {
+  }), _ElementTypes.default.Marker, function (attributes, contents) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.Marker, attributes, contents);
-  }), _factories)
+  })
 };
 module.exports = exports.default;
 },{"./ElementTypes.js":5,"./makeInlineElement.js":8}],7:[function(require,module,exports){
@@ -340,35 +342,43 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _ElementTypes = _interopRequireDefault(require("./ElementTypes.js"));
 var _makeInlineElement = _interopRequireDefault(require("./makeInlineElement.js"));
-var _elementTypeToTagMap, _factories;
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 var _default = exports.default = {
-  elementTypeToTagMap: (_elementTypeToTagMap = {}, _defineProperty(_elementTypeToTagMap, _ElementTypes.default.Standalone, 'ph'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.GenericSpan, 'pc'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.GenericSpanStart, 'sc'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.GenericSpanEnd, 'ec'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.Span, 'pc'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.SpanStart, 'sc'), _defineProperty(_elementTypeToTagMap, _ElementTypes.default.SpanEnd, 'ec'), _elementTypeToTagMap),
+  elementTypeToTagMap: _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty({}, _ElementTypes.default.Standalone, 'ph'), _ElementTypes.default.GenericSpan, 'pc'), _ElementTypes.default.GenericSpanStart, 'sc'), _ElementTypes.default.GenericSpanEnd, 'ec'), _ElementTypes.default.Span, 'pc'), _ElementTypes.default.SpanStart, 'sc'), _ElementTypes.default.SpanEnd, 'ec'), _ElementTypes.default.Plural, 'plural'), _ElementTypes.default.Gender, 'gender'), _ElementTypes.default.Select, 'select'),
   tagToElementTypeMap: {
     ph: _ElementTypes.default.Standalone,
     pc: _ElementTypes.default.Span,
     sc: _ElementTypes.default.SpanStart,
-    ec: _ElementTypes.default.SpanEnd
+    ec: _ElementTypes.default.SpanEnd,
+    plural: _ElementTypes.default.Plural,
+    gender: _ElementTypes.default.Gender,
+    select: _ElementTypes.default.Select
   },
-  factories: (_factories = {}, _defineProperty(_factories, _ElementTypes.default.Standalone, function (attributes) {
+  factories: _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty({}, _ElementTypes.default.Standalone, function (attributes) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.Standalone, attributes);
-  }), _defineProperty(_factories, _ElementTypes.default.GenericSpan, function (attributes, contents) {
+  }), _ElementTypes.default.GenericSpan, function (attributes, contents) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpan, attributes, contents);
-  }), _defineProperty(_factories, _ElementTypes.default.GenericSpanStart, function (attributes) {
+  }), _ElementTypes.default.GenericSpanStart, function (attributes) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpanStart, attributes);
-  }), _defineProperty(_factories, _ElementTypes.default.GenericSpanEnd, function (attributes) {
+  }), _ElementTypes.default.GenericSpanEnd, function (attributes) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.GenericSpanEnd, attributes);
-  }), _defineProperty(_factories, _ElementTypes.default.Span, function (attributes, contents) {
+  }), _ElementTypes.default.Span, function (attributes, contents) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.Span, attributes, contents);
-  }), _defineProperty(_factories, _ElementTypes.default.SpanStart, function (attributes, contents) {
+  }), _ElementTypes.default.SpanStart, function (attributes, contents) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.SpanStart, attributes, contents);
-  }), _defineProperty(_factories, _ElementTypes.default.SpanEnd, function (attributes, contents) {
+  }), _ElementTypes.default.SpanEnd, function (attributes, contents) {
     return (0, _makeInlineElement.default)(_ElementTypes.default.SpanEnd, attributes, contents);
-  }), _factories)
+  }), _ElementTypes.default.Plural, function (attributes, options) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.Plural, attributes, options);
+  }), _ElementTypes.default.Gender, function (attributes, options) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.Gender, attributes, options);
+  }), _ElementTypes.default.Select, function (attributes, options) {
+    return (0, _makeInlineElement.default)(_ElementTypes.default.Select, attributes, options);
+  })
 };
 module.exports = exports.default;
 },{"./ElementTypes.js":5,"./makeInlineElement.js":8}],8:[function(require,module,exports){
@@ -379,9 +389,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = makeInlineElement;
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function makeInlineElement(type, attributes, contents) {
   var contentsObj = contents !== undefined ? {
     contents: contents
@@ -415,13 +425,13 @@ var _xmlJs = _interopRequireDefault(require("xml-js"));
 var _ElementTypes = _interopRequireDefault(require("./inline-elements/ElementTypes2.js"));
 var _objectToXml = require("./xml-js/objectToXml.js");
 var _escape = _interopRequireDefault(require("./util/escape.js"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 var js2xliffClb = function js2xliffClb(obj, opt, cb) {
   if (!cb && typeof opt === 'function') {
     cb = opt;
@@ -432,12 +442,14 @@ var js2xliffClb = function js2xliffClb(obj, opt, cb) {
   opt = opt || {
     indent: '  '
   };
+  var targetXliffVersion = opt.targetXliffVersion || '2.0';
   var options = {
-    spaces: opt.indent !== undefined ? opt.indent : '  '
+    spaces: opt.indent !== undefined ? opt.indent : '  ',
+    targetXliffVersion: targetXliffVersion
   };
   var rootAttributes = {
-    xmlns: 'urn:oasis:names:tc:xliff:document:2.0',
-    version: '2.0',
+    xmlns: 'urn:oasis:names:tc:xliff:document:' + targetXliffVersion,
+    version: targetXliffVersion,
     srcLang: obj.sourceLanguage,
     trgLang: obj.targetLanguage
   };
@@ -448,8 +460,17 @@ var js2xliffClb = function js2xliffClb(obj, opt, cb) {
   });
   if (hasSizeRestriction) rootAttributes['xmlns:slr'] = 'urn:oasis:names:tc:xliff:sizerestriction:2.0';
   var root = (0, _objectToXml.makeElement)('xliff', rootAttributes, true);
+  if (Array.isArray(obj.headerExtras) && obj.headerExtras.length) {
+    obj.headerExtras.forEach(function (extra) {
+      var clone = JSON.parse(JSON.stringify(extra));
+      if (clone.type === 'element' && clone.attributes == null) {
+        clone.attributes = {};
+      }
+      root.elements.push(clone);
+    });
+  }
   Object.keys(obj.resources).forEach(function (nsName) {
-    var fileChildren = createUnitTags(obj.resources[nsName]);
+    var fileChildren = createUnitTags(obj.resources[nsName], options);
     var f = (0, _objectToXml.makeElement)('file', {
       id: nsName
     }, fileChildren);
@@ -462,7 +483,7 @@ var js2xliffClb = function js2xliffClb(obj, opt, cb) {
   if (cb) cb(null, xml);
   return xml;
 };
-function createUnitTags(unitElements) {
+function createUnitTags(unitElements, options) {
   var hasSizeRestriction = !!Object.keys(unitElements).find(function (k) {
     return unitElements[k].additionalAttributes && (unitElements[k].additionalAttributes.sizeRestriction !== undefined || unitElements[k].additionalAttributes['slr:sizeRestriction'] !== undefined);
   });
@@ -487,24 +508,29 @@ function createUnitTags(unitElements) {
   }
   return preElements.concat(Object.keys(unitElements).map(function (key) {
     if (unitElements[key].groupUnits) {
-      return createGroupUnitTag(key, unitElements[key]);
+      return createGroupUnitTag(key, unitElements[key], options);
     } else {
-      return createUnitTag(key, unitElements[key]);
+      return createUnitTag(key, unitElements[key], options);
     }
   }));
 }
-function createGroupUnitTag(id, group) {
+function createGroupUnitTag(id, group, options) {
   var additionalAttributes = group.additionalAttributes != null ? group.additionalAttributes : {};
-  var groupUnits = createUnitTags(group.groupUnits);
-  return (0, _objectToXml.makeElement)('group', Object.assign({
+  var groupUnits = createUnitTags(group.groupUnits, options);
+  var attrs = {
     id: (0, _escape.default)(id)
-  }, additionalAttributes), groupUnits);
+  };
+  Object.keys(additionalAttributes).forEach(function (k) {
+    var v = additionalAttributes[k];
+    if (v !== undefined && v !== null) attrs[k] = String(v);
+  });
+  return (0, _objectToXml.makeElement)('group', attrs, groupUnits);
 }
-function createUnitTag(id, unit) {
+function createUnitTag(id, unit, options) {
   var segment = (0, _objectToXml.makeElement)('segment', null, true);
-  if (!unit.source && unit.target) unit.source = '';
-  if (unit.source !== undefined) segment.elements.push((0, _objectToXml.makeElement)('source', null, (0, _objectToXml.makeValue)(unit.source, _ElementTypes.default)));
-  if (unit.target !== undefined) segment.elements.push((0, _objectToXml.makeElement)('target', null, (0, _objectToXml.makeValue)(unit.target, _ElementTypes.default)));
+  var srcVal = unit.source === undefined && unit.target !== undefined ? '' : unit.source;
+  if (srcVal !== undefined) segment.elements.push((0, _objectToXml.makeElement)('source', null, (0, _objectToXml.makeValue)(srcVal, _ElementTypes.default, options && options.targetXliffVersion)));
+  if (unit.target !== undefined) segment.elements.push((0, _objectToXml.makeElement)('target', null, (0, _objectToXml.makeValue)(unit.target, _ElementTypes.default, options && options.targetXliffVersion)));
   var subEle = [segment];
   if ('note' in unit) {
     var noteElms = [];
@@ -518,9 +544,14 @@ function createUnitTag(id, unit) {
     additionalAttributes['slr:sizeRestriction'] = additionalAttributes.sizeRestriction + '';
     delete additionalAttributes.sizeRestriction;
   }
-  return (0, _objectToXml.makeElement)('unit', Object.assign({
+  var attrs = {
     id: (0, _escape.default)(id)
-  }, additionalAttributes), subEle);
+  };
+  Object.keys(additionalAttributes).forEach(function (k) {
+    var v = additionalAttributes[k];
+    if (v !== undefined && v !== null) attrs[k] = String(v);
+  });
+  return (0, _objectToXml.makeElement)('unit', attrs, subEle);
 }
 function createNoteObjects(note) {
   var arrNote = [];
@@ -568,7 +599,7 @@ var _xmlJs = _interopRequireDefault(require("xml-js"));
 var _ElementTypes = _interopRequireDefault(require("./inline-elements/ElementTypes12.js"));
 var _objectToXml = require("./xml-js/objectToXml.js");
 var _escape = _interopRequireDefault(require("./util/escape.js"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var jsToXliff12Clb = function jsToXliff12Clb(obj, opt, cb) {
   if (!cb && typeof opt === 'function') {
     cb = opt;
@@ -745,7 +776,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = sourceOfjs;
 var _ofjs = _interopRequireDefault(require("./ofjs.js"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function sourceOfjs(js, cb) {
   return (0, _ofjs.default)(js, 'source', cb);
 }
@@ -758,7 +789,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = targetOfjs;
 var _ofjs = _interopRequireDefault(require("./ofjs.js"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function targetOfjs(js, cb) {
   return (0, _ofjs.default)(js, 'target', cb);
 }
@@ -795,7 +826,7 @@ exports.default = xliff12ToJs;
 var _xmlJs = _interopRequireDefault(require("xml-js"));
 var _ElementTypes = _interopRequireDefault(require("./inline-elements/ElementTypes12.js"));
 var _xmlToObject = require("./xml-js/xmlToObject.js");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 var xliff12ToJsClb = function xliff12ToJsClb(str, options, cb) {
   if (typeof options === 'function') {
     cb = options;
@@ -820,6 +851,10 @@ var xliff12ToJsClb = function xliff12ToJsClb(str, options, cb) {
   var xliffRoot = xmlObj.elements.find(function (ele) {
     return ele.name === 'xliff';
   });
+  var version = xliffRoot.attributes && xliffRoot.attributes.version;
+  if (version && version !== '1.2') {
+    result.xliffVersion = version;
+  }
   if (xliffRoot.elements && xliffRoot.elements.length) {
     var elements = xliffRoot.elements.filter(function (e) {
       return e.type === 'element';
@@ -829,7 +864,17 @@ var xliff12ToJsClb = function xliff12ToJsClb(str, options, cb) {
     result.sourceLanguage = srcLang;
     result.targetLanguage = trgLang;
     if (!result.targetLanguage) delete result.targetLanguage;
-    result.resources = elements.reduce(function (resources, file) {
+    var files = [];
+    var headerExtras = [];
+    elements.forEach(function (child) {
+      if (child.name === 'file') {
+        files.push(child);
+      } else {
+        headerExtras.push(child);
+      }
+    });
+    if (headerExtras.length) result.headerExtras = headerExtras;
+    result.resources = files.reduce(function (resources, file) {
       var namespace = options.namespace || file.attributes.original;
       var body = file.elements.filter(function (e) {
         return e.type === 'element';
@@ -851,6 +896,7 @@ var xliff12ToJsClb = function xliff12ToJsClb(str, options, cb) {
 };
 function createUnits(childElements) {
   return childElements.reduce(function (parent, child) {
+    if (!child.attributes || !child.attributes.id) return parent;
     var key = child.attributes.id;
     if (!child.elements) return parent;
     var children = child.elements.filter(function (e) {
@@ -860,6 +906,17 @@ function createUnits(childElements) {
       parent[key] = createGroupTag(child, children);
     } else {
       parent[key] = createTransUnitTag(child);
+    }
+    if (child.attributes.ref) {
+      if (!parent[key].additionalAttributes) parent[key].additionalAttributes = {};
+      parent[key].additionalAttributes.ref = child.attributes.ref;
+    }
+    var known = ['trans-unit', 'group', 'source', 'target', 'note', 'body'];
+    var additionalElements = child.elements.filter(function (e) {
+      return !known.includes(e.name);
+    });
+    if (additionalElements.length) {
+      parent[key].additionalElements = additionalElements;
     }
     return parent;
   }, {});
@@ -931,7 +988,13 @@ exports.default = xliffToJs;
 var _xmlJs = _interopRequireDefault(require("xml-js"));
 var _ElementTypes = _interopRequireDefault(require("./inline-elements/ElementTypes2.js"));
 var _xmlToObject = require("./xml-js/xmlToObject.js");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 var xliffToJsClb = function xliffToJsClb(str, options, cb) {
   if (typeof options === 'function') {
     cb = options;
@@ -954,17 +1017,30 @@ var xliffToJsClb = function xliffToJsClb(str, options, cb) {
   var xliffRoot = xmlObj.elements.find(function (ele) {
     return ele.name === 'xliff';
   });
-  if (xliffRoot.attributes) {
+  var version = xliffRoot.attributes && xliffRoot.attributes.version;
+  if (['2.0', '2.1', '2.2'].includes(version)) {
+    if (version !== '2.0') {
+      result.xliffVersion = version;
+    }
     var srcLang = xliffRoot.attributes.srcLang;
     var trgLang = xliffRoot.attributes.trgLang;
     result.sourceLanguage = srcLang;
     result.targetLanguage = trgLang;
     if (!result.targetLanguage) delete result.targetLanguage;
-    xliffRoot.elements = xliffRoot.elements.filter(function (child) {
-      return child.type !== 'comment';
+    var files = [];
+    var headerExtras = [];
+    (xliffRoot.elements || []).forEach(function (child) {
+      if (child.type === 'comment') return;
+      if (child.name === 'file') {
+        files.push(child);
+      } else {
+        headerExtras.push(child);
+      }
     });
-    result.resources = xliffRoot.elements.reduce(function (resources, file) {
+    if (headerExtras.length) result.headerExtras = headerExtras;
+    result.resources = files.reduce(function (resources, file) {
       var namespace = options.namespace || file.attributes.id;
+      if (!namespace) namespace = 'default';
       var initValues = {};
       if (!result.targetLanguage) delete initValues.target;
       file.elements = file.elements || [];
@@ -981,9 +1057,13 @@ var xliffToJsClb = function xliffToJsClb(str, options, cb) {
 function createUnits(parent, initValues) {
   if (!parent.elements) return {};
   return parent.elements.reduce(function (file, unit) {
+    if (!unit.attributes || !unit.attributes.id) return file;
     var key = unit.attributes.id;
-    var additionalAttributes = unit.attributes;
+    var additionalAttributes = _objectSpread({}, unit.attributes);
     delete additionalAttributes.id;
+    if (unit.attributes.ref) {
+      additionalAttributes.ref = unit.attributes.ref;
+    }
     if (additionalAttributes['slr:sizeRestriction'] !== undefined) {
       additionalAttributes.sizeRestriction = additionalAttributes['slr:sizeRestriction'];
       if (typeof additionalAttributes.sizeRestriction === 'string') additionalAttributes.sizeRestriction = parseInt(additionalAttributes.sizeRestriction);
@@ -997,6 +1077,15 @@ function createUnits(parent, initValues) {
             additionalAttributes: additionalAttributes
           });
         }
+        if (unit.elements) {
+          var known = ['segment', 'notes', 'source', 'target', 'note', 'ignorable'];
+          var additionalElements = unit.elements.filter(function (e) {
+            return !known.includes(e.name);
+          });
+          if (additionalElements.length) {
+            file[key].additionalElements = additionalElements;
+          }
+        }
         return file;
       case 'group':
         file[key] = {
@@ -1009,6 +1098,8 @@ function createUnits(parent, initValues) {
         }
         return file;
       default:
+        if (!file._additionalElements) file._additionalElements = [];
+        file._additionalElements.push(unit);
         return file;
     }
   }, {});
@@ -1067,6 +1158,7 @@ exports.makeElement = makeElement;
 exports.makeText = makeText;
 exports.makeValue = makeValue;
 var _typeToTagMaps = require("../inline-elements/typeToTagMaps.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function makeElement(name, attributes, elements) {
   var el = {
     type: 'element',
@@ -1088,46 +1180,106 @@ function makeText(text) {
     text: text
   };
 }
-function makeValue(content, elementTypeInfo) {
+function makeValue(content, elementTypeInfo, targetXliffVersion) {
+  targetXliffVersion = targetXliffVersion || '2.0';
   if (!Array.isArray(content)) {
     if (typeof content === 'string' || content instanceof String) {
       return [makeText(content)];
     }
     var elementType = Object.keys(content)[0];
+    var elementObj = content[elementType];
+    if (elementType === 'type' && ['plural', 'gender', 'select'].includes(content.type)) {
+      elementType = content.type.charAt(0).toUpperCase() + content.type.slice(1);
+      elementObj = content;
+    }
     var elementTag = (0, _typeToTagMaps.elementTypeToTag)(elementType, elementTypeInfo);
+    if (['Plural', 'Gender', 'Select'].includes(elementType) && targetXliffVersion !== '2.2') {
+      var text = '';
+      if (Array.isArray(elementObj.options)) {
+        text = elementObj.options.map(function (opt) {
+          return opt.source;
+        }).join(' ');
+      } else if (elementObj.contents) {
+        text = elementObj.contents;
+      }
+      return [makeText(text)];
+    }
     if (elementTag !== undefined) {
-      var attrsSrc = Object.assign({}, content[elementType]);
+      if (['Plural', 'Gender', 'Select'].includes(elementType) && targetXliffVersion === '2.2') {
+        var _attrs = {
+          id: elementObj.id,
+          var: elementObj.var
+        };
+        if (elementObj.otherAttrs) {
+          Object.keys(elementObj.otherAttrs).forEach(function (k) {
+            _attrs[k] = elementObj.otherAttrs[k];
+          });
+        }
+        var optionElements = Array.isArray(elementObj.options) ? elementObj.options.map(function (opt) {
+          return makeElement('option', {
+            key: opt.key
+          }, [makeText(opt.source)]);
+        }) : [];
+        return [makeElement(elementTag, _attrs, optionElements)];
+      }
+      var attrsSrc = Object.assign({}, elementObj);
       delete attrsSrc.id;
       delete attrsSrc.contents;
-      var contents = content[elementType].hasOwnProperty('contents') ? makeValue(content[elementType].contents, elementTypeInfo) : undefined;
+      var contents = elementObj.hasOwnProperty('contents') ? makeValue(elementObj.contents, elementTypeInfo, targetXliffVersion) : undefined;
       var attrs = {
-        id: content[elementType].id
+        id: elementObj.id
       };
       Object.keys(attrsSrc).forEach(function (attrKey) {
-        attrs[attrKey] = attrsSrc[attrKey];
+        if (attrsSrc[attrKey] !== undefined && attrsSrc[attrKey] !== null) {
+          attrs[attrKey] = attrsSrc[attrKey] + '';
+        }
       });
       return [makeElement(elementTag, attrs, contents)];
     }
-    return [makeText(content)];
+    return [{
+      type: 'comment',
+      comment: 'Warning: unknown inline element was ignored'
+    }];
   }
   return content.map(function (segment) {
+    if (segment === undefined || segment === null) return makeText('');
+    if (_typeof(segment) !== 'object') return makeText(String(segment));
     if (typeof segment === 'string' || segment instanceof String) {
       return makeText(segment);
     }
     var elementType = Object.keys(segment)[0];
+    var elementObj = segment[elementType];
+    if (elementType === 'type' && ['plural', 'gender', 'select'].includes(segment.type)) {
+      elementType = segment.type.charAt(0).toUpperCase() + segment.type.slice(1);
+      elementObj = segment;
+    }
     var elementTag = (0, _typeToTagMaps.elementTypeToTag)(elementType, elementTypeInfo);
+    if (['Plural', 'Gender', 'Select'].includes(elementType) && targetXliffVersion !== '2.2') {
+      var _text = '';
+      if (Array.isArray(elementObj.options)) {
+        _text = elementObj.options.map(function (opt) {
+          return opt.source;
+        }).join(' ');
+      } else if (elementObj.contents) {
+        _text = elementObj.contents;
+      }
+      return makeText(_text);
+    }
     if (elementTag !== undefined) {
-      var _attrsSrc = Object.assign({}, segment[elementType]);
+      var _attrsSrc = Object.assign({}, elementObj);
       delete _attrsSrc.id;
       delete _attrsSrc.contents;
-      var _contents = segment[elementType].hasOwnProperty('contents') ? makeValue(segment[elementType].contents, elementTypeInfo) : undefined;
-      var _attrs = {
-        id: segment[elementType].id
+      var _contents = elementObj.hasOwnProperty('contents') ? makeValue(elementObj.contents, elementTypeInfo, targetXliffVersion) : undefined;
+      var _attrs2 = {
+        id: elementObj.id
       };
       Object.keys(_attrsSrc).forEach(function (attrKey) {
-        _attrs[attrKey] = _attrsSrc[attrKey];
+        var v = _attrsSrc[attrKey];
+        if (v !== undefined && v !== null) {
+          _attrs2[attrKey] = v + '';
+        }
       });
-      return makeElement(elementTag, _attrs, _contents);
+      return makeElement(elementTag, _attrs2, _contents);
     }
     var segmentString = '{ ' + Object.keys(segment).reduce(function (result, segmentKey) {
       return result + segmentKey + ': "' + segment[segmentKey].toString() + '"';
@@ -1146,6 +1298,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.extractValue = extractValue;
 var _typeToTagMaps = require("../inline-elements/typeToTagMaps.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 function extractValue(valueElements, elementTypeInfo) {
   if (valueElements === undefined || valueElements === null || valueElements === '') {
     return '';
@@ -1161,6 +1319,27 @@ function extractValue(valueElements, elementTypeInfo) {
       return valueElement.text.substr(0, valueElement.text.lastIndexOf('\n'));
     }
     return valueElement.text;
+  }
+  if (valueElement.type === 'element' && ['plural', 'gender', 'select'].includes(valueElement.name)) {
+    var options = (valueElement.elements || []).filter(function (e) {
+      return e.name === 'option';
+    }).map(function (opt) {
+      return {
+        key: opt.attributes && opt.attributes.key,
+        source: extractValue(opt.elements, elementTypeInfo)
+      };
+    });
+    return {
+      type: valueElement.name,
+      id: valueElement.attributes && valueElement.attributes.id,
+      var: valueElement.attributes && valueElement.attributes.var,
+      options: options,
+      otherAttrs: Object.fromEntries(Object.entries(valueElement.attributes || {}).filter(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 1),
+          k = _ref2[0];
+        return !['id', 'var'].includes(k);
+      }))
+    };
   }
   var elementType = (0, _typeToTagMaps.tagToElementType)(valueElement.name, elementTypeInfo);
   if (valueElement.type === 'element' && elementType !== undefined) {

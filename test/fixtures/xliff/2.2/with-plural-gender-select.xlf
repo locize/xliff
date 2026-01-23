@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="2.2" srcLang="en" trgLang="de">
+  <file id="main">
+    <unit id="messages">
+      <segment>
+        <source>
+          <plural id="p1" var="count">
+            <option key="one">One message</option>
+            <option key="other">{{count}} messages</option>
+          </plural>
+        </source>
+        <target>
+          <plural id="p1" var="count">
+            <option key="one">Eine Nachricht</option>
+            <option key="other">{{count}} Nachrichten</option>
+          </plural>
+        </target>
+      </segment>
+    </unit>
+    <unit id="greeting">
+      <segment>
+        <source>
+          <select id="s1" var="gender">
+            <option key="male">He says hi</option>
+            <option key="female">She says hi</option>
+            <option key="other">They say hi</option>
+          </select>
+        </source>
+        <target>
+          <select id="s1" var="gender">
+            <option key="male">Er sagt Hallo</option>
+            <option key="female">Sie sagt Hallo</option>
+            <option key="other">Sie sagen Hallo</option>
+          </select>
+        </target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

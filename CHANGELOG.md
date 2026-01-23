@@ -1,3 +1,11 @@
+### 6.3.0
+
+- XLIFF 2.0/2.2: Round-trip preservation of unknown top-level elements (`headerExtras`).
+- Export: Attribute filtering for undefined/null values in all branches.
+- Inline elements: Factory signatures aligned for plural/gender/select and canonical mapping clarified.
+- Documentation: README updated for canonical mappings and JS model structure.
+- Tests: Added coverage for headerExtras round-trip and attribute filtering.
+
 ### 6.2.2
 
 - properly expose also `makeInlineElement` [#60](https://github.com/locize/xliff/pull/60)

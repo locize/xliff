@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="2.2" srcLang="en" trgLang="de">
+  <mda:metadata xmlns:mda="urn:oasis:names:tc:xliff:metadata:2.0">
+    <mda:metaGroup>
+      <mda:meta type="example" value="test"/>
+    </mda:metaGroup>
+  </mda:metadata>
+  <file id="main">
+    <unit id="welcome" ref="someRefValue">
+      <segment>
+        <source>Welcome</source>
+        <target>Willkommen</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>
