@@ -1158,7 +1158,6 @@ exports.makeElement = makeElement;
 exports.makeText = makeText;
 exports.makeValue = makeValue;
 var _typeToTagMaps = require("../inline-elements/typeToTagMaps.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function makeElement(name, attributes, elements) {
   var el = {
     type: 'element',
@@ -1242,8 +1241,6 @@ function makeValue(content, elementTypeInfo, targetXliffVersion) {
     }];
   }
   return content.map(function (segment) {
-    if (segment === undefined || segment === null) return makeText('');
-    if (_typeof(segment) !== 'object') return makeText(String(segment));
     if (typeof segment === 'string' || segment instanceof String) {
       return makeText(segment);
     }
