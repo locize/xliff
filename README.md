@@ -543,6 +543,31 @@ var inlineElementObj = makeInlineElement(ElementTypes.GenericSpan, attributesObj
 var source = [ 'Hello ', inlineElementObj ]
 ```
 
+#### Inline elements as plain strings (`inlineAsString`)
+
+If your application stores translation values as plain strings (no arrays), pass `inlineAsString: true` to `xliff12ToJs` / `xliff2js` and the inline elements are serialized back into their compact native tags inside the string:
+
+```js
+const res = await xliff12ToJs(xlf, { inlineAsString: true })
+// res.resources['ng2.template']['27515543696334242'].source ===
+// 'Welcome (<x id="INTERPOLATION" equiv-text="{{ count }}"/>)'
+```
+
+The encoding is reversible: pass the same option to `jsToXliff12` / `js2xliff` and token strings are parsed back into real inline elements on export:
+
+```js
+const xlf = await jsToXliff12(res, { inlineAsString: true })
+```
+
+Rules:
+
+- Attributes are serialized in stable order (`id` first, then `equiv-text`, then the rest alphabetical), so re-exports are byte-stable.
+- Literal `&` and `<` in text become `&amp;` / `&lt;` inside flattened strings, so token detection is unambiguous.
+- On export, strings without recognizable tokens, with unknown tags, or with malformed markup are left untouched (treated as plain text, never guessed).
+- The token vocabulary is the union of XLIFF 1.2 (`x`, `g`, `bx`, `ex`, `ph`, `bpt`, `ept`, `mrk`) and 2.x (`ph`, `pc`, `sc`, `ec`, plus 2.2 `plural`/`gender`/`select`) inline tags, so importing 1.2 and exporting 2.0 (or vice versa) converts the tags to the target version's vocabulary.
+
+The `flattenInline(value, elementTypeInfo)` and `unflattenInline(str)` functions used for this are also exported.
+
 ### Additional attributes example
 It is possible to pass `additionalAttributes` to your js file. These will be added to the `<trans-unit>` element in xliff:
 

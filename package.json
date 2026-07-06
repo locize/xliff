@@ -58,6 +58,10 @@
       "require": "./cjs/inline-elements/ElementTypes.js",
       "default": "./esm/inline-elements/ElementTypes.js"
     },
+    "./flatten": {
+      "require": "./cjs/inline-elements/flatten.js",
+      "default": "./esm/inline-elements/flatten.js"
+    },
     "./cjs": {
       "default": "./cjs/index.js"
     },
@@ -97,6 +101,9 @@
     "./cjs/ElementTypes": {
       "default": "./cjs/inline-elements/ElementTypes.js"
     },
+    "./cjs/flatten": {
+      "default": "./cjs/inline-elements/flatten.js"
+    },
     "./esm": {
       "default": "./esm/index.js"
     },
@@ -135,6 +142,9 @@
     },
     "./esm/ElementTypes": {
       "default": "./esm/inline-elements/ElementTypes.js"
+    },
+    "./esm/flatten": {
+      "default": "./esm/inline-elements/flatten.js"
     }
   },
   "module": "./esm/index.js",

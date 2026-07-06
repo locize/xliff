@@ -28,4 +28,18 @@ describe('js2xliff targetXliffVersion export option', () => {
     expect(xliff).to.contain('One message')
     expect(xliff).to.contain('He says hi')
   })
+
+  it('emits the OASIS core namespace per version (2.1 keeps the 2.0 namespace)', async () => {
+    const x20 = await js2xliff(jsModel)
+    expect(x20).to.contain('xmlns="urn:oasis:names:tc:xliff:document:2.0"')
+    expect(x20).to.contain('version="2.0"')
+
+    const x21 = await js2xliff(jsModel, { targetXliffVersion: '2.1' })
+    expect(x21).to.contain('xmlns="urn:oasis:names:tc:xliff:document:2.0"')
+    expect(x21).to.contain('version="2.1"')
+
+    const x22 = await js2xliff(jsModel, { targetXliffVersion: '2.2' })
+    expect(x22).to.contain('xmlns="urn:oasis:names:tc:xliff:document:2.2"')
+    expect(x22).to.contain('version="2.2"')
+  })
 })

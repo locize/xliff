@@ -1,3 +1,8 @@
+### 6.4.0
+
+- New `inlineAsString` option on `xliff12ToJs`/`xliff2js` (flatten inline elements to reversible token strings) and on `jsToXliff12`/`js2xliff` (parse the tokens back into inline elements on export). `flattenInline`/`unflattenInline` are exported.
+- Namespace conformance: exporting with `targetXliffVersion: '2.1'` now emits the OASIS-correct core namespace `urn:oasis:names:tc:xliff:document:2.0` (XLIFF 2.1 keeps the 2.0 namespace; only the `version` attribute is `2.1`). Parsing is unaffected (version attribute based), so files produced by earlier releases still import fine.
+
 ### 6.3.0
 
 - XLIFF 2.0/2.2: Round-trip preservation of unknown top-level elements (`headerExtras`).
