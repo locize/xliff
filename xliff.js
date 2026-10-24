@@ -630,6 +630,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var STATES = ['initial', 'translated', 'reviewed', 'final'];
 var js2xliffClb = function js2xliffClb(obj, opt, cb) {
   if (!cb && typeof opt === 'function') {
     cb = opt;
@@ -727,7 +728,9 @@ function createGroupUnitTag(id, group, options) {
   return (0, _objectToXml.makeElement)('group', attrs, groupUnits);
 }
 function createUnitTag(id, unit, options) {
-  var segment = (0, _objectToXml.makeElement)('segment', null, true);
+  var segment = (0, _objectToXml.makeElement)('segment', STATES.includes(unit.state) ? {
+    state: unit.state
+  } : null, true);
   var srcVal = unit.source === undefined && unit.target !== undefined ? '' : unit.source;
   if (options && options.inlineAsString) srcVal = (0, _flatten.unflattenInline)(srcVal);
   if (srcVal !== undefined) segment.elements.push((0, _objectToXml.makeElement)('source', null, (0, _objectToXml.makeValue)(srcVal, _ElementTypes.default, options && options.targetXliffVersion)));
@@ -802,6 +805,7 @@ var _objectToXml = require("./xml-js/objectToXml.js");
 var _flatten = require("./inline-elements/flatten.js");
 var _escape = _interopRequireDefault(require("./util/escape.js"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+var STATES = ['new', 'needs-translation', 'needs-l10n', 'needs-adaptation', 'translated', 'needs-review-translation', 'needs-review-l10n', 'needs-review-adaptation', 'final', 'signed-off'];
 var jsToXliff12Clb = function jsToXliff12Clb(obj, opt, cb) {
   if (!cb && typeof opt === 'function') {
     cb = opt;
@@ -882,6 +886,9 @@ function createTransUnitTag(key, resource, obj, options) {
         'xml:lang': obj.targetLanguage
       };
     }
+    if (STATES.includes(resource.state)) targetAttributes = Object.assign({}, targetAttributes, {
+      state: resource.state
+    });
     u.elements.push((0, _objectToXml.makeElement)('target', targetAttributes, (0, _objectToXml.makeValue)(options.inlineAsString ? (0, _flatten.unflattenInline)(resource.target) : resource.target, _ElementTypes.default)));
   }
   if ('note' in resource) {
@@ -1133,6 +1140,7 @@ function createTransUnitTag(transUnit, inlineAsString) {
       case 'source':
       case 'target':
         unit[element.name] = inlineAsString ? (0, _flatten.flattenInline)(value, _ElementTypes.default) : value;
+        if (element.name === 'target' && element.attributes && element.attributes.state) unit.state = element.attributes.state;
         break;
       case 'note':
         if (unit[element.name]) {
@@ -1314,6 +1322,7 @@ function createUnit(unit, initValues, inlineAsString) {
   if (!unit.elements) return undefined;
   return unit.elements.reduce(function (unit, segment) {
     if (['segment', 'notes'].indexOf(segment.name) < 0) return unit;
+    if (segment.attributes && segment.attributes.state) unit.state = segment.attributes.state;
     segment.elements.forEach(function (element) {
       var value = (0, _xmlToObject.extractValue)(element.elements, _ElementTypes.default);
       switch (element.name) {
