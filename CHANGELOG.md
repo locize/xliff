@@ -1,3 +1,7 @@
+### 6.5.2
+
+- The namespace (`<file original>` in 1.2, `<file id>` in 2.x) and the values in `additionalAttributes` are escaped like unit and group ids: a `&` or `<` in them made the file invalid XML, and a literal `&amp;` came back as `&` ([#64](https://github.com/locize/xliff/pull/64), by [@Pharex38](https://github.com/Pharex38))
+
 ### 6.5.1
 
 - Text that contains a literal `&amp;` (source, target and notes, 1.2 and 2.x) now survives a round trip: it was written as `&amp;` and read back as `&`, because xml-js turns `&amp;` into `&` before escaping. Plain `&` and other entities such as `&lt;` or `&nbsp;` were never affected and stay as they are ([#63](https://github.com/locize/xliff/pull/63), by [@Pharex38](https://github.com/Pharex38))

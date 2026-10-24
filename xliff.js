@@ -673,7 +673,7 @@ var js2xliffClb = function js2xliffClb(obj, opt, cb) {
   Object.keys(obj.resources).forEach(function (nsName) {
     var fileChildren = createUnitTags(obj.resources[nsName], options);
     var f = (0, _objectToXml.makeElement)('file', {
-      id: nsName
+      id: (0, _escape.default)(nsName)
     }, fileChildren);
     root.elements.push(f);
   });
@@ -723,7 +723,7 @@ function createGroupUnitTag(id, group, options) {
   };
   Object.keys(additionalAttributes).forEach(function (k) {
     var v = additionalAttributes[k];
-    if (v !== undefined && v !== null) attrs[k] = String(v);
+    if (v !== undefined && v !== null) attrs[k] = (0, _escape.default)(String(v));
   });
   return (0, _objectToXml.makeElement)('group', attrs, groupUnits);
 }
@@ -753,7 +753,7 @@ function createUnitTag(id, unit, options) {
   };
   Object.keys(additionalAttributes).forEach(function (k) {
     var v = additionalAttributes[k];
-    if (v !== undefined && v !== null) attrs[k] = String(v);
+    if (v !== undefined && v !== null) attrs[k] = (0, _escape.default)(String(v));
   });
   return (0, _objectToXml.makeElement)('unit', attrs, subEle);
 }
@@ -793,6 +793,12 @@ var _objectToXml = require("./xml-js/objectToXml.js");
 var _flatten = require("./inline-elements/flatten.js");
 var _escape = _interopRequireDefault(require("./util/escape.js"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var STATES = ['new', 'needs-translation', 'needs-l10n', 'needs-adaptation', 'translated', 'needs-review-translation', 'needs-review-l10n', 'needs-review-adaptation', 'final', 'signed-off'];
 var jsToXliff12Clb = function jsToXliff12Clb(obj, opt, cb) {
   if (!cb && typeof opt === 'function') {
@@ -820,7 +826,7 @@ var jsToXliff12Clb = function jsToXliff12Clb(obj, opt, cb) {
     var bodyChildren = createUnitTags(obj.resources[nsName], obj, options);
     var b = (0, _objectToXml.makeElement)('body', null, bodyChildren);
     var fileAttributes = {
-      original: nsName,
+      original: (0, _escape.default)(nsName),
       datatype: 'plaintext',
       'source-language': obj.sourceLanguage
     };
@@ -846,18 +852,26 @@ function createUnitTags(unitElements, obj, options) {
     }
   });
 }
+var escapeValues = function escapeValues(attrs) {
+  return Object.fromEntries(Object.entries(attrs).map(function (_ref) {
+    var _ref2 = _slicedToArray(_ref, 2),
+      k = _ref2[0],
+      v = _ref2[1];
+    return [k, typeof v === 'string' ? (0, _escape.default)(v) : v];
+  }));
+};
 function createGroupUnitTag(key, resource, obj, options) {
   var additionalAttributes = resource.additionalAttributes != null ? resource.additionalAttributes : {};
   var groupUnits = createUnitTags(resource.groupUnits, obj, options);
   return (0, _objectToXml.makeElement)('group', Object.assign({
     id: (0, _escape.default)(key)
-  }, additionalAttributes), groupUnits);
+  }, escapeValues(additionalAttributes)), groupUnits);
 }
 function createTransUnitTag(key, resource, obj, options) {
   var additionalAttributes = resource.additionalAttributes != null ? resource.additionalAttributes : {};
   var u = (0, _objectToXml.makeElement)('trans-unit', Object.assign({
     id: (0, _escape.default)(key)
-  }, additionalAttributes), true);
+  }, escapeValues(additionalAttributes)), true);
   var sourceAttributes = null;
   if (options.xmlLangAttr) {
     sourceAttributes = {
