@@ -77,5 +77,12 @@ module.exports = {
   example_sizeRestriction: {
     js: require('./example_sizeRestriction'),
     xliff: fixNewLines(fs.readFileSync(path.join(__dirname, 'example_sizeRestriction.xliff')).toString())
+  },
+  example_state: {
+    // the state values differ per version, so each version has its own JS
+    js: require('./example_state'),
+    xliff: fixNewLines(fs.readFileSync(path.join(__dirname, 'example_state.xliff')).toString()),
+    js12: require('./example_state12'),
+    xliff12: fixNewLines(fs.readFileSync(path.join(__dirname, 'example_state12.xliff')).toString())
   }
 }

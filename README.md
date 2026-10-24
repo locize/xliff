@@ -602,6 +602,28 @@ const xliff = `<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0
 </xliff>`
 ```
 
+### Translation state example
+The optional `state` field carries the translation state of a key: the `state` attribute of `<target>` in XLIFF 1.2, of `<segment>` in XLIFF 2.x.
+
+```js
+const js = {
+  "resources": {
+    "namespace1": {
+      "key1": {
+        "source": "Hello",
+        "target": "Hallo",
+        "state": "needs-review-translation" // 2.x: e.g. "initial"
+      }
+    }
+  }
+}
+```
+
+Parsing reads the attribute as it is. Exporting writes it only if it is a value the target version defines, otherwise it is left out:
+
+- 1.2: `new`, `needs-translation`, `needs-l10n`, `needs-adaptation`, `translated`, `needs-review-translation`, `needs-review-l10n`, `needs-review-adaptation`, `final`, `signed-off`
+- 2.x: `initial`, `translated`, `reviewed`, `final`
+
 ## XLIFF 2.2 Support & Unknowns
 
 This library parses XLIFF 2.2 (and 2.1) files permissively. Unknown attributes and elements are preserved for round-trip and future compatibility:

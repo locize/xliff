@@ -1,3 +1,7 @@
+### 6.5.0
+
+- New optional `state` field per key: the translation state, read from and written to the `state` attribute of `<target>` (1.2) or `<segment>` (2.x). Only values the target version defines are written; without `state` the output is unchanged.
+
 ### 6.4.0
 
 - New `inlineAsString` option on `xliff12ToJs`/`xliff2js` (flatten inline elements to reversible token strings) and on `jsToXliff12`/`js2xliff` (parse the tokens back into inline elements on export). `flattenInline`/`unflattenInline` are exported.

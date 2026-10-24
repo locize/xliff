@@ -427,6 +427,59 @@ describe('with sizeRestriction attribute', () => {
   })
 })
 
+describe('with state', () => {
+  describe('xliff 2.0', () => {
+    test('xliff2js', (fn) => (done) => {
+      fn(fixtures.example_state.xliff, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_state.js)
+        done()
+      })
+    })
+    test('js2xliff', (fn) => (done) => {
+      fn(fixtures.example_state.js, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_state.xliff)
+        done()
+      })
+    })
+    test('js2xliff', (fn) => (done) => {
+      const js = JSON.parse(JSON.stringify(fixtures.example.js))
+      js.resources.namespace1.key1.state = 'needs-review-translation'
+      fn(js, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example.xliff)
+        done()
+      })
+    }, 'does not write a state 2.0 does not define')
+  })
+  describe('xliff 1.2', () => {
+    test('xliff12ToJs', (fn) => (done) => {
+      fn(fixtures.example_state.xliff12, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_state.js12)
+        done()
+      })
+    })
+    test('jsToXliff12', (fn) => (done) => {
+      fn(fixtures.example_state.js12, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example_state.xliff12)
+        done()
+      })
+    })
+    test('jsToXliff12', (fn) => (done) => {
+      const js = JSON.parse(JSON.stringify(fixtures.example.js))
+      js.resources.namespace1.key1.state = 'reviewed'
+      fn(js, (err, res) => {
+        expect(err).not.to.be.ok()
+        expect(res).to.eql(fixtures.example.xliff12)
+        done()
+      })
+    }, 'does not write a state 1.2 does not define')
+  })
+})
+
 describe('Google Actions Xliff', () => {
   test('xliff12ToJs', (fn) => (done) => {
     fn(fixtures.example_google.xliff12, { xmlLangAttr: true }, (err, res) => {
