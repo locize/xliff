@@ -758,19 +758,7 @@ function createUnitTag(id, unit, options) {
   return (0, _objectToXml.makeElement)('unit', attrs, subEle);
 }
 function createNoteObjects(note) {
-  var arrNote = [];
-  var baseNote = (0, _objectToXml.makeText)(note);
-  if (Array.isArray(baseNote.text)) {
-    baseNote.text.forEach(function (text) {
-      arrNote.push({
-        type: baseNote.type,
-        text: text
-      });
-    });
-  } else {
-    arrNote.push(baseNote);
-  }
-  return arrNote;
+  return (Array.isArray(note) ? note : [note]).map(_objectToXml.makeText);
 }
 var js2xliff = function js2xliff(obj, opt, cb) {
   if (!cb && opt === undefined) {
@@ -899,19 +887,7 @@ function createTransUnitTag(key, resource, obj, options) {
   return u;
 }
 function createNoteObjects(note) {
-  var arrNote = [];
-  var baseNote = (0, _objectToXml.makeText)(note);
-  if (Array.isArray(baseNote.text)) {
-    baseNote.text.forEach(function (text) {
-      arrNote.push({
-        type: baseNote.type,
-        text: text
-      });
-    });
-  } else {
-    arrNote.push(baseNote);
-  }
-  return arrNote;
+  return (Array.isArray(note) ? note : [note]).map(_objectToXml.makeText);
 }
 var jsToXliff12 = function jsToXliff12(obj, opt, cb) {
   if (!cb && opt === undefined) {
@@ -1391,7 +1367,7 @@ function makeElement(name, attributes, elements) {
 function makeText(text) {
   return {
     type: 'text',
-    text: text
+    text: String(text).replace(/&/g, '&amp;')
   };
 }
 function makeValue(content, elementTypeInfo, targetXliffVersion) {

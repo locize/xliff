@@ -1,3 +1,7 @@
+### 6.5.1
+
+- Text that contains a literal `&amp;` (source, target and notes, 1.2 and 2.x) now survives a round trip: it was written as `&amp;` and read back as `&`, because xml-js turns `&amp;` into `&` before escaping. Plain `&` and other entities such as `&lt;` or `&nbsp;` were never affected and stay as they are ([#63](https://github.com/locize/xliff/pull/63), by [@Pharex38](https://github.com/Pharex38))
+
 ### 6.5.0
 
 - New optional `state` field per key: the translation state, read from and written to the `state` attribute of `<target>` (1.2) or `<segment>` (2.x). Only values the target version defines are written; without `state` the output is unchanged.
