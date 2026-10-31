@@ -47,4 +47,39 @@ describe('createjs with inline elements', () => {
       }
     )
   })
+
+  it('keeps arrays as they are when only one side holds an element', (done) => {
+    const source = ['Hello ', { GenericSpan: { id: 'name', contents: '{name}' } }]
+    const target = ['Hallo Name']
+    createjs('en', 'de', { key1: source }, { key1: target }, 'namespace1', (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res.resources.namespace1.key1).to.eql({ source, target })
+      done()
+    })
+  })
+})
+
+describe('createjs with a list of plain strings', () => {
+  const list = {
+    groupUnits: {
+      0: { source: 'a', target: 'A' },
+      1: { source: 'b', target: 'B' }
+    }
+  }
+
+  it('keeps the entries as units of a group without notes', (done) => {
+    createjs('en', 'de', { list: ['a', 'b'] }, { list: ['A', 'B'] }, 'namespace1', (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res.resources.namespace1.list).to.eql(list)
+      done()
+    })
+  })
+
+  it('keeps the entries as units of a group with notes', (done) => {
+    createjs('en', 'de', { list: ['a', 'b'] }, { list: ['A', 'B'] }, 'namespace1', (err, res) => {
+      expect(err).not.to.be.ok()
+      expect(res.resources.namespace1.list).to.eql(list)
+      done()
+    }, { other: 'note' })
+  })
 })
