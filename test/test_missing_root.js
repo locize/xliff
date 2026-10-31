@@ -23,6 +23,7 @@ describe('input without an xliff element', () => {
       throw new Error('expected a rejection')
     }, (err) => {
       expect(err).to.be.an(Error)
+      expect(err.message).to.match(/does not contain an xliff element/)
     })
   })
 
@@ -31,6 +32,7 @@ describe('input without an xliff element', () => {
       throw new Error('expected a rejection')
     }, (err) => {
       expect(err).to.be.an(Error)
+      expect(err.message).to.match(/does not contain an xliff element/)
     })
   })
 })
