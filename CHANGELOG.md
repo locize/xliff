@@ -1,3 +1,9 @@
+### 6.5.3
+
+- `createjs`, `createxliff` and `createxliff12` no longer throw for nested keys when no notes are passed, and keep inline element arrays (`['Hello ', { GenericSpan: … }]`) as one segment instead of losing them; a list of plain strings (`['a', 'b']`) stays a group with the units `0`, `1`, … ([#65](https://github.com/locize/xliff/pull/65), by [@Omair-Asdaq](https://github.com/Omair-Asdaq))
+- `createxliff` and `createxliff12` without a namespace: the promise now settles (it never did for flat keys), and a callback passed with `null` as namespace is called ([#65](https://github.com/locize/xliff/pull/65))
+- `xliff2js` and `xliff12ToJs` report an empty document or one without an `<xliff>` element as an error ("The document does not contain an xliff element") through the callback or the promise, instead of throwing a `TypeError` ([#65](https://github.com/locize/xliff/pull/65))
+
 ### 6.5.2
 
 - The namespace (`<file original>` in 1.2, `<file id>` in 2.x) and the values in `additionalAttributes` are escaped like unit and group ids: a `&` or `<` in them made the file invalid XML, and a literal `&amp;` came back as `&` ([#64](https://github.com/locize/xliff/pull/64), by [@Pharex38](https://github.com/Pharex38))

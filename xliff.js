@@ -6,16 +6,25 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+var isFlatArray = function isFlatArray(v) {
+  return Array.isArray(v) && !v.some(Array.isArray);
+};
+var hasElement = function hasElement(v) {
+  return v.some(function (e) {
+    return e !== null && _typeof(e) === 'object';
+  });
+};
 function setSegment(category, srcObj, trgObj, ntObj, key) {
   var srcValue = srcObj[key];
   var trgValue = trgObj[key];
-  if (_typeof(srcValue) === 'object' && _typeof(trgValue) === 'object') {
+  var inlineSegments = isFlatArray(srcValue) && isFlatArray(trgValue) && (hasElement(srcValue) || hasElement(trgValue));
+  if (_typeof(srcValue) === 'object' && _typeof(trgValue) === 'object' && !inlineSegments) {
     category[key] = {
       groupUnits: {}
     };
     var grpObj = category[key].groupUnits;
     Object.keys(srcValue).forEach(function (grpKey) {
-      setSegment(grpObj, srcObj[key], trgObj[key], ntObj[key], grpKey);
+      setSegment(grpObj, srcObj[key], trgObj[key], ntObj && ntObj[key], grpKey);
       if (ntObj && ntObj[key] && ntObj[key][grpKey]) {
         category[key].note = ntObj[key][grpKey];
       }
@@ -97,7 +106,7 @@ var createjs = _createjs.default.createjsClb;
 var js2xliff = _js2xliff.default.js2xliffClb;
 var createxliffClb = function createxliffClb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, cb) {
   if (!ns || typeof ns !== 'string') {
-    cb = ns;
+    cb = cb || ns;
     ns = null;
   }
   if (!cb) {
@@ -140,7 +149,7 @@ var createjs = _createjs.default.createjsClb;
 var jsToXliff12 = _jsToXliff.default.jsToXliff12Clb;
 var createxliff12Clb = function createxliff12Clb(srcLng, trgLng, srcKeys, trgKeys, ntKeys, ns, cb) {
   if (!ns || typeof ns !== 'string') {
-    cb = ns;
+    cb = cb || ns;
     ns = null;
   }
   if (!cb) {
@@ -1050,9 +1059,14 @@ var xliff12ToJsClb = function xliff12ToJsClb(str, options, cb) {
     if (cb) return cb(err);
     return err;
   }
-  var xliffRoot = xmlObj.elements.find(function (ele) {
+  var xliffRoot = (xmlObj.elements || []).find(function (ele) {
     return ele.name === 'xliff';
   });
+  if (!xliffRoot) {
+    var _err = new Error('The document does not contain an xliff element');
+    if (cb) return cb(_err);
+    return _err;
+  }
   var version = xliffRoot.attributes && xliffRoot.attributes.version;
   if (version && version !== '1.2') {
     result.xliffVersion = version;
@@ -1218,9 +1232,14 @@ var xliffToJsClb = function xliffToJsClb(str, options, cb) {
     if (cb) return cb(err);
     return err;
   }
-  var xliffRoot = xmlObj.elements.find(function (ele) {
+  var xliffRoot = (xmlObj.elements || []).find(function (ele) {
     return ele.name === 'xliff';
   });
+  if (!xliffRoot) {
+    var _err = new Error('The document does not contain an xliff element');
+    if (cb) return cb(_err);
+    return _err;
+  }
   var version = xliffRoot.attributes && xliffRoot.attributes.version;
   if (['2.0', '2.1', '2.2'].includes(version)) {
     if (version !== '2.0') {
